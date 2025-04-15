@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Audit Cube - Dispute Dashboard</title>
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&display=swap">
+    <style>
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: white;
+            color: #333;
+            padding: 20px;
+            line-height: 1.6;
+        }
+
+        .breadcrumb {
+            font-size: 14px;
+            color: #888;
+            margin-bottom: 20px;
+            z-index: 100;
+            position: relative;
+        }
+
+        .breadcrumb a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .breadcrumb a:hover {
+            text-decoration: underline;
+            color: #3a86ff;
+        }
+
+        h1, h2, h3 {
+            color: #333;
+        }
+
+        img {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            margin-bottom: 20px;
+            border-radius: 10px;
+            max-width: 60%;
+        }
+
+        p, ul, li {
+            margin-bottom: 16px;
+        }
+
+        section {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+        }
+
+        .sidebar {
+            position: fixed;
+            top: 0;
+            left: 20px;
+            width: 240px;
+            height: calc(100% - 60px);
+            padding-top: 60px;
+            overflow-y: auto;
+            scrollbar-width: thin;
+            scrollbar-color: #3a86ff #f1f1f1;
+        }
+
+        .sidebar ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+
+        .sidebar ul li {
+            margin-bottom: 10px;
+        }
+
+        .sidebar ul li a {
+            color: #333;
+            text-decoration: none;
+            font-weight: normal;
+            transition: color 0.3s ease;
+            font-size: 16px;
+            padding-left: 20px;
+        }
+
+        .sidebar ul li a:hover {
+            color: #007bff;
+        }
+
+        .sidebar ul li .section-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: #3a86ff;
+            margin-bottom: 10px;
+            padding-left: 0;
+        }
+
+        .active-section {
+            background-color: rgba(58, 134, 255, 0.1);
+            border-radius: 8px;
+        }
+
+        .content {
+            margin-left: 270px;
+            padding: 20px;
+        }
+
+        .content h1 {
+            font-size: 28px;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+
+        .content h2 {
+            font-size: 22px;
+            font-weight: 500;
+        }
+
+        .content h3 {
+            font-size: 18px;
+            font-weight: 500;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Breadcrumb Navigation -->
+    <div class="breadcrumb">
+        <a href="index.html">Home</a> > <a href="audit-cube-user-guide.html" style="color: inherit;">Audit Cube User Guides</a> > <span>Audit Cube Dispute Dashboard</span>
+    </div>
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <ul>
+            <li><a href="audit-cube-user-guide.html" class="section-title">Overview</a></li>
+            <li><a href="maindash.html" class="section-title">Main Dashboard</a></li>
+            <li><a href="maindash.html">Table Overview</a></li>
+            <li><a href="maindash.html#audit-results">Audit Results</a></li>
+            <li><a href="maindash.html#advanced-search">Advanced Search</a></li>
+            <li><a href="maindash.html#visualization-tools">Visualization Tools</a></li>
+            <li><a href="maindash.html#troubleshooting">Troubleshooting</a></li>
+            <li><a href="shipmentdash.html" class="section-title">Shipment Dashboard</a></li>
+            <li><a href="shipmentdash.html">Shipment Table</a></li>
+            <li><a href="shipmentdash.html#uploading-files">Uploading Shipment Files</a></li>
+            <li><a href="shipmentdash.html#refreshing-data">Refreshing Data</a></li>
+            <li><a href="shipmentdash.html#viewing-data">Viewing & Filtering Data</a></li>
+            <li><span class="section-title">Invoice Dashboard</span></li>
+            <li><a href="invoicedash.html">Invoice Table Overview</a></li>
+            <li><a href="invoicedash.html#self-help-options">Self-Help Options</a></li>
+            <li><a href="invoicedash.html#toolbar-menu">Toolbar Menu</a></li>
+            <li><a href="invoicedash.html#invoice-upload">Invoice Upload</a></li>
+            <li><a href="invoicedash.html#filtering-sorting">Filtering and Sorting</a></li>
+            <li><a href="invoicedash.html#audit-details">Audit Results</a></li>
+            <li><a href="invoicedash.html#audit-trail">Audit Trail</a></li>
+            <li><a href="invoicedash.html#troubleshooting">Troubleshooting Tips</a></li>
+            <li><span class="section-title">Dispute Dashboard</span></li>
+            <li><a href="disputedash.html#overview">Overview</a></li>
+            <li><a href="disputedash.html#table-overview">Table Overview</a></li>
+            <li><a href="disputedash.html#navigating-dashboard">Navigating the Dashboard</a></li>
+            <li><a href="disputedash.html#kpis">KPIs</a></li>
+            <li><a href="disputedash.html#discrepancy-report">Discrepancy Report</a></li>
+            <li><a href="disputedash.html#troubleshooting">Troubleshooting</a></li>
+        </ul>
+    </div>
+
+    <div class="content">
+        <h1>Audit Cube - Dispute Dashboard</h1>
+    
+        <!-- Overview Section -->
+        <section id="overview">
+            <h2>Overview</h2>
+            <p>The Dispute Dashboard in Audit Cube is a dedicated workspace for managing and resolving disputes on invoices associated with shipments. Unlike other dashboards, the Dispute Dashboard provides tools to review, track, and resolve disputes in real-time. This feature is designed for financial and logistics teams to efficiently handle discrepancies between invoiced amounts and approved charges. With options to manually approve disputes, access detailed audit results, track changes, and filter views, the Dispute Dashboard facilitates a streamlined dispute resolution process.</p>
+        
+        <img src="img/disputedash2.png" alt="Dispute Dashboard Overview Main">
+
+        </section>
+
+    
+        <!-- Table Overview Section -->
+        <section id="table-overview">
+            <h2>Table Overview</h2>
+            <p>The dashboard displays dispute-related data in a table format with key columns such as:</p>
+            <ul>
+                <li>Dispute ID</li>
+                <li>Carrier - Account Number</li>
+                <li>Invoice Number</li>
+                <li>Tracking Number</li>
+                <li>Shipment ID</li>
+                <li>Dispute Amount</li>
+                <li>Dispute Status</li>
+            </ul>
+            <p>Rows are expandable by clicking the arrow next to an invoice number, revealing additional actions and data related to the invoice.</p>
+            <img src="img/disputedash.png" alt="Dispute Dashboard Overview">
+        </section>
+    
+        <section id="navigating-dashboard">
+            <h2>Navigating the Dashboard</h2>
+        
+            <h3>Expand All</h3>
+            <p>Located in the top left, the black arrow button allows users to expand all invoices at once, providing a quick overview of each invoice’s details and status.</p>
+        
+            <h3>Filtering and Sorting</h3>
+            <p>The dropdown filter in the top right corner enables sorting by criteria such as <strong>Invoice Number, Audit Status, Dispute Status, and Dispute Category</strong>. This allows users to prioritize disputes by specific attributes, streamlining the review process.</p>
+        
+            <h3>Exporting Data</h3>
+            <p>Users can export the Dispute Dashboard data into an Excel file using the <strong>export icon</strong> at the top right. This feature is ideal for offline analysis and record-keeping.</p>
+        
+            <h3>Column Configuration</h3>
+            <p>The <strong>Column Configurator</strong> next to the export icon provides the flexibility to hide or display specific columns, customizing the view to focus on essential data points.</p>
+        
+            <img src="img/disputedashfilters.png" alt="Dispute Dashboard Filters">
+        
+            <h3>Dispute Management</h3>
+            <p>The <strong>Dispute Change</strong> button in the <strong>Dispute Dashboard</strong> allows users to manage disputes efficiently. Users can:</p>
+            <ul>
+                <li>Update audit comments for a dispute line.</li>
+                <li>Modify the dispute category and its current status.</li>
+                <li>Assign the dispute to a specific processor for further investigation or resolution.</li>
+            </ul>
+            <p>By leveraging these capabilities, users can ensure that disputes are tracked, managed, and resolved systematically within the platform.</p>
+        
+            <img src="img/managethedispute.png" alt="Managing Disputes in the Dashboard">
+        </section>
+    
+
+    
+        <!-- KPIs Section -->
+        <section id="kpis">
+            <h2>KPIs</h2>
+            <ul>
+                <li><strong>File Count:</strong> Displays the total number of disputes and the number currently being viewed based on applied filters.</li>
+                <li><strong>Total Dispute Rates by Month:</strong> A bar chart visualizing the number of disputes per month. Helps identify seasonal patterns or spikes in disputes.</li>
+                <li><strong>Top Dispute Categories:</strong> A bar chart showing the most common dispute categories (e.g., Cost Calculation, Duplicate, Rate Issue). Useful for identifying recurring issues that may need systemic resolution.</li>
+                <li><strong>Total Dispute Rates by Carrier Code:</strong> Highlights which carriers (e.g., FedEx, UPS) have the highest dispute rates. Helps identify potential carrier-specific issues or opportunities for improvement.</li>
+            </ul>
+            <img src="img/kpi-charts.png" alt="Dispute Dashboard KPI Charts">
+        </section>
+
+        <section id="discrepancy-report">
+            <h2>Discrepancy Report</h2>
+            <p>
+                The Discrepancy Report displays a detailed list of shipment records where pricing mismatches have been identified between the invoiced amount and the expected charge amount. This report is part of the Dispute Dashboard in Audit Cube and helps users monitor and analyze discrepancies across a defined shipment date range.
+            </p>
+        
+            <h3>Purpose:</h3>
+            <p>
+                The Discrepancy Report allows users to identify specific records where carrier charges deviate from the expected rates calculated by the system. It provides visibility into key shipment, pricing, and route information, supporting internal audits and dispute resolution workflows.
+            </p>
+        
+            <h3>Data Available in the Report:</h3>
+            <ul>
+                <li><strong>Tracking Number:</strong> Unique shipment ID used to trace the package.</li>
+                <li><strong>Job Number:</strong> Internal reference used to connect the shipment to business processes.</li>
+                <li><strong>Invoice Number:</strong> Carrier-provided reference tied to the billing document.</li>
+                <li><strong>Carrier Account Number:</strong> Account under which the shipment was billed.</li>
+                <li><strong>Carrier Code:</strong> Name or code of the carrier (e.g., QuickStat).</li>
+                <li><strong>Invoice Amount:</strong> Amount billed by the carrier.</li>
+                <li><strong>Expected Charge Amount:</strong> System-calculated amount based on internal rates and logic.</li>
+                <li><strong>Shipment Date:</strong> Date the shipment was created or picked up.</li>
+                <li><strong>Shipper City/Country:</strong> Origin location of the shipment.</li>
+                <li><strong>Recipient City/Country:</strong> Destination location of the shipment.</li>
+                <li><strong>Base Rate Difference:</strong> The portion of the discrepancy attributed to base rate mismatch.</li>
+                <li><strong>International Rule Amount:</strong> Indicates any adjustments due to international routing rules.</li>
+            </ul>
+        
+            <p>
+                Discrepancies are visually flagged in the table—particularly where the Expected Charge Amount is zero or when a Base Rate Difference is present—making it easier for users to identify problematic records at a glance. The donut chart above the table summarizes the types of mismatches (e.g., charge mismatch, fuel surcharge issue), providing a high-level view of discrepancy categories.
+            </p>
+        
+            <p>
+                This report is filterable by date and searchable by shipment attributes, enabling users to quickly locate and act on records requiring further audit or escalation.
+            </p>
+        
+            <img src="img/discpreancyreport.png" alt="Discrepancy Report Screenshot">
+        </section>
+    
+        <!-- Troubleshooting Section -->
+        <section id="troubleshooting">
+            <h2>Troubleshooting Tips</h2>
+            <h3>1. Data Not Loading Properly</h3>
+            <p><strong>Issue:</strong> Table data or KPIs fail to load.</p>
+            <p><strong>Solution:</strong></p>
+            <ul>
+                <li>Ensure your internet connection is stable.</li>
+                <li>Refresh the page using your browser’s refresh button or Ctrl + R.</li>
+                <li>Clear your browser cache and cookies, then reload the dashboard.</li>
+                <li>Verify if the export functionality or other tools (like column configuration) are functioning. If not, contact technical support.</li>
+            </ul>
+    
+            <h3>2. Export Functionality Not Working</h3>
+            <p><strong>Issue:</strong> Unable to export the dispute data to Excel.</p>
+            <p><strong>Solution:</strong></p>
+            <ul>
+                <li>Confirm that you have the necessary permissions to export data.</li>
+                <li>Ensure all data is loaded before attempting export.</li>
+                <li>Try exporting smaller data sets by applying filters to reduce the volume.</li>
+            </ul>
+    
+            <h3>3. Filters Not Applying</h3>
+            <p><strong>Issue:</strong> Filters for sorting disputes by status, category, or other criteria don’t work as expected.</p>
+            <p><strong>Solution:</strong></p>
+            <ul>
+                <li>Check if the dropdown menus are visible and operational.</li>
+                <li>Ensure no conflicting filters are applied simultaneously.</li>
+                <li>Clear all filters using the reset option and apply one filter at a time.</li>
+            </ul>
+    
+            <h3>4. Icons Not Responding</h3>
+            <p><strong>Issue:</strong> The green check, blue paper, or green comment icons don’t respond when clicked.</p>
+            <p><strong>Solution:</strong></p>
+            <ul>
+                <li>Verify if your browser has pop-ups enabled; some actions may require pop-up windows.</li>
+                <li>Refresh the page or try accessing the feature from another browser or device.</li>
+            </ul>
+    
+            <h3>5. KPI Charts Not Displaying</h3>
+            <p><strong>Issue:</strong> KPI visualizations for dispute rates or top categories are blank or incorrect.</p>
+            <p><strong>Solution:</strong></p>
+            <ul>
+                <li>Confirm that the page has fully loaded.</li>
+                <li>Check if filters are hiding data. Adjust or remove filters to broaden the data view.</li>
+                <li>Verify the data source is correctly updated by ensuring recent disputes or approvals are logged.</li>
+            </ul>
+    
+            <h3>6. Slow Dashboard Performance</h3>
+            <p><strong>Issue:</strong> Dashboard is slow to respond or freezes.</p>
+            <p><strong>Solution:</strong></p>
+            <ul>
+                <li>Limit the number of rows displayed by collapsing rows or viewing fewer columns.</li>
+                <li>Close unnecessary browser tabs or restart the browser to free up memory.</li>
+            </ul>
+        </section>
+
+        <script>
+            // Select all sections and navigation links
+            const sections = document.querySelectorAll("section");
+            const navLinks = document.querySelectorAll(".sidebar ul li a");
+        
+            window.addEventListener("scroll", () => {
+                let currentSection = "";
+        
+                // Get current scroll position and iterate over sections
+                sections.forEach((section) => {
+                    const sectionTop = section.offsetTop - 70; // Adjust offset to match your layout
+                    const sectionHeight = section.clientHeight;
+                    if (window.scrollY >= sectionTop && window.scrollY < sectionTop + sectionHeight) {
+                        currentSection = section.getAttribute("id");
+                    }
+                });
+        
+                // Highlight the corresponding link in the sidebar
+                navLinks.forEach((link) => {
+                    link.classList.remove("active-section");
+                    if (link.getAttribute("href").includes(currentSection)) {
+                        link.classList.add("active-section");
+                    }
+                });
+            });
+        </script>
+        
+    </div>
+    

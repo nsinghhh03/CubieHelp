@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Role - Admin Cube</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&display=swap">
+    <style>
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: white;
+            color: #333;
+            padding: 0px;
+            line-height: 1.6;
+        }
+
+        .breadcrumb {
+            font-size: 14px;
+            color: #888;
+            margin-bottom: 20px;
+            z-index: 1000;
+            position: relative;
+            text-align: left;
+        }
+
+        .breadcrumb a {
+            color: inherit;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .breadcrumb a:hover {
+            text-decoration: underline;
+            color: #3a86ff;
+        }
+
+        h1, h2, h3 {
+            color: #333;
+        }
+
+        img {
+            display: block;
+            margin: 0 auto;
+            margin-bottom: 20px;
+            border-radius: 10px;
+            max-width: 100%;
+        }
+
+        section {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+        }
+
+        .sidebar {
+            position: fixed;
+            top: 0;
+            left: 20px;
+            z-index: 900;
+            width: 240px;
+            height: 100%;
+            padding-top: 60px;
+            overflow-y: auto;
+            scrollbar-width: thin;
+            scrollbar-color: #3a86ff #f1f1f1;
+        }
+
+        .sidebar ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+
+        .sidebar ul li {
+            margin-bottom: 10px;
+        }
+
+        .sidebar ul li a {
+            color: #333;
+            text-decoration: none;
+            font-weight: normal;
+            transition: color 0.3s ease;
+            font-size: 16px;
+            padding-left: 20px;
+        }
+
+        .sidebar ul li a:hover {
+            color: #007bff;
+        }
+
+        .sidebar ul li .section-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: #3a86ff;
+            margin-bottom: 10px;
+            padding-left: 0;
+        }
+
+        .sidebar ul li.active {
+            background-color: rgba(58, 134, 255, 0.1);
+            border-radius: 8px;
+        }
+
+        .content {
+            margin-left: 270px;
+            padding: 20px;
+        }
+
+        .content h1 {
+            font-size: 34px;
+            font-weight: 600;
+            margin-bottom: 20px;
+            text-align: left;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Breadcrumb Navigation -->
+    <div class="breadcrumb">
+        <a href="index.html">Home</a> > <a href="admincube.html">Admin Cube User Guides</a> > Role
+    </div>
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <ul>
+            <li><a href="admincube.html" class="section-title">Admin Cube</a></li>
+            <li><a href="carrier.html">Carrier</a></li>
+            <li><a href="account.html">Account</a></li>
+            <li><a href="location.html">Location</a></li>
+            <li><a href="lane.html">Lane</a></li>
+            <li><a href="charge-mapping.html">Charge Mapping</a></li>
+            <li><a href="fuel-surcharge.html">Fuel Surcharge</a></li>
+            <li><a href="userprofile.html">User Profile</a></li>
+            <li class="active"><a href="role.html">Role</a></li>
+            <li><a href="tcube-master.html">TCube Master</a></li>
+            <li><a href="email-template.html">Email Template</a></li>
+            <li><a href="exchange-rates.html">Exchange Rates</a></li>
+        </ul>
+    </div>
+
+    <div class="content">
+        <h1>Role</h1>
+        <p>The Role Definition section in Admin Cube allows users to configure and manage role-based access control within TCube applications. Roles determine the level of permissions assigned to different users, ensuring that access is restricted based on responsibilities.</p>
+    
+        <section>
+            <h2>Navigating to Role Management</h2>
+            <ul>
+                <li>Go to Admin Cube from the main dashboard.</li>
+                <li>Click on Roles in the navigation sidebar.</li>
+                <li>Select the respective role from the list.</li>
+                <li>Click the Pencil (Edit) button to modify role permissions.</li>
+            </ul>
+            <img src="img/mainrole.png" alt="Navigating Role Management">
+        </section>
+    
+        <section>
+            <h2>Role Types</h2>
+            <p>TCube applications support two types of roles to manage security and access levels:</p>
+            <ul>
+                <li><strong>Master Role Type:</strong> Grants access and privileges at the module level, such as Rate Cube, Audit Cube, or Admin Cube. Best suited for administrators who need broad access across multiple modules.</li>
+                <li><strong>Custom Role Type:</strong> Provides access control at a finer level, allowing permissions within specific functionalities of each module. Best suited for users with specialized responsibilities within the system.</li>
+            </ul>
+            <img src="img/typeofrole.png" alt="Role Types">
+        </section>
+    
+        <section>
+            <h2>Privileges</h2>
+            <p>The Privileges section defines the permissions granted to each role. Admins can enable or restrict access to specific functions by selecting the appropriate checkboxes.</p>
+            <p>Permissions are categorized by levels, such as:</p>
+            <ul>
+                <li><strong>Read:</strong> Allows users to view data and access information without making modifications.</li>
+                <li><strong>Write:</strong> Grants users the ability to create or modify entries within the module.</li>
+                <li><strong>Delete:</strong> Enables users to remove records from the system.</li>
+            </ul>
+            <p><strong>How to Manage Privileges:</strong></p>
+            <ul>
+                <li>Navigate to the Roles section in Admin Cube.</li>
+                <li>Click on the desired role.</li>
+                <li>Adjust privileges using the available checkboxes.</li>
+                <li>Click Save to confirm the changes.</li>
+            </ul>
+            <img src="img/privilege.png" alt="Privileges">
+        </section>
+    
+        <section>
+            <h2>Accounts Access</h2>
+            <p>The Accounts Access tab controls which carrier accounts a role can access. A role can be restricted to specific carrier accounts, ensuring data security and compliance.</p>
+            <p>Assigning carrier accounts to a role allows users within that role to manage only authorized accounts.</p>
+            <p><strong>Steps to Configure Accounts Access:</strong></p>
+            <ul>
+                <li>Select the Roles tab.</li>
+                <li>Click on the desired role.</li>
+                <li>Open the Accounts Access section.</li>
+                <li>Assign or remove carrier accounts as needed.</li>
+            </ul>
+            <img src="img/accountaccess.png" alt="Accounts Access">
+        </section>
+    
+        <section>
+            <h2>Approval Workflow</h2>
+            <p>The Approval Workflow is integrated into Rate Cube Processes to regulate rate uploads and revisions.</p>
+            <p>Roles can be configured with approval responsibilities, ensuring a controlled review process.</p>
+            <p>The approver indicator and approval level must be selected for a role to function as a rate approver.</p>
+            <p><strong>Steps to Assign Approval Workflow to a Role:</strong></p>
+            <ul>
+                <li>Open the Roles tab in Admin Cube.</li>
+                <li>Select a role that requires approval responsibilities.</li>
+                <li>Navigate to the Approval Workflow section.</li>
+                <li>Enable the Approver Indicator and define the Approval Level.</li>
+                <li>Click Save to apply the changes.</li>
+            </ul>
+            <p>The critical user activities are logged in the application. In Rate Maintenance, the Rate Header screen shows user actions and date(s) of modification.</p>
+            <img src="img/approvalworkflow.png" alt="Approval Workflow">
+        </section>
+    </div>
+    
+
+</body>
+</html>

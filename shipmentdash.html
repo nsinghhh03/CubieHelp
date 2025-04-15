@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Audit Cube - Shipment Dashboard</title>
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&display=swap">
+    <style>
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: white;
+            color: #333;
+            padding: 20px;
+            line-height: 1.6;
+        }
+
+        /* Breadcrumb navigation styling */
+        .breadcrumb {
+            font-size: 14px;
+            color: #888;
+            margin-bottom: 20px;
+            text-align: left;
+            position: relative;
+            z-index: 10;
+        }
+
+        .breadcrumb a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .breadcrumb a:hover {
+            text-decoration: underline;
+            color: #3a86ff;
+        }
+
+        h1, h2, h3 {
+            color: #333;
+        }
+
+        img {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            margin-bottom: 20px;
+            border-radius: 10px;
+            max-width: 60%;
+        }
+
+        p, ul, li {
+            margin-bottom: 16px;
+        }
+
+        section {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+        }
+
+        /* Sidebar adjustments */
+        .sidebar {
+            position: fixed;
+            top: 0;
+            left: 20px;
+            width: 240px;
+            height: 100%;
+            padding-top: 60px;
+            overflow-y: auto; /* Enables vertical scrolling when content exceeds the height */
+            scrollbar-width: thin; /* Customizes the width of the scroll bar for Firefox */
+            scrollbar-color: #3a86ff #f1f1f1; /* Sets scroll bar colors (for modern browsers) */
+        }
+
+
+        .sidebar ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+
+        .sidebar ul li {
+            margin-bottom: 10px;
+        }
+
+        .sidebar ul li a {
+            color: #333;
+            text-decoration: none;
+            font-weight: normal;
+            transition: color 0.3s ease;
+            font-size: 16px;
+            padding-left: 20px;
+        }
+
+        .sidebar ul li a:hover {
+            color: #007bff;
+        }
+
+        .sidebar ul li .section-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: #3a86ff;
+            margin-bottom: 10px;
+            padding-left: 0;
+        }
+
+        .active-section {
+            background-color: rgba(58, 134, 255, 0.1);
+            border-radius: 8px;
+        }
+
+        /* Content padding */
+        .content {
+            margin-left: 270px;
+            padding: 20px;
+        }
+
+        .content h1 {
+            font-size: 28px;
+            font-weight: 600;
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        .content h2 {
+            font-size: 22px;
+            font-weight: 500;
+        }
+
+        .content h3 {
+            font-size: 18px;
+            font-weight: 500;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Breadcrumb Navigation -->
+    <div class="breadcrumb">
+        <a href="index.html">Home</a> > <a href="audit-cube-user-guide.html" style="color: inherit;">Audit Cube User Guides</a> > <span>Audit Cube Shipment Dashboard</span>
+    </div>
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <ul>
+            <li><a href="audit-cube-user-guide.html" class="section-title">Overview</a></li>
+
+            <li><a href="maindash.html" class="section-title">Main Dashboard</a></li>
+            <li><a href="maindash.html">Table Overview</a></li>
+            <li><a href="maindash.html#audit-results">Audit Results</a></li>
+            <li><a href="maindash.html#advanced-search">Advanced Search</a></li>
+            <li><a href="maindash.html#visualization-tools">Visualization Tools</a></li>
+            <li><a href="maindash.html#troubleshooting">Troubleshooting</a></li>
+            <li><span class="section-title">Shipment Dashboard</span></li>
+            <li><a href="shipmentdash.html" class="active-section">Shipment Table</a></li>
+            <li><a href="shipmentdash.html#uploading-files">Uploading Shipment Files</a></li>
+            <li><a href="shipmentdash.html#refreshing-data">Refreshing Data</a></li>
+            <li><a href="shipmentdash.html#viewing-data">Viewing & Filtering Data</a></li>
+            <li><span class="section-title">Invoice Dashboard</span></li>
+            <li><a href="invoicedash.html" class="active-section">Invoice Table Overview</a></li>
+            <li><a href="invoicedash.html#self-help-options">Self-Help Options</a></li>
+            <li><a href="invoicedash.html#toolbar-menu">Toolbar Menu</a></li>
+            <li><a href="invoicedash.html#invoice-upload">Invoice Upload</a></li>
+            <li><a href="invoicedash.html#filtering-sorting">Filtering and Sorting</a></li>
+            <li><a href="invoicedash.html#audit-details">Audit Results</a></li>
+            <li><a href="invoicedash.html#audit-trail">Audit Trail</a></li>
+            <li><a href="invoicedash.html#troubleshooting">Troubleshooting Tips</a></li>
+            <li><span class="section-title">Dispute Dashboard</span></li>
+            <li><a href="disputedash.html#overview">Overview</a></li>
+            <li><a href="disputedash.html#table-overview">Table Overview</a></li>
+            <li><a href="disputedash.html#navigating-dashboard">Navigating the Dashboard</a></li>
+            <li><a href="disputedash.html#kpis">KPIs</a></li>
+            <li><a href="disputedash.html#discrepancy-report">Discrepancy Report</a></li>
+            <li><a href="disputedash.html#troubleshooting">Troubleshooting</a></li>
+
+        </ul>
+    </div>
+
+    <!-- Content -->
+    <div class="content">
+        <h1>Audit Cube - Shipment Dashboard</h1>
+
+        <section id="shipment-table">
+            <h2>Shipment Table</h2>
+            <p>The Shipment Dashboard presents your shipment data in a table format, similar to the Main Dashboard but tailored specifically to shipment information. The table includes columns such as Tracking Number, Shipment ID, Carrier Account Number, Shipment Date, Total Packages, Total Shipment Charges, Invoice Amount, and Freight Difference Value.</p>
+            <p>Expandable Rows: Each shipment file listed in the table can be expanded by clicking the arrow next to the Tracking Number, revealing more detailed information about the individual shipments contained within that file.</p>
+            <p>Column Customization: Users can drag and rearrange columns to their preferred order, making it easier to focus on the most critical data points.</p>
+            <img src="img/shipmenttablenew.png" alt="Shipment Table View">
+        </section>
+
+        <section id="uploading-files">
+            <h2>Uploading Shipment Files</h2>
+            <p>Audit Cube provides multiple ways to process shipment files from a customer’s ERP system. By default, shipments are automatically imported via <strong>SFTP</strong>, but users can also manually upload files when needed.</p>
+        
+            <h3>Automatic Shipment Processing</h3>
+            <p>Shipments can be automatically processed using an <strong>SFTP interface</strong>. The system fetches shipment files from a designated folder or SFTP server and imports them into Audit Cube. Supported file formats include <strong>Excel (XLSX), CSV, XML, and JSON</strong>.</p>
+            
+            <h3>Manual Shipment Processing</h3>
+            <p>Users can manually upload shipment files from their desktop if automation is not in place. To do this:</p>
+            <ol>
+                <li>Click the <strong>Upload Shipment File</strong> button on the Shipment Dashboard.</li>
+                <li>A file selection popup will appear. Drag and drop the shipment file into the designated area or browse to select a file.</li>
+                <li>Ensure the file format is correct (XLSX, CSV, XML, or JSON). The selected file’s name will appear once uploaded.</li>
+                <li>Click <strong>Submit</strong> to process the file.</li>
+                <li>Once processing is complete, the system will display a success or failure message indicating the file’s status.</li>
+            </ol>
+        
+            <img src="img/shipmenttablenew2.png" alt="Upload Shipment File">
+        
+            <h3>Verifying Shipment Data</h3>
+            <p>After processing, shipment details—including calculated charges—are available for review. The example below shows shipment charges applied for the ATS Carrier.</p>
+        
+            <img src="img/shipmenttablenew3.png" alt="Shipment Verification">
+        </section>
+
+        <section id="refreshing-data">
+            <h2>Refreshing Data</h2>
+            <p>Refresh Button: After uploading new shipment data, use the Refresh button (circular arrow icon) to update the table and display the newly uploaded data.</p>
+            <p>Troubleshooting: If the table does not update after refreshing, try clearing the browser cache or performing a hard refresh (Ctrl + F5). Ensure that the file upload was successful before attempting to refresh.</p>
+
+            <img src="img/refreshshipmentdash.png" alt="Refresh Button">
+        </section>
+
+        <section id="viewing-data">
+            <h2>Viewing Detailed Shipment Information</h2>
+            
+            <p>Audit Cube allows users to access in-depth shipment details by clicking on a **Tracking Number** in the main shipment table. This opens a **Microscopic View**, which provides package-level insights for the selected shipment.</p>
+            
+            <h3>Accessing Shipment Details</h3>
+            <ul>
+                <li>Click on a **Tracking Number** in the shipment table.</li>
+                <li>The system will open a pop-up window displaying detailed package information.</li>
+            </ul>
+        
+            <img src="img/trackingnobutton.png" alt="Tracking Number Button">
+            
+            <h3>Information Available in the Microscopic View</h3>
+            <p>Once opened, the Microscopic View presents the following package-specific details:</p>
+            <ul>
+                <li><strong>Package Number</strong>: Unique identifier for the package.</li>
+                <li><strong>Parcel Document Number</strong>: Associated document reference.</li>
+                <li><strong>Actual Weight</strong>: The measured weight of the package.</li>
+                <li><strong>Billed Weight</strong>: The weight used for invoicing, considering dimensional weight factors.</li>
+                <li><strong>Package Dimensions</strong>: Length, Width, and Height values.</li>
+            </ul>
+        
+        
+            <h3>Exporting Shipment Data</h3>
+            <p>Users can export this detailed shipment data by clicking the **Export** button within the Microscopic View. The system will generate an Excel file for offline reference.</p>
+        
+            <p>To close the window, click the **Close** button at the bottom right.</p>
+        </section>
+
+        <section id="troubleshooting">
+            <h2>Advanced Troubleshooting</h2>
+
+            <h3>Shipment Data Not Appearing After Upload:</h3>
+            <p><strong>Issue:</strong> If newly uploaded shipment data does not appear in the table after hitting refresh, the issue could be related to the file format or data integrity.</p>
+            <p><strong>Solution:</strong> Check File Format: Double-check that the uploaded file is in XLSX format. If it is in CSV or any other format, the upload will fail.</p>
+            <p>Data Integrity: Verify that all required fields in the upload file are populated. Missing or incorrectly formatted data fields can cause the upload to fail.</p>
+            <p>Refresh Troubleshooting: If refreshing does not update the data, try performing a hard refresh (Ctrl + F5) or clearing the browser cache.</p>
+
+            <h3>Microscopic View Not Loading:</h3>
+            <p><strong>Issue:</strong> When clicking on a Tracking Number, the Microscopic View may not load or may load incomplete data.</p>
+            <p><strong>Solution:</strong> Network Check: Ensure that your internet connection is stable, as slow connections may cause the detailed view to load improperly.</p>
+            <p>Browser Compatibility: Confirm that you are using a supported browser version. Outdated browsers might struggle to display detailed views correctly.</p>
+            <p>Retry: Close the view and click the Tracking Number again to reload the data.</p>
+
+            <h3>Exporting Issues from Microscopic View:</h3>
+            <p><strong>Issue:</strong> If you encounter issues while trying to export data from the Microscopic View, it may be due to browser settings or file size limitations.</p>
+            <p><strong>Solution:</strong> Browser Settings: Ensure that pop-up blockers are disabled for the Audit Cube platform, as they might prevent the export function from working.</p>
+            <p>File Size: If the data is too large to export in one go, consider exporting in smaller batches or splitting the data across multiple files.</p>
+        </section>
+    </div>
+
+    <script>
+        // Highlight the active section dynamically while scrolling
+        const sections = document.querySelectorAll("section");
+        const navLinks = document.querySelectorAll(".sidebar ul li a");
+    
+        window.addEventListener("scroll", () => {
+            let current = "";
+            const topPosition = 100; // Adjust this value if needed
+    
+            if (window.scrollY < topPosition) {
+                // Remove all highlights when at the very top
+                navLinks.forEach(link => link.classList.remove("active-section"));
+                return;
+            }
+    
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                if (pageYOffset >= sectionTop - 50) {
+                    current = section.getAttribute("id");
+                }
+            });
+    
+            navLinks.forEach(link => {
+                link.classList.remove("active-section");
+                if (link.getAttribute("href").includes(current)) {
+                    link.classList.add("active-section");
+                }
+            });
+        });
+    </script>
+
+</body>
+
+</html>

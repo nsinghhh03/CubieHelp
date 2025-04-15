@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rate Simulation User Guide</title>
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&display=swap">
+    <style>
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: white;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        /* Breadcrumb navigation styling */
+        .breadcrumb {
+            font-size: 14px;
+            color: #888;
+            margin-bottom: 20px;
+            margin-top: 10px; /* Add consistent spacing from the top */
+            text-align: left;
+            position: relative;
+            z-index: 10;
+            padding-left: 20px; /* Optional, for consistent alignment */
+        }
+
+
+        /* Breadcrumb link default state */
+        .breadcrumb a {
+            color: inherit; /* Inherit the default breadcrumb color (#888) */
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        /* Breadcrumb link hover state */
+        .breadcrumb a:hover {
+            text-decoration: underline;
+            color: #3a86ff; /* Change to blue only on hover */
+        }
+
+        img {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            margin-bottom: 20px;
+            border-radius: 10px;
+            max-width: 60%;
+        }
+
+        p, ul, li {
+            margin-bottom: 16px;
+        }
+
+        section {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+        }
+
+        .sidebar {
+            position: fixed;
+            top: 0;
+            left: 20px;
+            width: 240px;
+            height: 100%;
+            padding-top: 60px;
+            overflow-y: auto;
+            scrollbar-width: thin;
+            scrollbar-color: #3a86ff #f1f1f1;
+        }
+
+        .sidebar ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+
+        .sidebar ul li {
+            margin-bottom: 10px;
+        }
+
+        .sidebar ul li a {
+            color: #333;
+            text-decoration: none;
+            font-weight: normal;
+            transition: color 0.3s ease;
+            font-size: 16px;
+            padding-left: 20px;
+        }
+
+        .sidebar ul li a:hover {
+            color: #007bff;
+        }
+
+        .sidebar ul li .section-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: #3a86ff;
+            margin-bottom: 10px;
+            padding-left: 0;
+        }
+
+        .sidebar-link {
+            color: #333;
+            text-decoration: none;
+            font-weight: normal;
+            transition: color 0.3s ease;
+        }
+
+        .active-section {
+            color: #007bff;
+            font-weight: 600;
+            background-color: rgba(58, 134, 255, 0.1);
+            border-radius: 4px;
+        }
+
+        .content {
+            margin-left: 270px;
+            padding: 20px;
+        }
+
+        .content h1 {
+            font-size: 28px;
+            font-weight: 600;
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        .content h2 {
+            font-size: 22px;
+            font-weight: 500;
+        }
+
+        .content h3 {
+            font-size: 18px;
+            font-weight: 500;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Breadcrumb Navigation -->
+    <div class="breadcrumb">
+        <a href="index.html">Home</a> > <a href="rate-cube-user-guide.html">Rate Cube User Guides</a> > <span>Rate Simulation</span>
+    </div>
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <ul>
+            <li><a href="rate-cube-user-guide.html" class="section-title">Overview</a></li>
+            <li><span class="section-title">Rate Maintenance</span></li>
+            <li><a href="ratemaintenance.html">Overview</a></li>
+            <li><a href="ratemaintenance.html#key-features">Key Features</a></li>
+            <li><a href="ratemaintenance.html#active-rates">Active Rates</a></li>
+            <li><a href="ratemaintenance.html#draft-rates">Draft Rates</a></li>
+            <li><a href="ratemaintenance.html#rate-simulation">Simulation</a></li>
+            <li><a href="ratemaintenance.html#uploading-rates">Uploading Rates</a></li>
+            <li><a href="ratemaintenance.html#ofa-rfa-processes">OFA and RFA Processes</a></li>
+            <li><a href="ratemaintenance.html#task-visualization">Task Visualization</a></li>
+            <li><a href="ratemaintenance.html#unit-change-report">Unit Change Report</a></li>
+            <li><a href="ratemaintenance.html#troubleshooting">Troubleshooting</a></li>
+            <li><span class="section-title">Rate Simulation</span></li>
+            <li><a href="ratesimulation.html#overview" class="sidebar-link">Overview</a></li>
+            <li><a href="ratesimulation.html#location-information" class="sidebar-link">Location Information</a></li>
+            <li><a href="ratesimulation.html#adding-shipment-details" class="sidebar-link">Adding Shipment Details</a></li>
+            <li><a href="ratesimulation.html#using-special-services" class="sidebar-link">Using Special Services</a></li>
+            <li><a href="ratesimulation.html#generating-simulations" class="sidebar-link">Generating Simulations</a></li>
+            <li><a href="ratesimulation.html#customizing-results" class="sidebar-link">Customizing Results</a></li>
+            <li><a href="ratesimulation.html#successful-rate-simulation" class="sidebar-link">Successful Rate Simulation</a></li>
+            <li><span class="section-title">Rate Calculator</span></li>
+            <li><a href="ratecalculator.html#overview" class="sidebar-link">Overview</a></li>
+            <li><a href="ratecalculator.html#input-fields" class="sidebar-link">Input Fields</a></li>
+            <li><a href="ratecalculator.html#output-overview" class="sidebar-link">Output Overview</a></li>
+            <li><a href="ratecalculator.html#region-specific-details" class="sidebar-link">Region-Specific Details</a></li>
+            <li><a href="ratecalculator.html#charge-breakdown" class="sidebar-link">Charge Breakdown</a></li>
+            <li><a href="ratecalculator.html#additional-notes" class="sidebar-link">Additional Features</a></li>
+            <li><a href="ratecalculator.html#faq" class="sidebar-link">Frequently Asked Questions</a></li>
+
+        </ul>        
+    </div>
+
+    <!-- Content -->
+    <div class="content">
+        <h1>Rate Simulation</h1>
+    
+        <section id="overview">
+            <h2>Overview of Rate Simulation</h2>
+            <p>The Rate Simulation module in RateCube provides users with an intuitive interface to simulate shipping rates between specified origin and destination locations. By entering shipment details, users can view rate simulations and compare shipping options across various carriers and transport modes. This module is crucial for decision-making, ensuring cost efficiency, and selecting the best carrier for specific logistics needs.</p>
+            <img src="img/ratesimulation.png" alt="Rate Simulation Main View">
+        </section>
+    
+        <section id="location-information">
+            <h2>Location Information</h2>
+            <p>The "From" and "To" panels allow users to define the origin and destination locations for the shipment:</p>
+            <ul>
+                <li><strong>Location Entry Options:</strong></li>
+                <ul>
+                    <li>Use a location code by typing into the "Location" field (e.g., "CAA01" or "EO01").</li>
+                    <li>Enter Origin and Destination Countries, Cities, Zip Codes, or Regions.</li>
+                    <li>Optional: Include street-level details in "Address Line 1" for precise simulations.</li>
+                </ul>
+                <li><strong>Mandatory Fields:</strong></li>
+                <ul>
+                    <li>Origin Country or Zip Code.</li>
+                    <li>Destination Country or Zip Code.</li>
+                </ul>
+            </ul>
+        </section>
+    
+        <section id="adding-shipment-details">
+            <h2>Adding Shipment Details</h2>
+            <p>The Shipment Details panel captures the specifics of the shipment:</p>
+            <ul>
+                <li><strong>Required Inputs:</strong></li>
+                <ul>
+                    <li>Shipment Date: Select the date the shipment will be dispatched.</li>
+                    <li>Expected Delivery Date: Optional field to define the delivery deadline.</li>
+                    <li>Weight/Dimensions: Specify the weight (in lbs or kgs) and dimensions (length, width, height) of the shipment.</li>
+                </ul>
+                <li><strong>Number of Pieces:</strong></li>
+                <ul>
+                    <li>Add the quantity of pieces to ship by clicking the "+" Add" button.</li>
+                    <li>The table below updates dynamically to include all added pieces with weight and dimension fields.</li>
+                </ul>
+            </ul>
+        </section>
+    
+        <section id="using-special-services">
+            <h2>Using Special Services</h2>
+            <p>The Special Services tab allows users to enable or disable additional shipment requirements:</p>
+            <ul>
+                <li>Hazardous Materials: Check this option if the shipment contains hazardous materials.</li>
+                <li>Hold at Location: Use this if the shipment requires holding at the destination location.</li>
+                <li>Enable Transport Lanes: Toggle this option for route-specific simulations.</li>
+            </ul>
+        </section>
+    
+        <section id="generating-simulations">
+            <h2>Generating Simulations</h2>
+            <p>Once all the required details are input:</p>
+            <ol>
+                <li>Click the "Search" button.</li>
+                <li>The Rate Details panel at the bottom of the screen displays the simulated results.</li>
+            </ol>
+            <p><strong>Displayed Rate Details:</strong></p>
+            <ul>
+                <li>Carrier Code and Account.</li>
+                <li>Stage Type (e.g., Inbound/Outbound).</li>
+                <li>Carrier Name.</li>
+                <li>Mode of Transport (MoT).</li>
+                <li>Total Charges, Currency, Delivery Date, and Transit Days.</li>
+            </ul>
+        </section>
+    
+        <section id="customizing-results">
+            <h2>Customizing Results</h2>
+            <ul>
+                <li><strong>Hiding the Search Panel:</strong> To maximize space for simulated results, click the "Show Search Panel" toggle.</li>
+                <li><strong>Result View Options:</strong></li>
+                <ul>
+                    <li>The "Result Type" dropdown allows users to switch between Grid View (tabular format) or Detailed View (comprehensive breakdown).</li>
+                </ul>
+                <li><strong>Exporting Results:</strong> On the top right corner of the table, you can export the simulation to an EXCEL workbook.</li>
+            </ul>
+        </section>
+        
+    
+        <section id="successful-rate-simulation">
+            <h2>Successful Rate Simulation</h2>
+            <p>When a rate simulation is successful, the Rate Details section populates with comprehensive information about available shipping options. These results help users evaluate and compare carrier rates, transit times, and other critical shipping details to make informed decisions.</p>
+            <img src="img/successfulratesim.png" alt="Successful Rate Simulation">
+            <h3>The Rate Details Table</h3>
+            <p>The Rate Details Table organizes key data points for simulated shipments, including:</p>
+            <ul>
+                <li><strong>Carrier Code - Account:</strong> Identifies the carrier and account (e.g., FedEx - 740561073).</li>
+                <li><strong>Carrier Name:</strong> Shows the carrier providing the service (e.g., FedEx, UPS).</li>
+                <li><strong>Service Code & Description:</strong> Displays the service type and details (e.g., "FedEx Priority Overnight").</li>
+                <li><strong>Mode of Transport (MoT):</strong> Specifies the shipment method (e.g., Ground, Air).</li>
+                <li><strong>Total Charges:</strong> Lists the shipment cost, including fees (e.g., $234.40).</li>
+                <li><strong>Currency:</strong> Denotes the currency used (e.g., USD).</li>
+                <li><strong>Delivery Date:</strong> Provides the estimated delivery time (e.g., "2024-12-10 17:00:00").</li>
+                <li><strong>Transit Days:</strong> Indicates the shipment duration in days (e.g., 3 days).</li>
+            </ul>
+        </section>
+    
+        <section id="key-features">
+            <h2>Key Features</h2>
+            <ul>
+                <li><strong>Collapsible Sections:</strong> Each carrier (e.g., FedEx, UPS Parcel) is displayed in a separate collapsible row for ease of navigation.</li>
+                <li><strong>Enable Route Guide:</strong> Activating this option limits the carrier selection to predefined routes set in the system configuration.</li>
+                <li><strong>Blue Folder Button:</strong> Located on the right of the table. Allows users to view raw request details, providing insights into the data used for simulation for each carrier.</li>
+                <li><strong>Results Overview:</strong> Shows essential details like carrier names, service descriptions, and charges, while omitting unnecessary details for simplicity.</li>
+            </ul>
+        </section>
+    </div>
+    
+
+    <script>
+        // Add event listeners for smooth scrolling
+        document.querySelectorAll('.sidebar-link').forEach(link => {
+            link.addEventListener('click', function (e) {
+            const href = this.getAttribute('href');
+            const [page, sectionId] = href.split('#'); // Split into page and ID parts
+            
+            if (!page || window.location.pathname.endsWith(page)) {
+                // Same file or no file specified, scroll to section
+                e.preventDefault(); // Prevent default navigation
+                const targetSection = document.getElementById(sectionId);
+                if (targetSection) {
+                    targetSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+
+                // Highlight active section
+                document.querySelectorAll('.sidebar-link').forEach(link => link.classList.remove('active-section'));
+                this.classList.add('active-section');
+            }
+        });
+    });
+    
+        // Highlight active section on scroll
+        const sections = document.querySelectorAll("section");
+        const sidebarLinks = document.querySelectorAll(".sidebar-link");
+    
+        window.addEventListener("scroll", () => {
+            let currentSection = "";
+    
+            // Determine the current section in view
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop - 100; // Adjust for header height
+                const sectionBottom = sectionTop + section.offsetHeight;
+    
+                if (window.scrollY >= sectionTop && window.scrollY < sectionBottom) {
+                    currentSection = section.getAttribute("id");
+                }
+            });
+    
+            // Update active link based on the current section
+            sidebarLinks.forEach(link => {
+                link.classList.remove("active-section");
+                if (link.getAttribute("href").substring(1) === currentSection) {
+                    link.classList.add("active-section");
+                }
+            });
+        });
+    </script>
+    
+</body>
+
+</html>

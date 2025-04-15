@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Audit Cube - Main Dashboard</title>
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&display=swap">
+    <style>
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: white;
+            color: #333;
+            padding: 20px;
+            line-height: 1.6;
+        }
+
+        /* Breadcrumb navigation styling */
+        .breadcrumb {
+            font-size: 14px;
+            color: #888;
+            margin-bottom: 20px;
+            text-align: left; /* Ensure breadcrumb is aligned left above title */
+            position: relative;
+            z-index: 10;
+        }
+
+        .breadcrumb a {
+            color: inherit; /* Inherit the default text color unless hovered */
+            text-decoration: none;
+        }
+
+        .breadcrumb a:hover {
+            text-decoration: underline;
+            color: #3a86ff; /* Add the blue color only on hover */
+        }
+
+        h1, h2, h3 {
+            color: #333;
+        }
+
+        img {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            margin-bottom: 20px;
+            border-radius: 10px;
+            max-width: 60%; /* Reduced the size of the images */
+        }
+
+        p, ul, li {
+            margin-bottom: 16px;
+        }
+
+        section {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+        }
+
+        /* Sidebar adjustments */
+    
+        .sidebar {
+            position: fixed;
+            top: 0;
+            left: 20px;
+            width: 240px;
+            height: 100%;
+            padding-top: 60px;
+            overflow-y: auto; /* Enables vertical scrolling when content exceeds the height */
+            scrollbar-width: thin; /* Customizes the width of the scroll bar for Firefox */
+            scrollbar-color: #3a86ff #f1f1f1; /* Sets scroll bar colors (for modern browsers) */
+        }
+
+
+        .sidebar .overview-link {
+            font-size: 18px;  /* Increase font size */
+            padding-left: 30px;  /* Add more padding to move it slightly to the right */
+            font-weight: 600;  /* Make it a bit bolder */
+            color: #3a86ff;
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .sidebar ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+
+        .sidebar ul li {
+            margin-bottom: 10px;
+        }
+
+        .sidebar ul li a {
+            color: #333;
+            text-decoration: none;
+            font-weight: normal;
+            transition: color 0.3s ease;
+            font-size: 16px;
+            padding-left: 20px; /* Indent the sections under main and shipment dashboards */
+        }
+
+        .sidebar ul li a:hover {
+            color: #007bff;
+        }
+
+        .sidebar ul li .section-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: #3a86ff;
+            margin-bottom: 10px;
+            padding-left: 0;
+        }
+
+        .active-section {
+            background-color: rgba(58, 134, 255, 0.1); /* Light opacity bubble for active section */
+            border-radius: 8px;
+        }
+
+        /* Content padding */
+        .content {
+            margin-left: 270px;
+            padding: 20px;
+        }
+
+        .content h1 {
+            font-size: 28px;
+            font-weight: 600;
+            margin-bottom: 20px;
+            text-align: left; /* Align title to left */
+        }
+
+        .content h2 {
+            font-size: 22px;
+            font-weight: 500;
+        }
+
+        .content h3 {
+            font-size: 18px;
+            font-weight: 500;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Breadcrumb Navigation -->
+    <div class="breadcrumb">
+        <a href="index.html">Home</a> > <a href="audit-cube-user-guide.html" style="color: inherit;">Audit Cube User Guides</a> > <span>Audit Cube Main Dashboard</span>
+    </div>
+    
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <ul>
+            <li><a href="audit-cube-user-guide.html" class="section-title">Overview</a></li>
+        
+            <li><span class="section-title">Main Dashboard</span></li>
+            <li><a href="#table-overview" class="active-section">Table Overview</a></li>
+            <li><a href="#audit-results">Audit Results</a></li>
+            <li><a href="#advanced-search">Advanced Search</a></li>
+            <li><a href="#visualization-tools">Visualization Tools</a></li>
+            <li><a href="#troubleshooting">Troubleshooting</a></li>
+            <li><a href="shipmentdash.html" class="section-title">Shipment Dashboard</a></li>
+            <li><a href="shipmentdash.html">Shipment Table</a></li>
+            <li><a href="shipmentdash.html#uploading-files">Uploading Shipment Files</a></li>
+            <li><a href="shipmentdash.html#refreshing-data">Refreshing Data</a></li>
+            <li><a href="shipmentdash.html#viewing-data">Viewing & Filtering Data</a></li>
+            <li><span class="section-title">Invoice Dashboard</span></li>
+            <li><a href="invoicedash.html" class="active-section">Invoice Table Overview</a></li>
+            <li><a href="invoicedash.html#self-help-options">Self-Help Options</a></li>
+            <li><a href="invoicedash.html#toolbar-menu">Toolbar Menu</a></li>
+            <li><a href="invoicedash.html#invoice-upload">Invoice Upload</a></li>
+            <li><a href="invoicedash.html#filtering-sorting">Filtering and Sorting</a></li>
+            <li><a href="invoicedash.html#audit-details">Audit Results</a></li>
+            <li><a href="invoicedash.html#audit-trail">Audit Trail</a></li>
+            <li><a href="invoicedash.html#troubleshooting">Troubleshooting Tips</a></li>
+            <li><span class="section-title">Dispute Dashboard</span></li>
+            <li><a href="disputedash.html#overview">Overview</a></li>
+            <li><a href="disputedash.html#table-overview">Table Overview</a></li>
+            <li><a href="disputedash.html#navigating-dashboard">Navigating the Dashboard</a></li>
+            <li><a href="disputedash.html#kpis">KPIs</a></li>
+            <li><a href="disputedash.html#discrepancy-report">Discrepancy Report</a></li>
+            <li><a href="disputedash.html#troubleshooting">Troubleshooting</a></li>
+
+        </ul>
+    </div>
+
+    <!-- Content -->
+    <div class="content">
+        <h1>Audit Cube - Main Dashboard</h1>
+
+        <section id="table-overview">
+            <h2>Table Overview</h2>
+            <p>The Audit Cube’s Main Dashboard is the central hub where users can view, analyze, and manage shipment,
+                invoice, and dispute data. This dashboard provides a comprehensive view of the audit process through
+                various tools, such as tables, charts, and visualization tools that summarize data and assist in
+                decision-making.</p>
+            <img src="img/maindashboardaudit.png" alt="Audit Dashboard Main View">
+        </section>
+
+        <section id="audit-results">
+            <h2>Audit Results</h2>
+            <p>Located on the far left of the table, the blue paper icon takes users to the detailed audit results page
+                for each shipment. This page provides a comprehensive breakdown of the shipment details, including
+                shipper and recipient addresses, service codes, and other relevant data.</p>
+            <img src="img/auditresults.png" alt="Audit Results Icon">
+        </section>
+
+        <section id="advanced-search">
+            <h2>Advanced Search</h2>
+            <p>The search icon allows users to perform advanced searches across various parameters such as Tracking
+                Number, Shipment ID, Invoice Number, Dispute ID, Shipment Date, and more. This feature enables users to
+                quickly find specific records or filter the table to display only relevant data.</p>
+            <img src="img/magnifying-glass.png" alt="Magnifying Glass Icon">
+        </section>
+
+        <section id="visualization-tools">
+            <h2>Visualization Tools & Insights</h2>
+
+            <h3>Freight Spend Per Month:</h3>
+            <p>A chart that summarizes the freight spend for the selected period, providing insights into monthly trends.
+                Users can view their total freight spend and compare it across different months.</p>
+
+            <h3>Audit Status Summary:</h3>
+            <p>Displays the status of invoices and shipments, showing the percentage of packages that have been audited
+                and approved, are awaiting invoice, or have discrepancies. This visualization helps users quickly
+                identify areas that need attention.</p>
+
+            <h3>Auto Match Status:</h3>
+            <p>A doughnut chart that indicates the percentage of records that have been automatically matched, providing
+                a quick overview of the audit accuracy and reducing manual workload.</p>
+        </section>
+
+        <section id="troubleshooting">
+            <h2>Troubleshooting</h2>
+
+            <h3>Data Not Loading Properly:</h3>
+            <p><strong>Issue:</strong> If the data within the dashboard fails to load, this might be due to a slow
+                network connection or a temporary issue with the platform.</p>
+            <p><strong>Solution:</strong></p>
+            <ul>
+                <li>Refresh the Page: Start by refreshing the page to see if the data loads correctly.</li>
+                <li>Check Network Connection: Ensure that your internet connection is stable.</li>
+                <li>Clear Browser Cache: Sometimes, cached data may cause loading issues. Clearing your browser’s cache
+                    can help resolve this.</li>
+                <li>Contact Support: If the issue persists after trying these steps, it’s advisable to contact the
+                    technical support team for further assistance.</li>
+            </ul>
+
+            <h3>Advanced Search Not Returning Expected Results:</h3>
+            <p><strong>Issue:</strong> When using the Advanced Search feature, you may not get the results you expected,
+                which could be due to incorrect search parameters or filters.</p>
+            <p><strong>Solution:</strong></p>
+            <ul>
+                <li>Double-Check Parameters: Make sure that all search parameters (like Tracking Number, Shipment ID,
+                    Invoice Number, etc.) are correctly entered. A single incorrect digit or letter can lead to no
+                    results or incorrect data.</li>
+                <li>Clear Filters: If you have multiple filters applied, try clearing them to ensure they are not
+                    conflicting with each other. You can start fresh by reapplying filters one at a time to narrow down
+                    your search accurately.</li>
+                <li>Broaden Search Criteria: If your search is too narrow (e.g., specifying a very short date range or
+                    exact match), try broadening the criteria to ensure you capture the relevant data.</li>
+            </ul>
+
+            <h3>Export Issues (Excel Export Not Working):</h3>
+            <p><strong>Issue:</strong> If you’re unable to export the table data to Excel, it might be due to browser
+                settings or a temporary issue with the platform.</p>
+            <p><strong>Solution:</strong></p>
+            <ul>
+                <li>Try a Different Browser: Sometimes, certain browsers may block pop-ups or downloads. Trying another
+                    browser might resolve this issue.</li>
+                <li>Check Pop-up Blockers: Ensure that your browser’s pop-up blocker isn’t preventing the download. Allow
+                    pop-ups for the Audit Cube platform if necessary.</li>
+                <li>Check File Size Limits: Large datasets might cause export issues. If possible, try exporting smaller
+                    subsets of data to see if that resolves the issue.</li>
+            </ul>
+        </section>
+    </div>
+
+    <script>
+        // Highlight the active section dynamically while scrolling
+        const sections = document.querySelectorAll("section");
+        const navLinks = document.querySelectorAll(".sidebar ul li a");
+    
+        window.addEventListener("scroll", () => {
+            let current = "";
+            const topPosition = 100; // Adjust this value if needed
+    
+            if (window.scrollY < topPosition) {
+                // Remove all highlights when at the very top
+                navLinks.forEach(link => link.classList.remove("active-section"));
+                return;
+            }
+    
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                if (pageYOffset >= sectionTop - 50) {
+                    current = section.getAttribute("id");
+                }
+            });
+    
+            navLinks.forEach(link => {
+                link.classList.remove("active-section");
+                if (link.getAttribute("href").includes(current)) {
+                    link.classList.add("active-section");
+                }
+            });
+        });
+    </script>
+
+</body>
+
+</html>

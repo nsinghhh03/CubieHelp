@@ -1,0 +1,6 @@
+fastapi
+flask
+openai
+numpy
+python-dotenv
+uvicorn
