@@ -8,6 +8,14 @@
     "source_url": "http://dev.tcube360.com/help/fuelsurcharge.html#this-page-is-under-construction"
   },
   {
+    "cube": "General",
+    "page_title": "TCube Platform Overview",
+    "page_id": "tcube-overview.html",
+    "section_title": "What is TCube?",
+    "content": "TCube is a modular enterprise platform designed to streamline supply chain and logistics operations. It provides specialized applications—called Cubes—each handling a distinct aspect of logistics: Rate Cube for managing and simulating freight rates; Audit Cube for invoice audits and dispute resolution; Admin Cube for carrier and account setup; and Track Cube for real-time shipment tracking.",
+    "source_url": "http://dev.tcube360.com/help"
+  },
+  {
     "cube": "Rate Cube",
     "page_title": "Rate Calculator User Guide",
     "page_id": "ratecalculator.html",

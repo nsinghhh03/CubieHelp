@@ -1,3 +1,4 @@
+
 const form = document.getElementById('chat-form');
 const userInput = document.getElementById('user-input');
 const chatBox = document.getElementById('chat-box');
@@ -5,49 +6,60 @@ const typingIndicator = document.getElementById('typing-indicator');
 const toggleDark = document.getElementById('toggle-dark');
 const root = document.body;
 
-// === Auto-scroll to latest message ===
+// === Scroll to latest message ===
 function scrollToBottom() {
   chatBox.scrollTop = chatBox.scrollHeight;
 }
 
-// === Convert links into clickable hyperlinks ===
-function linkify(text) {
-  const urlPattern = /(https?:\/\/[^\s]+)/g;
-  return text.replace(urlPattern, '<a href="$1" target="_blank" rel="noopener noreferrer">$1</a>');
+// === Typewriter effect for bot messages ===
+async function typeText(container, text) {
+  container.innerHTML = '';
+  const temp = document.createElement('div');
+  temp.innerHTML = marked.parse(text, { breaks: true, gfm: true });
+  const fullHTML = temp.innerHTML;
+  let i = 0;
+  function type() {
+    if (i <= fullHTML.length) {
+      container.innerHTML = fullHTML.slice(0, i++);
+      scrollToBottom();
+      setTimeout(type, 8); // Typing speed
+    }
+  }
+  type();
 }
 
-// === Append message bubble ===
-function addMessage(content, sender = 'user') {
+// === Append message ===
+function addMessage(content, sender = 'user', slowType = false) {
   const msg = document.createElement('div');
   msg.className = `message ${sender}`;
 
   const inner = document.createElement('div');
   inner.className = 'message-content';
+  msg.appendChild(inner);
+  chatBox.appendChild(msg);
 
-  // Render hyperlinks in bot responses
-  if (sender === 'bot') {
-    inner.innerHTML = linkify(content);
+  scrollToBottom();
+
+  if (sender === 'bot' && slowType) {
+    typeText(inner, content);
+  } else if (sender === 'bot') {
+    inner.innerHTML = marked.parse(content, { breaks: true, gfm: true });
   } else {
     inner.textContent = content;
   }
-
-  msg.appendChild(inner);
-  chatBox.appendChild(msg);
-  scrollToBottom();
 }
 
-// === Initial bot greeting ===
+// === Init greeting and theme ===
 window.addEventListener('DOMContentLoaded', () => {
   addMessage("Hello! I'm Cubie, your customer service assistant. How can I assist you today?", 'bot');
 
-  // Load dark mode preference
   if (localStorage.getItem('cubie-theme') === 'dark') {
     root.classList.add('dark-mode');
     toggleDark.textContent = '☀️';
   }
 });
 
-// === Form submit handler ===
+// === Handle user submission ===
 form.addEventListener('submit', async (e) => {
   e.preventDefault();
   const question = userInput.value.trim();
@@ -58,37 +70,35 @@ form.addEventListener('submit', async (e) => {
   typingIndicator.style.display = 'flex';
 
   try {
-    const response = await fetch('https://cubiehelp.onrender.com/api/query', {
+    const response = await fetch('http://127.0.0.1:9000/api/query', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ question }),
     });
 
     const data = await response.json();
-
-    // Show GPT-generated reply
     if (data.reply) {
-      addMessage(data.reply, 'bot');
+      addMessage(data.reply, 'bot', true); // Enable typing effect
     } else {
       addMessage("I'm not sure how to help with that. Try rephrasing your question.", 'bot');
     }
   } catch (err) {
-    console.error("Error fetching response from backend:", err);
+    console.error("Backend error:", err);
     addMessage("Oops! Something went wrong. Please try again later.", 'bot');
   } finally {
     typingIndicator.style.display = 'none';
   }
 });
 
-// === Allow Enter to submit, Shift+Enter for newline ===
+// === Shift+Enter newline, Enter to send ===
 userInput.addEventListener('keydown', function (e) {
   if (e.key === 'Enter' && !e.shiftKey) {
-    e.preventDefault(); // Avoid new line
+    e.preventDefault();
     form.dispatchEvent(new Event('submit'));
   }
 });
 
-// === Dark Mode Toggle ===
+// === Theme toggle ===
 toggleDark.addEventListener('click', () => {
   root.classList.toggle('dark-mode');
   const isDark = root.classList.contains('dark-mode');

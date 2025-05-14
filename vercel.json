@@ -1,9 +1,6 @@
 {
-  "version": 2,
-  "builds": [
-    { "src": "api/query.py", "use": "@vercel/python" }
+  "rewrites": [
+    { "source": "/api/(.*)", "destination": "https://cubiehelp.onrender.com/api/$1" }
   ],
-  "routes": [
-    { "src": "/api/query", "dest": "api/query.py" }
-  ]
+  "public": "public"
 }
