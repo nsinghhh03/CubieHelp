@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Talk to Cubie</title>
+  <!-- Google Font: Montserrat -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="chat-container">
+    <div class="chat-header">
+      Talk to Cubie
+      <div id="toggle-dark">🌙</div>
+    </div>
+
+    <div class="chat-messages" id="chat-box">
+      <!-- Welcome and chat messages dynamically injected here -->
+    </div>
+
+    <div class="typing-indicator" id="typing-indicator" style="display: none;">
+      <span></span><span></span><span></span>
+    </div>
+
+    <form class="chat-input" id="chat-form">
+      <input type="text" id="user-input" placeholder="Type your question here..." autocomplete="off" />
+      <button type="submit">Send</button>
+      <button type="button" id="mic-button" title="Click to speak">🎤</button>
+    </form>
+  </div>
+
+  <!-- Load marked.js for Markdown parsing -->
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <!-- Your main chatbot logic -->
+  <script src="chat.js"></script>
+</body>
+</html>

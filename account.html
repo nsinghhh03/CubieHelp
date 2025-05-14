@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Account - Admin Cube User Guides</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&display=swap">
+    <style>
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: white;
+            color: #333;
+            padding: 0px;
+            line-height: 1.6;
+        }
+
+        .breadcrumb {
+            font-size: 14px;
+            color: #888;
+            margin-bottom: 20px;
+            z-index: 1000;
+            position: relative;
+            text-align: left;
+        }
+
+        .breadcrumb a {
+            color: inherit;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .breadcrumb a:hover {
+            text-decoration: underline;
+            color: #3a86ff;
+        }
+
+        h1, h2, h3 {
+            color: #333;
+        }
+
+        img {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            margin-bottom: 20px;
+            border-radius: 10px;
+            max-width: 80%; /* Adjust percentage based on preference */
+            height: auto;
+            object-fit: contain; /* Ensures images scale proportionally */
+}
+
+
+        section {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+        }
+
+        .sidebar {
+            position: fixed;
+            top: 0;
+            left: 20px;
+            z-index: 900;
+            width: 240px;
+            height: 100%;
+            padding-top: 60px;
+            overflow-y: auto;
+            scrollbar-width: thin;
+            scrollbar-color: #3a86ff #f1f1f1;
+        }
+
+        .sidebar ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+
+        .sidebar ul li {
+            margin-bottom: 10px;
+        }
+
+        .sidebar ul li a {
+            color: #333;
+            text-decoration: none;
+            font-weight: normal;
+            transition: color 0.3s ease;
+            font-size: 16px;
+            padding-left: 20px;
+        }
+
+        .sidebar ul li a:hover {
+            color: #007bff;
+        }
+
+        .sidebar ul li .section-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: #3a86ff;
+            margin-bottom: 10px;
+            padding-left: 0;
+        }
+
+        .sidebar ul li.active {
+            background-color: rgba(58, 134, 255, 0.1);
+            border-radius: 8px;
+        }
+
+        .content {
+            margin-left: 270px;
+            padding: 20px;
+        }
+
+        .content h1 {
+            font-size: 34px;
+            font-weight: 600;
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        ul {
+            margin-left: 20px;
+        }
+
+        ul li {
+            margin-bottom: 10px;
+        }
+
+        section img {
+            max-width: 80%;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Breadcrumb Navigation -->
+    <div class="breadcrumb">
+        <a href="index.html">Home</a> > <a href="admincube.html">Admin Cube User Guides</a> > Account
+    </div>
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <ul>
+            <li><a href="admincube.html" class="section-title">Admin Cube</a></li>
+            <li><a href="carrier.html">Carrier</a></li> <!-- Removed 'active' class -->
+            <li class="active"><a href="account.html">Account</a></li> <!-- Added 'active' class -->
+            <li><a href="location.html">Location</a></li>
+            <li><a href="lane.html">Lane</a></li>
+            <li><a href="charge-mapping.html">Charge Mapping</a></li>
+            <li><a href="fuelsurcharge.html">Fuel Surcharge</a></li>
+            <li><a href="userprofile.html">User Profile</a></li>
+            <li><a href="role.html">Role</a></li>
+            <li><a href="tcube-master.html">TCube Master</a></li>
+            <li><a href="email-template.html">Email Template</a></li>
+            <li><a href="exchange-rates.html">Exchange Rates</a></li>
+        </ul>
+    </div>
+
+    <!-- Sidebar -->
+    <div class="content">
+        <h1>Account</h1>
+    
+        <section>
+            <h2>Overview</h2>
+            <p>The <strong>Account</strong> tab provides a detailed interface for:</p>
+            <ul>
+                <li>Viewing existing carrier accounts in a table format.</li>
+                <li>Adding new carrier accounts.</li>
+                <li>Configuring specific account-related settings such as thresholds, UOMs, and currency.</li>
+                <li>Managing account settings through various options in the dashboard.</li>
+            </ul>
+            <img src="img/Account.png" alt="Account Dashboard">
+        </section>
+    
+        <section>
+            <h2>Carrier Account Details</h2>
+            <p>Details like Carrier Code, Carrier Alias (Client's definition of carrier code in TM/ERP systems), Account Number, 
+               Self-billing, tracking and invoice thresholds, currency code, and unit of measure are defined for each carrier account.</p>
+            <img src="img/account2.png" alt="Carrier Account Details">
+        </section>
+    
+        <section>
+            <h2>Creating a New Carrier Account</h2>
+            <p>To create a new carrier account, follow these steps:</p>
+            <ul>
+                <li>Navigate to the <strong>Account</strong> tab from the left-hand menu.</li>
+                <li>Select <strong>Account</strong> from the navigation sidebar. The Account table with all existing accounts will display.</li>
+                <li>Click the <strong>"+" icon</strong> in the top-right corner of the table to open the Add Carrier Account form.</li>
+                <li>Fill in the required fields:
+                    <ul>
+                        <li><strong>Carrier Description:</strong> Select the parent carrier from the dropdown.</li>
+                        <li><strong>Carrier Alias:</strong> Enter the name for the carrier alias.</li>
+                        <li><strong>Origin Location Code:</strong> Enter the relevant origin location.</li>
+                        <li><strong>Meter Number:</strong> Specify the meter number (if applicable).</li>
+                        <li><strong>Tracking Threshold Limit</strong> and <strong>Invoice Threshold Limit:</strong> Input the values for thresholds.</li>
+                        <li><strong>Currency, Weight UOM, and Dimension UOM:</strong> Add the specific settings.</li>
+                    </ul>
+                </li>
+                <li>Click <strong>Save</strong> to create the carrier account.</li>
+            </ul>
+            <img src="img/saveaccount.png" alt="Save Account">
+        </section>
+    
+        <section>
+            <h2>Configuring an Account</h2>
+            <p>After creating a carrier account, you can configure its details further. Follow these steps:</p>
+            <ul>
+                <li>Once the account is created, locate it in the <strong>Account table.</strong></li>
+                <li>Click the <strong>Gear icon</strong> beside the desired carrier account to open the configuration settings.</li>
+                <li>Select the <strong>Rate Config</strong> tab to configure the rate template for the account:
+                    <ul>
+                        <li>Choose <strong>Rate Source</strong> as "Table" or "API".</li>
+                        <li>Click the <strong>Edit</strong> button to select the rate template from the available templates.</li>
+                    </ul>
+                </li>
+                <li>Save the changes to apply the configuration.</li>
+            </ul>
+            <img src="img/configureaccount.png" alt="Configure Account">
+        </section>
+    
+        <section>
+            <h2>OFA/RFA Process</h2>
+            <p>Upon clicking the gear icon on one of the entries from the main Account table, users can navigate to the <strong>Rate Config</strong> tab.</p>
+            <p>The <strong>OFA/RFA</strong> functionality introduces two options for carrier management:</p>
+            <ul>
+                <li><strong>Shipper Managed:</strong> If the shipper manages rates, any uploaded rates are automatically approved and processed.</li>
+                <li><strong>Carrier Managed:</strong> Requires an additional review process before approval. The system categorizes this as either an 
+                    <strong>OFA</strong> (Offer Approval) or <strong>RFA</strong> (Rate Finalization Approval) process.</li>
+            </ul>
+            <img src="img/dgfaconfig.png" alt="DGFA Config Screen">
+        </section>
+    
+        <section>
+            <h2>Shipment Configuration</h2>
+            <p>The <strong>Shipment</strong> tab allows users to configure key shipment-related parameters:</p>
+            <ul>
+                <li><strong>Tracking Number Ranges:</strong> Define carrier-specific tracking number ranges for assigned shipments.</li>
+                <li><strong>Shipment API Integrations:</strong> Connect with carrier APIs to fetch real-time tracking updates.</li>
+            </ul>
+            <img src="img/shipmentconfigmainview.png" alt="Shipment Configuration">
+        </section>
+    
+        <section>
+            <h2>Label Mapping</h2>
+            <p>The Label Mapping feature under the <strong>Shipment Config</strong> tab allows users to manage carrier-specific label templates.</p>
+            <ul>
+                <li>Navigate to the <strong>Shipment Config</strong> tab.</li>
+                <li>Click on <strong>Label Mapping</strong> to open the label selection dropdown.</li>
+                <li>A list of predefined label templates will appear.</li>
+                <li>Select an existing template or create a <strong>New Label</strong>.</li>
+            </ul>
+            <img src="img/firstlabelmappingview.png" alt="Label Mapping Selection">
+        </section>
+    
+        <section>
+            <h2>Editing Label Templates</h2>
+            <p>Clicking <strong>Edit Label</strong> opens the label configuration interface:</p>
+            <ul>
+                <li><strong>View and Modify Label Fields:</strong>
+                    <ul>
+                        <li>On the left panel, users can see available data fields such as:
+                            <ul>
+                                <li>ShipFrom_CompanyName</li>
+                                <li>ShipFrom_CountryCode</li>
+                                <li>ShipTo_City</li>
+                                <li>Package_TrackingNumber</li>
+                                <li>Package_WeightUoM</li>
+                            </ul>
+                        </li>
+                        <li>On the right panel, each field is mapped to a <strong>ToF_Field</strong> (e.g., ToF_Field2, ToF_Field6).</li>
+                    </ul>
+                </li>
+                <li><strong>Modify or Reassign Field Mappings:</strong>
+                    <ul>
+                        <li>Drag and drop fields from the left panel to assign them to template fields.</li>
+                        <li>Click the red “X” next to a field to remove an existing mapping.</li>
+                    </ul>
+                </li>
+                <li><strong>View Label Code (Right Panel):</strong>
+                    <ul>
+                        <li>The right side of the screen displays the <strong>ZPL</strong> (Zebra Programming Language) or raw label format code.</li>
+                        <li>Users can modify <strong>ToF_Fields</strong> inside the ZPL to customize label content dynamically.</li>
+                    </ul>
+                </li>
+                <li><strong>Save, Reset, or Apply Changes:</strong>
+                    <ul>
+                        <li><strong>Save:</strong> Confirms and applies the new label configuration.</li>
+                        <li><strong>Reset:</strong> Restores the template to its last saved version.</li>
+                    </ul>
+                </li>
+            </ul>
+            <img src="img/secondlabelmap.png" alt="Edit Label Mapping">
+        </section>
+
+        <section>
+            <h2>Invoice Configuration</h2>
+            <p>The <strong>Invoice Config</strong> tab allows users to define key invoice settings at the carrier account level. These settings help ensure that invoices are processed correctly and include the appropriate service codes and delivery validation options.</p>
+            
+            <h3>Configurable Options in Invoice Config</h3>
+            <ul>
+                <li><strong>Default Service Code:</strong> This field allows users to set the default service code for the carrier. The service code helps categorize the type of shipment service being used.</li>
+                <li><strong>Proof of Delivery (POD) Status Validation:</strong>
+                    <ul>
+                        <li>Users can enable <strong>Validate Delivery / Milestone (POD) Status</strong> by selecting the checkbox.</li>
+                        <li>When enabled, the system verifies proof of delivery (POD) before processing the invoice.</li>
+                        <li>This ensures that invoices are only generated for successfully delivered shipments.</li>
+                    </ul>
+                </li>
+                <li>After configuring the default service code and POD validation, users must click <strong>Save</strong> to apply changes.</li>
+            </ul>
+            <img src="img/Invoiceconfig.png" alt="Invoice Configuration">
+        </section>
+    
+        <section>
+            <h2>Transmission Configuration</h2>
+            <p>The <strong>Transmission</strong> tab is used to manage API configurations for seamless communication between T-Cube and carrier systems. This section enables users to configure interface types, authentication credentials, and API endpoints for data exchange.</p>
+            <img src="img/transmission2.png" alt="Transmission Configuration">
+    
+            <h3>Configurable Options in Transmission Config</h3>
+            <ul>
+                <li><strong>Interface Type:</strong> Defines the communication protocol used to connect with the carrier API.
+                    <ul>
+                        <li>REST API – Common modern API format.</li>
+                        <li>SOAP API – Used for legacy systems.</li>
+                        <li>EDI (Electronic Data Interchange) – Standardized data exchange for logistics.</li>
+                    </ul>
+                </li>
+                <li><strong>Endpoint:</strong> The URL or web address where API requests will be sent. This must be correctly configured to ensure the system can connect with the carrier’s servers.</li>
+                <li><strong>Authentication Details:</strong>
+                    <ul>
+                        <li>Username & Password – Required for secure API access.</li>
+                        <li>Auth Key – A unique token used for authentication instead of or in addition to username/password.</li>
+                    </ul>
+                </li>
+                <li><strong>Custom Fields:</strong> Users can define additional parameters such as:
+                    <ul>
+                        <li>Custom Field 1–6 – These fields allow for extra data storage based on carrier requirements.</li>
+                        <li>Common uses: API versioning, carrier-specific settings.</li>
+                    </ul>
+                </li>
+                <li>Clicking <strong>Edit</strong> allows users to modify API credentials, interface types, and other settings.</li>
+            </ul>
+        </section>
+    
+        <section>
+            <h2>Track Configuration</h2>
+            <p>The <strong>Track Config</strong> tab is used to configure tracking API settings for individual shipments and bulk tracking capabilities. This section ensures real-time tracking updates by integrating with carrier systems.</p>
+            <img src="img/trackconfig2.png" alt="Track Configuration">
+    
+            <h3>Configurable Options in Track Config</h3>
+            <ul>
+                <li><strong>Carrier Interface Config:</strong> Similar to Transmission Config, this section allows users to set up tracking API details.</li>
+                <li><strong>Custom Status Configuration:</strong>
+                    <ul>
+                        <li>Include Custom Status: Allows users to define carrier-specific tracking statuses.</li>
+                        <li>Filter By Custom Status: Enables filtering of tracking data based on predefined statuses.</li>
+                    </ul>
+                </li>
+                <li><strong>Custom Fields:</strong> Up to six custom fields are available to store carrier-specific tracking parameters.</li>
+                <li><strong>Bulk Track User Config:</strong> Enables bulk tracking for multiple shipments at once. Helps reduce API calls and ensures batch tracking updates.</li>
+                <li><strong>Statuses:</strong> Allows configuration of tracking statuses for better shipment visibility.</li>
+            </ul>
+        </section>
+    
+        <section>
+            <h2>Email Trigger Configuration</h2>
+            <p>The <strong>Email Trigger</strong> tab allows users to configure automated email notifications based on specific carrier-related events. This feature ensures that the right recipients are notified of key updates, such as audit status changes, invoice receipts, and rate approvals.</p>
+            <img src="img/emailtrigger.png" alt="Email Trigger Configuration">
+    
+            <h3>Configurable Options in Email Trigger</h3>
+            <ul>
+                <li><strong>Feature-Based Email Notifications:</strong>
+                    <ul>
+                        <li>Audit Trails – Tracks changes and actions taken in the system.</li>
+                        <li>Audit Status Changes – Notifies recipients when an audit status is updated.</li>
+                        <li>Rate File Approval – Sends an email when a rate file is approved.</li>
+                        <li>Invoice Receipt – Notifies recipients when an invoice is received.</li>
+                        <li>Discrepancy in Audit Status – Alerts users when inconsistencies in audit statuses occur.</li>
+                    </ul>
+                </li>
+                <li><strong>Assigning Email Recipients:</strong> Users can enter email addresses for each selected feature. Multiple recipients can be assigned.</li>
+                <li><strong>Adding & Managing Features:</strong> Users can add multiple notification features by selecting checkboxes.</li>
+            </ul>
+        </section>
+    
+        <section>
+            <h2>G/L Maintenance Configuration</h2>
+            <p>The <strong>G/L Maintenance</strong> tab is used to configure General Ledger (G/L) account assignment rules for automatic invoice coding.</p>
+            <img src="img/glmaintenance.png" alt="G/L Maintenance Configuration">
+    
+            <h3>Configurable Options in G/L Maintenance</h3>
+            <ul>
+                <li><strong>Adding G/L Account Rules:</strong> Click “Add Rules” to define a new rule and enter the G/L Account Number.</li>
+                <li><strong>Defining Shipment Field Conditions:</strong> Assign shipment attributes such as Shipment Type, Carrier Code, and Invoice Amount.</li>
+                <li><strong>Multiple Condition Assignments:</strong> Users can add multiple conditions by clicking the “+ Add” button.</li>
+            </ul>
+        </section>
+    
+        <section>
+            <h2>Fuel Maintenance Configuration</h2>
+            <p>The <strong>Fuel Maintenance</strong> tab allows users to configure fuel surcharge percentages at the carrier account level.</p>
+            <img src="img/fuelmaintenancetab.png" alt="Fuel Maintenance Configuration">
+    
+            <h3>Configurable Options in Fuel Maintenance</h3>
+            <ul>
+                <li><strong>Fuel Surcharge Setup:</strong> Define fuel surcharges based on Mode of Transport (MoT), surcharge type, and shipment classification.</li>
+                <li><strong>Editing Fuel Surcharge Rules:</strong> Click the Edit (pencil) icon to modify an existing surcharge entry.</li>
+                <li><strong>Adding New Fuel Surcharge Entries:</strong> Click the “+” button to add a new entry and define the applicable date range.</li>
+                <li><strong>Searching & Filtering Entries:</strong> Use the Search bar to quickly locate fuel surcharge records based on MoT, type, or value.</li>
+            </ul>
+        </section>
+    </div>
+
+</body>
+
+
+
+</html>

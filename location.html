@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>In Progress - Admin Cube</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&display=swap">
+    <style>
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: white;
+            color: #333;
+            padding: 0px;
+            line-height: 1.6;
+        }
+
+        .breadcrumb {
+            font-size: 14px;
+            color: #888;
+            margin-bottom: 20px;
+            z-index: 1000;
+            position: relative;
+            text-align: left;
+        }
+
+        .breadcrumb a {
+            color: inherit;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .breadcrumb a:hover {
+            text-decoration: underline;
+            color: #3a86ff;
+        }
+
+        h1 {
+            font-size: 34px;
+            font-weight: 600;
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        .sidebar {
+            position: fixed;
+            top: 0;
+            left: 20px;
+            z-index: 900;
+            width: 240px;
+            height: 100%;
+            padding-top: 60px;
+            overflow-y: auto;
+            scrollbar-width: thin;
+            scrollbar-color: #3a86ff #f1f1f1;
+        }
+
+        .sidebar ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+
+        .sidebar ul li {
+            margin-bottom: 10px;
+        }
+
+        .sidebar ul li a {
+            color: #333;
+            text-decoration: none;
+            font-weight: normal;
+            transition: color 0.3s ease;
+            font-size: 16px;
+            padding-left: 20px;
+        }
+
+        .sidebar ul li a:hover {
+            color: #007bff;
+        }
+
+        .sidebar ul li .section-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: #3a86ff;
+            margin-bottom: 10px;
+            padding-left: 0;
+        }
+
+        .sidebar ul li.active {
+            background-color: rgba(58, 134, 255, 0.1);
+            border-radius: 8px;
+        }
+
+        .content {
+            margin-left: 270px;
+            padding: 20px;
+        }
+
+        .placeholder-message {
+            background-color: white;
+            border: 2px dashed #3a86ff;
+            padding: 40px;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        }
+
+        .placeholder-message h2 {
+            color: #3a86ff;
+            margin-bottom: 10px;
+            font-size: 28px;
+        }
+
+        .placeholder-message p {
+            font-size: 16px;
+            color: #555;
+            margin-bottom: 20px;
+        }
+
+        .placeholder-message img {
+            width: 150px;
+            height: auto;
+            display: block;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="breadcrumb">
+        <a href="index.html">Home</a> > <a href="admincube.html">Admin Cube User Guides</a> > <span>Page In Progress</span>
+    </div>
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <ul>
+            <li><a href="admincube.html" class="section-title">Admin Cube</a></li>
+            <li><a href="carrier.html">Carrier</a></li>
+            <li><a href="account.html">Account</a></li>
+            <li class="active"><a href="location.html">Location</a></li> <!-- Added 'active' class -->
+            <li><a href="lane.html">Lane</a></li>
+            <li><a href="charge-mapping.html">Charge Mapping</a></li>
+            <li><a href="fuelsurcharge.html">Fuel Surcharge</a></li>
+            <li><a href="userprofile.html">User Profile</a></li>
+            <li><a href="role.html">Role</a></li>
+            <li><a href="tcube-master.html">TCube Master</a></li>
+            <li><a href="email-template.html">Email Template</a></li>
+            <li><a href="exchange-rates.html">Exchange Rates</a></li>
+        </ul>
+    </div>
+
+    <div class="content">
+        <div class="placeholder-message">
+            <img src="https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExYWtnODF2emJ0eWZ3eWVqYm91enczbGc3bHhwN3QxeTBtemtiMWhmNCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/mWGJWYR4aPUvifbPJR/giphy.gif" alt="Robot Working" width="250">
+            <h2>This Page is Under Construction</h2>
+            <p>We're working hard to bring this content to you. Please check back soon!</p>
+        </div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,9 @@
+{
+  "rewrites": [
+    {
+      "source": "/api/(.*)",
+      "destination": "https://cubiehelp.onrender.com/api/$1"
+    }
+  ]
+}
+

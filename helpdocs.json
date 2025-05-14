@@ -1,0 +1,842 @@
+[
+  {
+    "cube": "Admin Cube",
+    "page_title": "In Progress - Admin Cube",
+    "page_id": "fuelsurcharge.html",
+    "section_title": "This Page is Under Construction",
+    "content": "We're working hard to bring this content to you. Please check back soon!",
+    "source_url": "http://dev.tcube360.com/help/fuelsurcharge.html#this-page-is-under-construction"
+  },
+  {
+    "cube": "General",
+    "page_title": "TCube Platform Overview",
+    "page_id": "tcube-overview.html",
+    "section_title": "What is TCube?",
+    "content": "TCube is a modular enterprise platform designed to streamline supply chain and logistics operations. It provides specialized applications—called Cubes—each handling a distinct aspect of logistics: Rate Cube for managing and simulating freight rates; Audit Cube for invoice audits and dispute resolution; Admin Cube for carrier and account setup; and Track Cube for real-time shipment tracking.",
+    "source_url": "http://dev.tcube360.com/help"
+  },
+  {
+    "cube": "Rate Cube",
+    "page_title": "Rate Calculator User Guide",
+    "page_id": "ratecalculator.html",
+    "section_title": "Overview",
+    "content": "The Rate Calculator within Ratecube is a powerful tool designed to calculate shipment costs based on input demographics and shipment details. By using this tool, users can generate precise cost calculations, view detailed charge breakdowns, and identify all relevant shipment parameters for different service levels and modes of transport.",
+    "source_url": "http://dev.tcube360.com/help/ratecalculator.html#overview"
+  },
+  {
+    "cube": "Rate Cube",
+    "page_title": "Rate Calculator User Guide",
+    "page_id": "ratecalculator.html",
+    "section_title": "Rate Calculator Input fields",
+    "content": "The input fields on the Rate Calculator screen are essential for calculating shipment costs accurately. Each section has specific fields that require completion to ensure valid and meaningful results. The Lane ID or Rate ID is the primary input for the Rate Calculator. Once entered, the system automatically retrieves and prepopulates the following fields: Origin and destination details (city, state, country, postal code). Carrier information (carrier, service level, mode of transport). Users only need to enter package-specific details manually, including: Weight and dimensions (length, width, height). Number of packages. Carrier Information Carrier details are critical for determining the appropriate shipment rates. This section includes: Carrier: Specifies the shipment carrier (e.g., DHL, UPS). Service Level: Defines the level of service provided (e.g., express, standard). Mode of Transport (MoT): Identifies the transportation method, such as air, road, or sea. Origin and Destination Information Define the shipment's starting point and endpoint by providing: Origin Details: Includes the city, state, country, and postal code of the shipment’s starting location. Destination Details: Includes the same information for the shipment's delivery location. Cargo Information Details about the shipment's contents are entered here, including: Dangerous Goods: Whether the shipment contains hazardous materials. Temperature Control: Specifies if the shipment requires temperature-sensitive handling. Weight and Dimensions Accurate weight and dimension measurements ensure correct cost calculations. Fields include: Weight: Total shipment weight with its unit of measurement (UOM). Dimensions: Includes length, width, and height, along with the unit of measurement. Chargeable Weight: Automatically calculated based on weight and dimensions.",
+    "source_url": "http://dev.tcube360.com/help/ratecalculator.html#rate-calculator-input-fields"
+  },
+  {
+    "cube": "Rate Cube",
+    "page_title": "Rate Calculator User Guide",
+    "page_id": "ratecalculator.html",
+    "section_title": "Carrier Information",
+    "content": "Carrier details are critical for determining the appropriate shipment rates. This section includes: Carrier: Specifies the shipment carrier (e.g., DHL, UPS). Service Level: Defines the level of service provided (e.g., express, standard). Mode of Transport (MoT): Identifies the transportation method, such as air, road, or sea.",
+    "source_url": "http://dev.tcube360.com/help/ratecalculator.html#carrier-information"
+  },
+  {
+    "cube": "Rate Cube",
+    "page_title": "Rate Calculator User Guide",
+    "page_id": "ratecalculator.html",
+    "section_title": "Output Overview",
+    "content": "Once all required fields are entered, the Rate Calculator generates detailed output for the shipment. The output includes: Rate Details: Displays calculated charges, delivery dates, and transit days. Total Cost: The sum of all applicable charges for the shipment. Breakdown by Template: Charge codes are grouped based on predefined templates to ensure clarity.",
+    "source_url": "http://dev.tcube360.com/help/ratecalculator.html#output-overview"
+  },
+  {
+    "cube": "Rate Cube",
+    "page_title": "Rate Calculator User Guide",
+    "page_id": "ratecalculator.html",
+    "section_title": "Region-Specific Details",
+    "content": "North America (Road NA) The output is simplified and focuses primarily on: Base Rate: The core cost of transporting goods within the region. Fuel Surcharge: Adjusts costs based on fluctuating fuel prices. There are no subcategories (e.g., FTL or LTL) within Road NA, making it straightforward and ideal for standard road transport within North America. Europe, Middle East, and Africa (Road EMEA) The output for Road EMEA is divided into three subcategories, depending on the type of shipment. Each has unique templates for calculating charges: Full Truckload (FTL): Includes the Base Rate, surcharges for specialized equipment (e.g., double-deck trucks), and costs for extra days or weekend handling. Designed for large shipments requiring the full capacity of a truck. Less Than Truckload (LTL): Focuses on the Base Rate and surcharges for dangerous goods or additional handling requirements. Ideal for smaller shipments sharing truck space with other goods. Premium Post Merge Express (PMPME): Tailored for expedited and high-priority shipments. Includes Base Rate and additional surcharges for hazardous goods and specialized handling. Air Shipments Air shipment outputs are focused on speed and premium services. The breakdown typically includes: Base Rate: Calculated based on weight, volume, and distance. Fuel Surcharge: Reflecting the cost of jet fuel adjustments. Security Risk Surcharge: Applied to sensitive or high-risk cargo. Transit times are shorter, with detailed timelines for delivery. Ocean Shipments Outputs for ocean shipments include: Base Rate: Adjusted for long-distance transport and high-volume goods. Port Handling Charges: Costs associated with loading/unloading at origin and destination ports. Dangerous Goods Surcharge: Additional costs for hazardous materials. Delivery dates and transit days are typically longer, reflecting maritime schedules.",
+    "source_url": "http://dev.tcube360.com/help/ratecalculator.html#region-specific-details"
+  },
+  {
+    "cube": "Rate Cube",
+    "page_title": "Rate Calculator User Guide",
+    "page_id": "ratecalculator.html",
+    "section_title": "Charge Breakdown",
+    "content": "The Shipment Charges and Taxes section provides a comprehensive breakdown of individual charges applied to the shipment. Each charge is displayed with a code, description, and associated cost. Base Rate: The primary cost of the shipment. Fuel Surcharge: Additional costs reflecting fluctuating fuel prices. Hazardous Material Handling: Charges for shipments containing dangerous goods. Extra Days Cost: Costs incurred for extended delivery timelines or weekend handling. Security Risk Surcharge: Fees associated with high-security or sensitive shipments.",
+    "source_url": "http://dev.tcube360.com/help/ratecalculator.html#charge-breakdown"
+  },
+  {
+    "cube": "Rate Cube",
+    "page_title": "Rate Calculator User Guide",
+    "page_id": "ratecalculator.html",
+    "section_title": "Additional Notes and Features",
+    "content": "Special Services: Users can account for additional lead days, custom handling requests, or temperature-sensitive requirements. Data Export: Results can be exported for analysis or record-keeping. Error Handling: Ensure all mandatory fields are completed to avoid calculation errors.",
+    "source_url": "http://dev.tcube360.com/help/ratecalculator.html#additional-notes-and-features"
+  },
+  {
+    "cube": "Rate Cube",
+    "page_title": "Rate Calculator User Guide",
+    "page_id": "ratecalculator.html",
+    "section_title": "Frequently Asked Questions",
+    "content": "What is the difference between Lane ID and Rate ID? Lane ID corresponds to predefined shipment lanes, while Rate ID focuses on rate templates for cost calculation. Can I calculate costs for shipments containing hazardous materials? Yes, ensure the \"Dangerous Goods\" field is populated under Cargo Information. What does \"Chargeable Weight\" mean? It is the calculated weight used to determine shipping costs, derived from both the actual weight and volume.",
+    "source_url": "http://dev.tcube360.com/help/ratecalculator.html#frequently-asked-questions"
+  },
+  {
+    "cube": "General",
+    "page_title": "Audit Cube - Shipment Dashboard",
+    "page_id": "shipmentdash.html",
+    "section_title": "Shipment Table",
+    "content": "The Shipment Dashboard presents your shipment data in a table format, similar to the Main Dashboard but tailored specifically to shipment information. The table includes columns such as Tracking Number, Shipment ID, Carrier Account Number, Shipment Date, Total Packages, Total Shipment Charges, Invoice Amount, and Freight Difference Value. Expandable Rows: Each shipment file listed in the table can be expanded by clicking the arrow next to the Tracking Number, revealing more detailed information about the individual shipments contained within that file. Column Customization: Users can drag and rearrange columns to their preferred order, making it easier to focus on the most critical data points.",
+    "source_url": "http://dev.tcube360.com/help/shipmentdash.html#shipment-table"
+  },
+  {
+    "cube": "General",
+    "page_title": "Audit Cube - Shipment Dashboard",
+    "page_id": "shipmentdash.html",
+    "section_title": "Uploading Shipment Files",
+    "content": "Audit Cube provides multiple ways to process shipment files from a customer’s ERP system. By default, shipments are automatically imported via SFTP , but users can also manually upload files when needed. Automatic Shipment Processing Shipments can be automatically processed using an SFTP interface . The system fetches shipment files from a designated folder or SFTP server and imports them into Audit Cube. Supported file formats include Excel (XLSX), CSV, XML, and JSON . Manual Shipment Processing Users can manually upload shipment files from their desktop if automation is not in place. To do this: Click the Upload Shipment File button on the Shipment Dashboard. A file selection popup will appear. Drag and drop the shipment file into the designated area or browse to select a file. Ensure the file format is correct (XLSX, CSV, XML, or JSON). The selected file’s name will appear once uploaded. Click Submit to process the file. Once processing is complete, the system will display a success or failure message indicating the file’s status. Verifying Shipment Data After processing, shipment details—including calculated charges—are available for review. The example below shows shipment charges applied for the ATS Carrier.",
+    "source_url": "http://dev.tcube360.com/help/shipmentdash.html#uploading-shipment-files"
+  },
+  {
+    "cube": "General",
+    "page_title": "Audit Cube - Shipment Dashboard",
+    "page_id": "shipmentdash.html",
+    "section_title": "Refreshing Data",
+    "content": "Refresh Button: After uploading new shipment data, use the Refresh button (circular arrow icon) to update the table and display the newly uploaded data. Troubleshooting: If the table does not update after refreshing, try clearing the browser cache or performing a hard refresh (Ctrl + F5). Ensure that the file upload was successful before attempting to refresh.",
+    "source_url": "http://dev.tcube360.com/help/shipmentdash.html#refreshing-data"
+  },
+  {
+    "cube": "General",
+    "page_title": "Audit Cube - Shipment Dashboard",
+    "page_id": "shipmentdash.html",
+    "section_title": "Viewing Detailed Shipment Information",
+    "content": "Audit Cube allows users to access in-depth shipment details by clicking on a **Tracking Number** in the main shipment table. This opens a **Microscopic View**, which provides package-level insights for the selected shipment. Accessing Shipment Details Click on a **Tracking Number** in the shipment table. The system will open a pop-up window displaying detailed package information. Information Available in the Microscopic View Once opened, the Microscopic View presents the following package-specific details: Package Number : Unique identifier for the package. Parcel Document Number : Associated document reference. Actual Weight : The measured weight of the package. Billed Weight : The weight used for invoicing, considering dimensional weight factors. Package Dimensions : Length, Width, and Height values. Exporting Shipment Data Users can export this detailed shipment data by clicking the **Export** button within the Microscopic View. The system will generate an Excel file for offline reference. To close the window, click the **Close** button at the bottom right.",
+    "source_url": "http://dev.tcube360.com/help/shipmentdash.html#viewing-detailed-shipment-information"
+  },
+  {
+    "cube": "General",
+    "page_title": "Audit Cube - Shipment Dashboard",
+    "page_id": "shipmentdash.html",
+    "section_title": "Advanced Troubleshooting",
+    "content": "Shipment Data Not Appearing After Upload: Issue: If newly uploaded shipment data does not appear in the table after hitting refresh, the issue could be related to the file format or data integrity. Solution: Check File Format: Double-check that the uploaded file is in XLSX format. If it is in CSV or any other format, the upload will fail. Data Integrity: Verify that all required fields in the upload file are populated. Missing or incorrectly formatted data fields can cause the upload to fail. Refresh Troubleshooting: If refreshing does not update the data, try performing a hard refresh (Ctrl + F5) or clearing the browser cache. Microscopic View Not Loading: Issue: When clicking on a Tracking Number, the Microscopic View may not load or may load incomplete data. Solution: Network Check: Ensure that your internet connection is stable, as slow connections may cause the detailed view to load improperly. Browser Compatibility: Confirm that you are using a supported browser version. Outdated browsers might struggle to display detailed views correctly. Retry: Close the view and click the Tracking Number again to reload the data. Exporting Issues from Microscopic View: Issue: If you encounter issues while trying to export data from the Microscopic View, it may be due to browser settings or file size limitations. Solution: Browser Settings: Ensure that pop-up blockers are disabled for the Audit Cube platform, as they might prevent the export function from working. File Size: If the data is too large to export in one go, consider exporting in smaller batches or splitting the data across multiple files.",
+    "source_url": "http://dev.tcube360.com/help/shipmentdash.html#advanced-troubleshooting"
+  },
+  {
+    "cube": "Help Center Landing",
+    "page_title": "Help Center Landing",
+    "page_id": "index.html",
+    "section_title": "Search by Cube",
+    "content": "Audit Cube User Guides Admin Cube User Guides Rate Cube User Guides Track Cube User Guides",
+    "source_url": "http://dev.tcube360.com/help/index.html#search-by-cube"
+  },
+  {
+    "cube": "Help Center Landing",
+    "page_title": "Help Center Landing",
+    "page_id": "index.html",
+    "section_title": "Featured Resources",
+    "content": "Audit Cube Main Dashboard Features Audit Cube Shipment Dashboard Rate Cube: How to Use Rate Simulation",
+    "source_url": "http://dev.tcube360.com/help/index.html#featured-resources"
+  },
+  {
+    "cube": "Help Center Landing",
+    "page_title": "Help Center Landing",
+    "page_id": "index.html",
+    "section_title": "New Feature Digest",
+    "content": "Audit Cube - Label Mapping Learn how you can map shipment data fields between systems for accurate alignment and processing. View Rate Cube - Simulation Learn about new advanced query tools available in the Rate Simulation feature of Rate Cube. View",
+    "source_url": "http://dev.tcube360.com/help/index.html#new-feature-digest"
+  },
+  {
+    "cube": "General",
+    "page_title": "In Progress - Admin Cube",
+    "page_id": "email-template.html",
+    "section_title": "This Page is Under Construction",
+    "content": "We're working hard to bring this content to you. Please check back soon!",
+    "source_url": "http://dev.tcube360.com/help/email-template.html#this-page-is-under-construction"
+  },
+  {
+    "cube": "General",
+    "page_title": "In Progress - Admin Cube",
+    "page_id": "charge-mapping.html",
+    "section_title": "This Page is Under Construction",
+    "content": "We're working hard to bring this content to you. Please check back soon!",
+    "source_url": "http://dev.tcube360.com/help/charge-mapping.html#this-page-is-under-construction"
+  },
+  {
+    "cube": "Rate Cube",
+    "page_title": "Rate Cube User Guides",
+    "page_id": "rate-cube-user-guide.html",
+    "section_title": "Popular Resources",
+    "content": "Rate Simulation Discover how to simulate different rates for better decision-making. Learn more → Uploading Rates Learn how to upload and manage rates in the Rate Maintenance dashboard. Learn more → Bulk Upload Using Rate Maintenance dashboard to guide the Offer for Amendement acceptance and rejection process. Learn more → Customize Simulation Get the most active rate simulation through special service filtering. Learn more →",
+    "source_url": "http://dev.tcube360.com/help/rate-cube-user-guide.html#popular-resources"
+  },
+  {
+    "cube": "Admin Cube",
+    "page_title": "Account - Admin Cube User Guides",
+    "page_id": "account.html",
+    "section_title": "Overview",
+    "content": "The Account tab provides a detailed interface for: Viewing existing carrier accounts in a table format. Adding new carrier accounts. Configuring specific account-related settings such as thresholds, UOMs, and currency. Managing account settings through various options in the dashboard.",
+    "source_url": "http://dev.tcube360.com/help/account.html#overview"
+  },
+  {
+    "cube": "Admin Cube",
+    "page_title": "Account - Admin Cube User Guides",
+    "page_id": "account.html",
+    "section_title": "Carrier Account Details",
+    "content": "Details like Carrier Code, Carrier Alias (Client's definition of carrier code in TM/ERP systems), Account Number, Self-billing, tracking and invoice thresholds, currency code, and unit of measure are defined for each carrier account.",
+    "source_url": "http://dev.tcube360.com/help/account.html#carrier-account-details"
+  },
+  {
+    "cube": "Admin Cube",
+    "page_title": "Account - Admin Cube User Guides",
+    "page_id": "account.html",
+    "section_title": "Creating a New Carrier Account",
+    "content": "To create a new carrier account, follow these steps: Navigate to the Account tab from the left-hand menu. Select Account from the navigation sidebar. The Account table with all existing accounts will display. Click the \"+\" icon in the top-right corner of the table to open the Add Carrier Account form. Fill in the required fields: Carrier Description: Select the parent carrier from the dropdown. Carrier Alias: Enter the name for the carrier alias. Origin Location Code: Enter the relevant origin location. Meter Number: Specify the meter number (if applicable). Tracking Threshold Limit and Invoice Threshold Limit: Input the values for thresholds. Currency, Weight UOM, and Dimension UOM: Add the specific settings. Click Save to create the carrier account.",
+    "source_url": "http://dev.tcube360.com/help/account.html#creating-a-new-carrier-account"
+  },
+  {
+    "cube": "Admin Cube",
+    "page_title": "Account - Admin Cube User Guides",
+    "page_id": "account.html",
+    "section_title": "Configuring an Account",
+    "content": "After creating a carrier account, you can configure its details further. Follow these steps: Once the account is created, locate it in the Account table. Click the Gear icon beside the desired carrier account to open the configuration settings. Select the Rate Config tab to configure the rate template for the account: Choose Rate Source as \"Table\" or \"API\". Click the Edit button to select the rate template from the available templates. Save the changes to apply the configuration.",
+    "source_url": "http://dev.tcube360.com/help/account.html#configuring-an-account"
+  },
+  {
+    "cube": "Admin Cube",
+    "page_title": "Account - Admin Cube User Guides",
+    "page_id": "account.html",
+    "section_title": "OFA/RFA Process",
+    "content": "Upon clicking the gear icon on one of the entries from the main Account table, users can navigate to the Rate Config tab. The OFA/RFA functionality introduces two options for carrier management: Shipper Managed: If the shipper manages rates, any uploaded rates are automatically approved and processed. Carrier Managed: Requires an additional review process before approval. The system categorizes this as either an OFA (Offer Approval) or RFA (Rate Finalization Approval) process.",
+    "source_url": "http://dev.tcube360.com/help/account.html#ofarfa-process"
+  },
+  {
+    "cube": "Admin Cube",
+    "page_title": "Account - Admin Cube User Guides",
+    "page_id": "account.html",
+    "section_title": "Shipment Configuration",
+    "content": "The Shipment tab allows users to configure key shipment-related parameters: Tracking Number Ranges: Define carrier-specific tracking number ranges for assigned shipments. Shipment API Integrations: Connect with carrier APIs to fetch real-time tracking updates.",
+    "source_url": "http://dev.tcube360.com/help/account.html#shipment-configuration"
+  },
+  {
+    "cube": "Admin Cube",
+    "page_title": "Account - Admin Cube User Guides",
+    "page_id": "account.html",
+    "section_title": "Label Mapping",
+    "content": "The Label Mapping feature under the Shipment Config tab allows users to manage carrier-specific label templates. Navigate to the Shipment Config tab. Click on Label Mapping to open the label selection dropdown. A list of predefined label templates will appear. Select an existing template or create a New Label .",
+    "source_url": "http://dev.tcube360.com/help/account.html#label-mapping"
+  },
+  {
+    "cube": "Admin Cube",
+    "page_title": "Account - Admin Cube User Guides",
+    "page_id": "account.html",
+    "section_title": "Editing Label Templates",
+    "content": "Clicking Edit Label opens the label configuration interface: View and Modify Label Fields: On the left panel, users can see available data fields such as: ShipFrom_CompanyName ShipFrom_CountryCode ShipTo_City Package_TrackingNumber Package_WeightUoM On the right panel, each field is mapped to a ToF_Field (e.g., ToF_Field2, ToF_Field6). Modify or Reassign Field Mappings: Drag and drop fields from the left panel to assign them to template fields. Click the red “X” next to a field to remove an existing mapping. View Label Code (Right Panel): The right side of the screen displays the ZPL (Zebra Programming Language) or raw label format code. Users can modify ToF_Fields inside the ZPL to customize label content dynamically. Save, Reset, or Apply Changes: Save: Confirms and applies the new label configuration. Reset: Restores the template to its last saved version.",
+    "source_url": "http://dev.tcube360.com/help/account.html#editing-label-templates"
+  },
+  {
+    "cube": "Admin Cube",
+    "page_title": "Account - Admin Cube User Guides",
+    "page_id": "account.html",
+    "section_title": "Invoice Configuration",
+    "content": "The Invoice Config tab allows users to define key invoice settings at the carrier account level. These settings help ensure that invoices are processed correctly and include the appropriate service codes and delivery validation options. Configurable Options in Invoice Config Default Service Code: This field allows users to set the default service code for the carrier. The service code helps categorize the type of shipment service being used. Proof of Delivery (POD) Status Validation: Users can enable Validate Delivery / Milestone (POD) Status by selecting the checkbox. When enabled, the system verifies proof of delivery (POD) before processing the invoice. This ensures that invoices are only generated for successfully delivered shipments. After configuring the default service code and POD validation, users must click Save to apply changes.",
+    "source_url": "http://dev.tcube360.com/help/account.html#invoice-configuration"
+  },
+  {
+    "cube": "Admin Cube",
+    "page_title": "Account - Admin Cube User Guides",
+    "page_id": "account.html",
+    "section_title": "Transmission Configuration",
+    "content": "The Transmission tab is used to manage API configurations for seamless communication between T-Cube and carrier systems. This section enables users to configure interface types, authentication credentials, and API endpoints for data exchange. Configurable Options in Transmission Config Interface Type: Defines the communication protocol used to connect with the carrier API. REST API – Common modern API format. SOAP API – Used for legacy systems. EDI (Electronic Data Interchange) – Standardized data exchange for logistics. Endpoint: The URL or web address where API requests will be sent. This must be correctly configured to ensure the system can connect with the carrier’s servers. Authentication Details: Username & Password – Required for secure API access. Auth Key – A unique token used for authentication instead of or in addition to username/password. Custom Fields: Users can define additional parameters such as: Custom Field 1–6 – These fields allow for extra data storage based on carrier requirements. Common uses: API versioning, carrier-specific settings. Clicking Edit allows users to modify API credentials, interface types, and other settings.",
+    "source_url": "http://dev.tcube360.com/help/account.html#transmission-configuration"
+  },
+  {
+    "cube": "Admin Cube",
+    "page_title": "Account - Admin Cube User Guides",
+    "page_id": "account.html",
+    "section_title": "Track Configuration",
+    "content": "The Track Config tab is used to configure tracking API settings for individual shipments and bulk tracking capabilities. This section ensures real-time tracking updates by integrating with carrier systems. Configurable Options in Track Config Carrier Interface Config: Similar to Transmission Config, this section allows users to set up tracking API details. Custom Status Configuration: Include Custom Status: Allows users to define carrier-specific tracking statuses. Filter By Custom Status: Enables filtering of tracking data based on predefined statuses. Custom Fields: Up to six custom fields are available to store carrier-specific tracking parameters. Bulk Track User Config: Enables bulk tracking for multiple shipments at once. Helps reduce API calls and ensures batch tracking updates. Statuses: Allows configuration of tracking statuses for better shipment visibility.",
+    "source_url": "http://dev.tcube360.com/help/account.html#track-configuration"
+  },
+  {
+    "cube": "Admin Cube",
+    "page_title": "Account - Admin Cube User Guides",
+    "page_id": "account.html",
+    "section_title": "Email Trigger Configuration",
+    "content": "The Email Trigger tab allows users to configure automated email notifications based on specific carrier-related events. This feature ensures that the right recipients are notified of key updates, such as audit status changes, invoice receipts, and rate approvals. Configurable Options in Email Trigger Feature-Based Email Notifications: Audit Trails – Tracks changes and actions taken in the system. Audit Status Changes – Notifies recipients when an audit status is updated. Rate File Approval – Sends an email when a rate file is approved. Invoice Receipt – Notifies recipients when an invoice is received. Discrepancy in Audit Status – Alerts users when inconsistencies in audit statuses occur. Assigning Email Recipients: Users can enter email addresses for each selected feature. Multiple recipients can be assigned. Adding & Managing Features: Users can add multiple notification features by selecting checkboxes.",
+    "source_url": "http://dev.tcube360.com/help/account.html#email-trigger-configuration"
+  },
+  {
+    "cube": "Admin Cube",
+    "page_title": "Account - Admin Cube User Guides",
+    "page_id": "account.html",
+    "section_title": "G/L Maintenance Configuration",
+    "content": "The G/L Maintenance tab is used to configure General Ledger (G/L) account assignment rules for automatic invoice coding. Configurable Options in G/L Maintenance Adding G/L Account Rules: Click “Add Rules” to define a new rule and enter the G/L Account Number. Defining Shipment Field Conditions: Assign shipment attributes such as Shipment Type, Carrier Code, and Invoice Amount. Multiple Condition Assignments: Users can add multiple conditions by clicking the “+ Add” button.",
+    "source_url": "http://dev.tcube360.com/help/account.html#gl-maintenance-configuration"
+  },
+  {
+    "cube": "Admin Cube",
+    "page_title": "Account - Admin Cube User Guides",
+    "page_id": "account.html",
+    "section_title": "Fuel Maintenance Configuration",
+    "content": "The Fuel Maintenance tab allows users to configure fuel surcharge percentages at the carrier account level. Configurable Options in Fuel Maintenance Fuel Surcharge Setup: Define fuel surcharges based on Mode of Transport (MoT), surcharge type, and shipment classification. Editing Fuel Surcharge Rules: Click the Edit (pencil) icon to modify an existing surcharge entry. Adding New Fuel Surcharge Entries: Click the “+” button to add a new entry and define the applicable date range. Searching & Filtering Entries: Use the Search bar to quickly locate fuel surcharge records based on MoT, type, or value.",
+    "source_url": "http://dev.tcube360.com/help/account.html#fuel-maintenance-configuration"
+  },
+  {
+    "cube": "Admin Cube",
+    "page_title": "User Profile - Admin Cube",
+    "page_id": "userprofile.html",
+    "section_title": "User Table Overview",
+    "content": "The user table displays a structured list of all registered users in the system, including: User Name: The unique username assigned to each user. Email ID: The email associated with the user's profile. First and Last Name: User's full name as per the system record. Role Name: The roles assigned to the user, which define their system access and permissions. Users can interact with the table using hover options , which provide quick access to additional actions.",
+    "source_url": "http://dev.tcube360.com/help/userprofile.html#user-table-overview"
+  },
+  {
+    "cube": "Admin Cube",
+    "page_title": "User Profile - Admin Cube",
+    "page_id": "userprofile.html",
+    "section_title": "Interactive Table Features",
+    "content": "When hovering over a user row, the following options appear on the right: Edit: Opens the user details for modification. Pwd Update: Allows administrators to reset or update user passwords. Activate: Reactivates suspended users. Suspend: Disables user access until reactivated. Export: Users can export the entire user list to an Excel file for further analysis.",
+    "source_url": "http://dev.tcube360.com/help/userprofile.html#interactive-table-features"
+  },
+  {
+    "cube": "Admin Cube",
+    "page_title": "User Profile - Admin Cube",
+    "page_id": "userprofile.html",
+    "section_title": "Editing a User Profile",
+    "content": "Clicking on the Edit button opens the user details screen. This allows administrators to update personal details, change assigned roles, and modify user-specific settings: Modify First Name, Last Name, Email, and User Type (Shipper or Carrier). Assign or remove roles as necessary. Use the Save button to apply changes. Export a tabular view of different roles and information associated with the selected user through the second icon above the table.",
+    "source_url": "http://dev.tcube360.com/help/userprofile.html#editing-a-user-profile"
+  },
+  {
+    "cube": "Admin Cube",
+    "page_title": "User Profile - Admin Cube",
+    "page_id": "userprofile.html",
+    "section_title": "Adding or Modifying User Roles",
+    "content": "To modify a user’s roles, open the Edit User Details screen and navigate to the role selection section : Click the + Add Role button to assign additional roles. Use the role selection popup to search for and select the appropriate role. Click Add Role(s) to apply the selection.",
+    "source_url": "http://dev.tcube360.com/help/userprofile.html#adding-or-modifying-user-roles"
+  },
+  {
+    "cube": "Rate Cube",
+    "page_title": "Rate Maintenance User Guide",
+    "page_id": "ratemaintenance.html",
+    "section_title": "Key Benefits:",
+    "content": "Centralized Freight Rate Management includes adding, organizing, and automating freight rates to ensure accurate and efficient shipping services across various transportation modes. Easy rate upload, approval, versioning, search, and automation of freight rates, covering multiple transportation modes for leading logistics service providers. Bulk uploads and direct row-level editing. Carrier specific rate templates for all transportation modes. Simplified tracking of rate validity periods. Real Time Rate simulations by combining rate evaluations for freight rates in RateCube and API calls with all parcel service providers",
+    "source_url": "http://dev.tcube360.com/help/ratemaintenance.html#key-benefits"
+  },
+  {
+    "cube": "Rate Cube",
+    "page_title": "Rate Maintenance User Guide",
+    "page_id": "ratemaintenance.html",
+    "section_title": "Columns:",
+    "content": "Amendment Reference: Links to amendments associated with rates. OFA Reference: Unique identifier for Offer for Amendment. Validity Period: \"Valid From\" and \"Valid To\" ensure proper tracking of rate durations. Upload and Modification Details: Tracks user actions with timestamps for accountability.",
+    "source_url": "http://dev.tcube360.com/help/ratemaintenance.html#columns"
+  },
+  {
+    "cube": "Rate Cube",
+    "page_title": "Rate Maintenance User Guide",
+    "page_id": "ratemaintenance.html",
+    "section_title": "Visualization Section:",
+    "content": "A pie chart displays amendment statuses, such as Approved or Partially Amended. Metrics include Country Total, Rate Total, and Zone Total.",
+    "source_url": "http://dev.tcube360.com/help/ratemaintenance.html#visualization-section"
+  },
+  {
+    "cube": "Rate Cube",
+    "page_title": "Rate Maintenance User Guide",
+    "page_id": "ratemaintenance.html",
+    "section_title": "Actionable Steps:",
+    "content": "Click a Template Name (e.g., \"GT Air\") or Carrier Code to refine the displayed data. Use the Advanced Search to apply filters like commodity, carrier, or service level.",
+    "source_url": "http://dev.tcube360.com/help/ratemaintenance.html#actionable-steps"
+  },
+  {
+    "cube": "Rate Cube",
+    "page_title": "Rate Maintenance User Guide",
+    "page_id": "ratemaintenance.html",
+    "section_title": "Overview of the Main Screen:",
+    "content": "Table Columns: Displays multiple versions of the same lane and includes key details such as: Version: Current version number for the rate. Unique ID: Unique identifier for each lane/rate. Base Rate: The primary shipping cost. Fuel Surcharge: Additional costs per weight or volume. Origin and Destination Cities: Starting and ending points for the shipment. Commodity: Type of goods being shipped. Additional Columns: Users can customize columns such as “On Carriage Price per KG” and “Dest Warehouse Handling Cost” using the Column Chooser. Filter Tools: Streamline data visibility and functionality: Advanced Search: Located in the magnifying glass icon, this feature allows users to filter by: Origin and Destination Service: For example, Door-to-Airport. Container Type: Narrow down based on container attributes. Column Chooser: Located to the right of the Advanced Search, this tool allows users to hide or display specific columns for a tailored view. Export Button: Export the active lanes into an Excel file for offline edits. Updated Excel files can then be re-imported to the platform for batch updates, enabling seamless Offer for Amendment creation. Review Button: Clicking this button opens a full contract review, showing: Action History: Details about performed actions. Acted By: The entity or user who performed the action. Acted On: Timestamps of when the actions occurred.",
+    "source_url": "http://dev.tcube360.com/help/ratemaintenance.html#overview-of-the-main-screen"
+  },
+  {
+    "cube": "Rate Cube",
+    "page_title": "Rate Maintenance User Guide",
+    "page_id": "ratemaintenance.html",
+    "section_title": "Blue Paper Icon: Viewing and Editing Charges",
+    "content": "The Blue Paper Icon provides access to a detailed view of the selected rate, allowing for an in-depth breakdown and editing capabilities: Comprehensive Rate Details: Origin and Destination Information: Cities, postal codes, and countries. Carrier and Service Level Information. Charge Breakdown: Includes Base Rates, surcharges, and other costs. Edit Charges: Allows users to: Directly update rates within the detailed view. Save updates as part of a new Offer for Amendment (OFA), which automatically moves the edited rate to the Draft Rates section with a generated OFA reference. The Active Rates section provides a high-level overview and granular detail, enabling users to efficiently manage finalized rates and perform necessary amendments with complete traceability.",
+    "source_url": "http://dev.tcube360.com/help/ratemaintenance.html#blue-paper-icon-viewing-and-editing-charges"
+  },
+  {
+    "cube": "Rate Cube",
+    "page_title": "Rate Maintenance User Guide",
+    "page_id": "ratemaintenance.html",
+    "section_title": "Table Overview:",
+    "content": "The table displays all draft rates associated with the selected contract, including multiple versions of the same lane. Each row represents a specific rate entry with essential details, allowing users to track updates across different versions. Other key columns include Base Rate, Fuel Surcharge, Origin City, Destination City, Commodity, Service Level, and Container Type. Clicking on a Version number opens the Rate Header Version Details screen. This screen shows the historical record for the selected lane, including changes made to fields such as the origin, destination, base rate, and fuel surcharge.",
+    "source_url": "http://dev.tcube360.com/help/ratemaintenance.html#table-overview"
+  },
+  {
+    "cube": "Rate Cube",
+    "page_title": "Rate Maintenance User Guide",
+    "page_id": "ratemaintenance.html",
+    "section_title": "Filter Tools:",
+    "content": "Advanced Search: Enables users to filter rates by attributes such as Origin and Destination Services, Container Type, and Service Level for focused analysis and decision-making. Column Chooser: Allows users to customize the displayed information by hiding or showing specific columns based on their preferences.",
+    "source_url": "http://dev.tcube360.com/help/ratemaintenance.html#filter-tools"
+  },
+  {
+    "cube": "Rate Cube",
+    "page_title": "Rate Maintenance User Guide",
+    "page_id": "ratemaintenance.html",
+    "section_title": "Review Button:",
+    "content": "Clicking the Review button opens the Contract Review tab, identical to the one in Active Rates. It provides a timeline of all actions performed on the contract. This includes: Actions taken (e.g., revisions, approvals) The user responsible for the action The corresponding timestamps",
+    "source_url": "http://dev.tcube360.com/help/ratemaintenance.html#review-button"
+  },
+  {
+    "cube": "Rate Cube",
+    "page_title": "Rate Maintenance User Guide",
+    "page_id": "ratemaintenance.html",
+    "section_title": "Action Buttons:",
+    "content": "Users can Accept or Reject selected lanes directly from the dashboard. This functionality simplifies bulk actions for rate management. Carriers can export certain lanes to edit and reupload them using the cloud icon above the main table.",
+    "source_url": "http://dev.tcube360.com/help/ratemaintenance.html#action-buttons"
+  },
+  {
+    "cube": "Rate Cube",
+    "page_title": "Rate Maintenance User Guide",
+    "page_id": "ratemaintenance.html",
+    "section_title": "Blue Paper Icon: Editing Lane Details",
+    "content": "Clicking the Blue Paper Icon opens the Detailed Rate View, a dedicated interface for managing lane-specific details. This view offers enhanced functionality for shippers: Editable Fields: The shipper can adjust base charges, fuel surcharges, and other cost-related parameters. Any changes made here are tracked in the lane history. When a user modifies a lane, changed values are automatically highlighted in red to indicate updates. This ensures that users can quickly identify modifications before submitting them for approval. Actions Available: Reject: Decline the rate if it does not meet expectations. Accept: Approve the rate as proposed. Revise: Modify the rate to create a counter-offer and generate a unique OFA number for acceptance or rejection by the carrier.",
+    "source_url": "http://dev.tcube360.com/help/ratemaintenance.html#blue-paper-icon-editing-lane-details"
+  },
+  {
+    "cube": "Rate Cube",
+    "page_title": "Rate Maintenance User Guide",
+    "page_id": "ratemaintenance.html",
+    "section_title": "Amendment Process",
+    "content": "The Draft Rates section supports both Partial and Full Amendments to ensure flexibility and precision in rate finalization: Partial Amendments: Shippers can accept only a subset of updated lanes. For example, if 10 lanes are submitted by the carrier, the shipper may accept 5 lanes, rejecting or revising the rest. Revised lanes are sent back to the carrier for approval or rejection. Full Amendments: All updated lanes are accepted simultaneously, finalizing the entire contract.",
+    "source_url": "http://dev.tcube360.com/help/ratemaintenance.html#amendment-process"
+  },
+  {
+    "cube": "Rate Cube",
+    "page_title": "Rate Maintenance User Guide",
+    "page_id": "ratemaintenance.html",
+    "section_title": "Shipper and Carrier Responsibilities:",
+    "content": "Shipper Actions: Shippers can Reject, Accept, or Revise rates based on their requirements. Revising a rate generates a Partial Amendment for further carrier review. Carrier Actions: Carriers can only Accept or Reject counter-offers or amendment requests sent by the shipper.",
+    "source_url": "http://dev.tcube360.com/help/ratemaintenance.html#shipper-and-carrier-responsibilities"
+  },
+  {
+    "cube": "Rate Cube",
+    "page_title": "Rate Maintenance User Guide",
+    "page_id": "ratemaintenance.html",
+    "section_title": "OFA and RFA Processes in Rate Maintenance",
+    "content": "The OFA and RFA processes play a critical role in managing rate amendments between carriers and shippers. Below is a detailed guide to these processes, including actions, notifications, and key indicators. Offer for Amendment (OFA) Process Overview: Initiation: A carrier uploads an OFA, and a unique reference number is generated for tracking. Shipper Notification: A task is created, and an email notification is sent to the shipper. Shipper Actions: Approval: The shipper can approve the OFA, creating a Full Amendment. Counteroffer: The shipper can counter the OFA, requesting revised rates. Final Steps: The carrier can accept the counteroffer or upload revised rates based on the shipper's request. Key Indicators for Actions: Actions taken by shippers are marked with an S indicator, while carrier actions are denoted by a C . Different colors represent various statuses: Blue: Request for Amendment (RFA) Orange: Offer for Amendment (OFA) Green: Accepted Yellow: Awaiting Approval Red: Rejected Request for Amendment (RFA) Process Overview: Initiation: The shipper changes rates and sends an RFA to the carrier. Carrier Notification: An email notification is sent to the carrier for review. Carrier Actions: Acceptance: The carrier can accept the RFA. Upload Revised Rates: The carrier can upload new rates if changes are required. Key Features: Similar to the OFA, the RFA process uses indicators and colors to reflect the status of actions on the platform. Steps to Create and Process OFA Scenario 1: Full Counter OFA Acceptance Process This process involves: Step 1: Initiate the OFA Process The process begins when the carrier initiates the OFA by selecting the relevant contract ID. This step ensures the correct contract is identified for amendments. Once selected, the carrier prepares to identify specific rates for amendment. Step 2: Select and Export Rates for Amendment The carrier filters and selects the specific rates that require amendments. This can be done based on criteria such as contract validity, service levels, or origin/destination cities. After selecting the applicable rates, the carrier exports the data to make modifications offline. Step 3: Update and Upload Amended Rates The carrier updates the exported file with the necessary amendments, such as rate changes or additions. The amended file is then uploaded back into the system by selecting the appropriate template, validity period, and rate file. A popup message confirms the successful upload of the amended rates. Step 4: Shipper Reviews and Counters Once the amended rates are uploaded, they become available to the shipper for review. Each amended rate is associated with a unique Reference ID, ensuring traceability. The shipper has the option to counter specific rates or accept them as-is. Countering involves proposing alternate rates and saving them for the carrier to review. Step 5: Carrier Accepts or Rejects Countered OFA The carrier reviews the countered OFA rates provided by the shipper, including any modifications or alternate proposals. After reviewing, the carrier decides whether to accept or reject the countered rates. If accepted, the system updates the rate status, reflecting the carrier’s decision. Step 6: Final Acceptance and Activation After the carrier’s acceptance, the shipper performs a final review and accepts the updated rates using the Full Amendment option on the bottom right-hand section of the dashboard. Once this step is completed, the amended rates are activated and appear under the \"Active Rates\" section with the amendment reference ID. Scenario 2: Revised OFA After Counter Rejection This process is initiated when: The carrier rejects the shipper’s countered OFA, identifying the need for revised amendments. The carrier must upload new rates, which are subject to a second review and acceptance by the shipper. The scenario ends with the activation of the amended rates after mutual agreement. Step 1: Initiate the OFA Process The carrier selects the contract ID for which the OFA is being initiated and identifies the records requiring amendments. The selected records are exported to facilitate offline modifications. Step 2: Upload Amended Rates The carrier uploads the amended rates file using the upload function. Upon successful upload, a popup confirms that the file has been uploaded successfully. This ensures that the new rates are compatible and ready for further review. Step 3: Update Draft Status The system updates the OFA records with a \"DRAFT\" status after the amended rates are uploaded. A unique ID is assigned to each record to track changes during the amendment process. Step 4: Shipper Reviews and Updates Counter The shipper receives the updated OFA and reviews it. They update the counter OFA if needed, involving two steps: requesting amendments and revising the proposal. These updates are sent back to the carrier for further review. Step 5: Carrier Rejects Countered OFA The carrier reviews the countered OFA provided by the shipper and chooses to reject the proposed rates. A rejection popup is displayed, and the status of the OFA is updated to reflect the rejection. Step 6: Export and Submit New Rates The carrier exports the rejected OFA records and prepares new rates in response to the shipper’s counter. The updated rates file is uploaded, and the OFA is submitted for approval by the shipper. Step 7: Shipper Final Review and Activation The shipper performs a final review of the revised OFA and accepts it. During this step, the system transitions the status of the revised OFA records from brown (Offer for Amendment) to green (Accepted) to indicate successful acceptance. A popup message confirms this action, ensuring the shipper acknowledges the updated rates. The shipper then activates the rates using the \"FULL AMENDMENT\" option on the Rate Maintenance dashboard. Step 8: Rates Become Active The newly activated rates appear under the \"Active Rates\" section in the system. These rates are referenced by the most recent OFA amendment ID, completing the process. Scenario 3: Partial OFA Acceptance and Counter This process is initiated when: The carrier uploads the OFA, and a unique reference number is generated for the OFA. The shipper accepts part of the OFA while countering the remaining lanes. Based on the shipper's actions, one or two amendments are created: One amendment for accepted lanes if the shipper processes a partial amendment. Another amendment for the countered lanes. The carrier receives and accepts the counter partial OFA, completing the process. Step 1: Initiate the OFA Process The carrier begins the OFA process by selecting and exporting the records requiring amendments. These records can also be manually updated within the system. The system generates a unique reference number for the OFA. Step 2: Draft Status Update After the OFA upload, the contract receives a \"DRAFT\" status. Each OFA line is updated with a unique OFA reference and record ID, ensuring traceability for the amendment process. Step 3: Shipper Receives and Processes the OFA The shipper reviews the OFA and accepts part of the lanes. For the accepted lanes, the shipper creates a partial amendment, generating a unique reference number. For the remaining lanes, the shipper counters by proposing alternate rates and saving them for the carrier’s review. Step 4: Shipper Creates Partial Amendment The shipper creates a partial amendment for the accepted lanes. The system generates a unique amendment reference for these accepted lanes while retaining the original OFA reference for the countered lanes. The partial amendment gets an active status for the accepted lanes. Step 5: Carrier Reviews and Accepts Counter Partial OFA The carrier reviews the countered lanes submitted by the shipper. Upon accepting the counter, the system updates the status of the counter partial OFA to reflect the carrier’s decision. Step 6: Shipper Finalizes and Activates Rates The shipper approves the counter partial OFA and amends the contract using the partial amendment option. A popup confirms the successful activation of the amended contract, and the rates transition to \"Active\" status in the system. Scenario 4: Revised OFA and Partial Counter Rejection Overview This process is initiated when: The carrier uploads an OFA, generating a unique reference number. The shipper receives the OFA, accepts part of it, and counters the remaining lanes. The shipper creates amendments for accepted lanes, leading to one or more amendments. The carrier rejects the counter partial OFA and uploads revised rates for shipper review. The shipper accepts the revised OFA, finalizing the process. Step 1: Initiate the OFA Process The carrier starts by selecting the relevant contract ID for the OFA. Records are identified for amendments and exported for offline modification. The system generates a unique reference number for the OFA. Step 2: Upload Amended Rates The carrier uploads the OFA, which includes new rates, and a unique reference number is generated. A popup confirms the successful upload of the amended rates. Step 3: Draft Status Update The OFA records are updated with a \"DRAFT\" status. Each line receives a unique OFA reference and record ID for tracking throughout the amendment process. Step 4: Shipper Receives and Processes the OFA The shipper reviews the OFA, accepts certain lanes, and counters the remaining ones. For accepted lanes, the system updates them with an \"Accepted\" status. For countered lanes, the original OFA reference is retained for further carrier review. A green popup message will appear once selected lanes are approved. Step 5: Shipper Creates Partial Amendment The shipper creates a partial amendment for accepted lanes. This results in a unique amendment reference ID for the accepted lanes while retaining the original OFA reference for countered lanes. The partial amendment gets an active status for the accepted lanes. Step 6: Carrier Rejects Counter Partial OFA The carrier reviews the counter partial OFA and rejects the shipper’s counter proposal. The system reflects this action with a rejection status and a confirmation popup message. Step 7: Shipper Accepts and Finalizes Revised OFA The shipper reviews the revised OFA. Once accepted, the counter proposal transitions into the \"Accepted\" status. The system confirms the acceptance with a popup message, reflecting the successful acknowledgment of the revised rates. Step 8: Shipper Activates Revised Rates The shipper finalizes the accepted counter OFA using the partial amendment option. This activates the updated contract. A confirmation popup is displayed, showing the successful activation of the contract amendment, which is now visible in the system in \"Active Rates.\" Amendment Reports Overview The Amendment Reports section in RateCube allows users to visualize, analyze, and manage linked amendments and the underlying Offer for Amendments (OFAs) and associated changes. This feature provides critical insights into the contract amendment hierarchy and lane-level details, aiding in accurate decision-making and traceability. When to Use Amendment Reports At any point when a user needs to review amendments linked to specific contracts or carriers. To understand the history and details of underlying OFAs for decision-making. To filter and navigate the contract hierarchy based on various parameters such as carrier, contract ID, and amendment date range. 1. Accessing the Amendment Report Module Users can access the Amendment Report module directly from the dashboard. This provides a starting point for viewing amendment details and filtering data. 2. Filtering Amendments Users can filter amendments using various criteria, including carrier name, contract details, and a date range for amendments. This flexibility ensures that users can narrow their focus to specific data points as needed. Visualization: Carrier: Narrow down results based on the carrier handling the OFAs. Contract: Review specific contracts linked to amendments. Date Range: Focus on amendments made within a particular timeframe. 3. Viewing Contract Hierarchy The system displays a list of contract hierarchies within the Amendment Report table. Each row represents a specific amendment reference, showing its validity dates and the associated contract details. Key Details: View amendment reference numbers and associated contracts. Quickly identify hierarchical relationships between amendments and contracts. 4. Viewing Underlying Lanes When a user clicks on an amendment reference from the list, the system displays the underlying lane details in table format. This table provides granular information about each lane associated with the amendment, including: Origin and Destination Cities: Indicates the shipment path. Service Level: Shows the type of service applied to the amendment. Customer Type: Indicates whether the shipment is commercial, residential, etc. Other Details: Columns such as origin service, destination service, and lane rates for further insights. Task Visualization Overview The Task Visualization feature in the Rate Maintenance module enables users to create, manage, and assign tasks related to specific contract lanes. This functionality streamlines communication between shippers and carriers by allowing comments, file uploads, and task tracking within the system. Tasks can be assigned to a carrier user with email notifications sent to alert them. Step 1: Navigating to the Active Template Description: Navigate to the Rate Maintenance module and select a template with an Active status. This is the first step to access any specific contract ID for which a task needs to be created. Use the displayed table to select relevant contract IDs or lanes. Step 2: Selecting a Lane and Creating a Task Description: Select a specific lane from the table to work on. Click on the Create Task button to initiate a task related to the selected lane. This functionality allows the shipper to target specific lanes for updates or comments. Step 3: Adding Comments and Uploading Questionnaire Description: After clicking on Create Task , a task creation pop-up appears. The shipper can: Add comments to provide specific instructions or details. Upload a questionnaire file in CSV format for additional data input or queries. Assign the task to the respective carrier user from the dropdown menu. Once completed, click Save to finalize the task creation. Step 4: Task Details and Email Notification Description: Once the task is saved, the system sends an email alert to the assigned carrier user. The created task can be reviewed in the Opened Task Details section. This view includes: Comments entered by the shipper during task creation. Lane-specific details such as commodity type, origin, and destination locations. Assigned users can update the task status or respond to comments as needed. Unit Change Report The Unit Change Report in RateCube is designed to help users quickly identify if any unit or currency has changed in the rate card. This report is crucial for detecting modifications in **unit of measurement (UOM) or currency values, ensuring that any unintended changes are caught before they impact financial calculations. Purpose of the Unit Change Report 🔹 Tracks unit-based modifications** such as changes from grams (gm) to kilograms (kg) or **currency updates. 🔹 Ensures that carriers do not make unintentional unit shifts, which could lead to significant cost discrepancies. 🔹 Provides a clear side-by-side comparison** of previous and modified values, helping users audit rate changes effectively. How to Use the Unit Change Report 1. Access the Unit Change Report Navigate to the Unit Change Report from the OFA and RFA Processes menu. This will open the report screen displaying relevant contracts and rate amendments. 2. Reviewing Unit and Currency Modifications The report highlights any changes in unit or currency fields. Users can see the before-and-after values, making it easier to detect shifts. For example: If a carrier updates a rate from grams (gm) to kilograms (kg) but forgets to adjust the value, it could result in a major difference in cost. Similarly, a currency change from USD to EUR without correct conversion can cause incorrect invoicing. 3. Applying Filters Users can **filter the report** based on: Template Selection: Choose a specific rate template. Date Range: Select the period for which changes need to be reviewed. Unit Type or Currency: Narrow down changes to specific unit modifications. 4. Identifying Critical Discrepancies Any modifications in unit fields or currency values are highlighted in red . This allows users to **quickly identify** discrepancies before finalizing contract amendments. Key Benefits of the Unit Change Report ✅ Prevents costly errors by flagging unit or currency mismatches. ✅ Enhances visibility by clearly marking changes in red. ✅ Ensures data accuracy when revising rate cards and OFA amendments. Troubleshooting Section This troubleshooting guide addresses common issues encountered in the Rate Maintenance dashboard and provides detailed solutions based on real-world scenarios documented in the provided materials. It focuses on error handling, ensuring seamless rate uploads, validations, and contract amendments. 1. File Upload Issues Problem: File upload fails or results in an error message. Potential Causes: File format mismatch (e.g., using .xlsx instead of .csv). Incorrect template selection (e.g., NA template for GT Air rates). Missing mandatory fields in the rate file. Solution: Verify Template Compatibility: Ensure the template corresponds to the rate type (e.g., GT Air, NA). Check Mandatory Fields: Validate that required columns like Carrier, Rate, Validity Period, and Service Level are populated. Correct File Format: Convert the file to .csv or .xlsx as required. Retry Upload: Use the Upload button in the dashboard, select the correct file, and re-submit. Review Validation Summary: Analyze error logs generated by the system, correct errors, and re-upload. 2. Data Validation Errors Problem: Uploaded file passes initial checks but fails validation for specific rows. Potential Causes: Overlapping validity dates for the same carrier or lane. Invalid data types in fields (e.g., text in numeric fields). Conflicts with existing rates or templates. Solution: Review Validation Summary: After upload, check the detailed error log generated by RateCube. Correct Errors: Open the original file, locate highlighted rows, and address specific issues. Common Fixes: Adjust conflicting validity dates, ensure numeric fields (e.g., Rate) contain only numbers. Re-Upload: Once corrected, re-submit the file. 3. Amendment Errors Problem: Errors occur during Partial or Full Amendment processes. Potential Causes: Invalid updates to mandatory fields (e.g., leaving the Base Rate blank). Conflicting changes between Partial and Full Amendment actions. Solution: >Full Amendment Fix: Ensure all fields are filled accurately before submitting. >Review amendment messages like \"Amendment Successful\" to confirm the process. >Partial Amendment Fix: Select specific rows or lanes, verify the validity of edits, and confirm changes. Validation Post-Amendment: Use the Review button to confirm the data integrity of the amendment. Resolve flagged errors before final submission. 4. Export and Advanced Search Issues Problem: Exported files are incomplete, or Advanced Search fails to display results. Potential Causes: Filters applied incorrectly or in conflict. Large datasets causing performance lags. Solution: Reset Filters: Clear all filters and reapply specific search criteria. Refine Search: Use targeted attributes (e.g., Contract ID, Carrier, Validity Period). Export Smaller Batches: Apply filters to narrow data before exporting to minimize file size. Browser Settings: Enable pop-ups and allow downloads from RateCube. 5. Contract Lane Management Errors Problem: Errors appear when managing contract lanes (e.g., Accept, Reject, Revise). Potential Causes: Missing required updates for rejected lanes. Invalid data entry during revision. Solution: Lane Rejection: For rejected lanes, ensure valid corrections are made before clicking Revise. Revision and Resubmission: Update fields like Base Rate or Fuel Surcharge accurately before resubmission. Validation Before Submission: Validate updated rates using the Rate Details view to ensure compliance. Amendment Tracking: Ensure unique amendment numbers are generated and linked correctly. 6. OFA and RFA Process Issues Problem: Issues arise when managing Offers for Amendment (OFA) or Requests for Amendment (RFA). Potential Causes: Incomplete or invalid OFA data during submission. Conflicts in carrier or lane details. Solution: Review OFA Details: Validate the OFA file for missing or invalid fields. Resolve Conflicts: For overlapping lanes, revise specific entries before submitting. Track Unique Identifiers: Ensure unique OFA reference numbers are generated and linked to the correct contract.",
+    "source_url": "http://dev.tcube360.com/help/ratemaintenance.html#ofa-and-rfa-processes-in-rate-maintenance"
+  },
+  {
+    "cube": "Rate Cube",
+    "page_title": "Rate Maintenance User Guide",
+    "page_id": "ratemaintenance.html",
+    "section_title": "Unit Change Report",
+    "content": "The Unit Change Report in RateCube is designed to help users quickly identify if any unit or currency has changed in the rate card. This report is crucial for detecting modifications in **unit of measurement (UOM) or currency values, ensuring that any unintended changes are caught before they impact financial calculations. Purpose of the Unit Change Report 🔹 Tracks unit-based modifications** such as changes from grams (gm) to kilograms (kg) or **currency updates. 🔹 Ensures that carriers do not make unintentional unit shifts, which could lead to significant cost discrepancies. 🔹 Provides a clear side-by-side comparison** of previous and modified values, helping users audit rate changes effectively. How to Use the Unit Change Report 1. Access the Unit Change Report Navigate to the Unit Change Report from the OFA and RFA Processes menu. This will open the report screen displaying relevant contracts and rate amendments. 2. Reviewing Unit and Currency Modifications The report highlights any changes in unit or currency fields. Users can see the before-and-after values, making it easier to detect shifts. For example: If a carrier updates a rate from grams (gm) to kilograms (kg) but forgets to adjust the value, it could result in a major difference in cost. Similarly, a currency change from USD to EUR without correct conversion can cause incorrect invoicing. 3. Applying Filters Users can **filter the report** based on: Template Selection: Choose a specific rate template. Date Range: Select the period for which changes need to be reviewed. Unit Type or Currency: Narrow down changes to specific unit modifications. 4. Identifying Critical Discrepancies Any modifications in unit fields or currency values are highlighted in red . This allows users to **quickly identify** discrepancies before finalizing contract amendments. Key Benefits of the Unit Change Report ✅ Prevents costly errors by flagging unit or currency mismatches. ✅ Enhances visibility by clearly marking changes in red. ✅ Ensures data accuracy when revising rate cards and OFA amendments.",
+    "source_url": "http://dev.tcube360.com/help/ratemaintenance.html#unit-change-report"
+  },
+  {
+    "cube": "Rate Cube",
+    "page_title": "Rate Maintenance User Guide",
+    "page_id": "ratemaintenance.html",
+    "section_title": "Troubleshooting Section",
+    "content": "This troubleshooting guide addresses common issues encountered in the Rate Maintenance dashboard and provides detailed solutions based on real-world scenarios documented in the provided materials. It focuses on error handling, ensuring seamless rate uploads, validations, and contract amendments. 1. File Upload Issues Problem: File upload fails or results in an error message. Potential Causes: File format mismatch (e.g., using .xlsx instead of .csv). Incorrect template selection (e.g., NA template for GT Air rates). Missing mandatory fields in the rate file. Solution: Verify Template Compatibility: Ensure the template corresponds to the rate type (e.g., GT Air, NA). Check Mandatory Fields: Validate that required columns like Carrier, Rate, Validity Period, and Service Level are populated. Correct File Format: Convert the file to .csv or .xlsx as required. Retry Upload: Use the Upload button in the dashboard, select the correct file, and re-submit. Review Validation Summary: Analyze error logs generated by the system, correct errors, and re-upload. 2. Data Validation Errors Problem: Uploaded file passes initial checks but fails validation for specific rows. Potential Causes: Overlapping validity dates for the same carrier or lane. Invalid data types in fields (e.g., text in numeric fields). Conflicts with existing rates or templates. Solution: Review Validation Summary: After upload, check the detailed error log generated by RateCube. Correct Errors: Open the original file, locate highlighted rows, and address specific issues. Common Fixes: Adjust conflicting validity dates, ensure numeric fields (e.g., Rate) contain only numbers. Re-Upload: Once corrected, re-submit the file. 3. Amendment Errors Problem: Errors occur during Partial or Full Amendment processes. Potential Causes: Invalid updates to mandatory fields (e.g., leaving the Base Rate blank). Conflicting changes between Partial and Full Amendment actions. Solution: >Full Amendment Fix: Ensure all fields are filled accurately before submitting. >Review amendment messages like \"Amendment Successful\" to confirm the process. >Partial Amendment Fix: Select specific rows or lanes, verify the validity of edits, and confirm changes. Validation Post-Amendment: Use the Review button to confirm the data integrity of the amendment. Resolve flagged errors before final submission. 4. Export and Advanced Search Issues Problem: Exported files are incomplete, or Advanced Search fails to display results. Potential Causes: Filters applied incorrectly or in conflict. Large datasets causing performance lags. Solution: Reset Filters: Clear all filters and reapply specific search criteria. Refine Search: Use targeted attributes (e.g., Contract ID, Carrier, Validity Period). Export Smaller Batches: Apply filters to narrow data before exporting to minimize file size. Browser Settings: Enable pop-ups and allow downloads from RateCube. 5. Contract Lane Management Errors Problem: Errors appear when managing contract lanes (e.g., Accept, Reject, Revise). Potential Causes: Missing required updates for rejected lanes. Invalid data entry during revision. Solution: Lane Rejection: For rejected lanes, ensure valid corrections are made before clicking Revise. Revision and Resubmission: Update fields like Base Rate or Fuel Surcharge accurately before resubmission. Validation Before Submission: Validate updated rates using the Rate Details view to ensure compliance. Amendment Tracking: Ensure unique amendment numbers are generated and linked correctly. 6. OFA and RFA Process Issues Problem: Issues arise when managing Offers for Amendment (OFA) or Requests for Amendment (RFA). Potential Causes: Incomplete or invalid OFA data during submission. Conflicts in carrier or lane details. Solution: Review OFA Details: Validate the OFA file for missing or invalid fields. Resolve Conflicts: For overlapping lanes, revise specific entries before submitting. Track Unique Identifiers: Ensure unique OFA reference numbers are generated and linked to the correct contract.",
+    "source_url": "http://dev.tcube360.com/help/ratemaintenance.html#troubleshooting-section"
+  },
+  {
+    "cube": "General",
+    "page_title": "In Progress - Admin Cube",
+    "page_id": "tcube-master.html",
+    "section_title": "This Page is Under Construction",
+    "content": "We're working hard to bring this content to you. Please check back soon!",
+    "source_url": "http://dev.tcube360.com/help/tcube-master.html#this-page-is-under-construction"
+  },
+  {
+    "cube": "Audit Cube",
+    "page_title": "Audit Cube User Guides",
+    "page_id": "audit-cube-user-guide.html",
+    "section_title": "Popular Resources",
+    "content": "Advanced Search Learn how you can use visualizations in the Audit Cube dashboards to gain insights Learn more → Upload Files Learn how to upload shipment files with ease and efficiency Learn more → Invoice Approval Learn how you can reject, accept, and raise disputes on invoices from our dashboards Learn more → Discrepancy Report Learn how you can use the dispute dashboard to manage discrepancies across a defined shipment date range Learn more →",
+    "source_url": "http://dev.tcube360.com/help/audit-cube-user-guide.html#popular-resources"
+  },
+  {
+    "cube": "Rate Cube",
+    "page_title": "Rate Simulation User Guide",
+    "page_id": "ratesimulation.html",
+    "section_title": "Overview of Rate Simulation",
+    "content": "The Rate Simulation module in RateCube provides users with an intuitive interface to simulate shipping rates between specified origin and destination locations. By entering shipment details, users can view rate simulations and compare shipping options across various carriers and transport modes. This module is crucial for decision-making, ensuring cost efficiency, and selecting the best carrier for specific logistics needs.",
+    "source_url": "http://dev.tcube360.com/help/ratesimulation.html#overview-of-rate-simulation"
+  },
+  {
+    "cube": "Rate Cube",
+    "page_title": "Rate Simulation User Guide",
+    "page_id": "ratesimulation.html",
+    "section_title": "Location Information",
+    "content": "The \"From\" and \"To\" panels allow users to define the origin and destination locations for the shipment: Location Entry Options: Use a location code by typing into the \"Location\" field (e.g., \"CAA01\" or \"EO01\"). Enter Origin and Destination Countries, Cities, Zip Codes, or Regions. Optional: Include street-level details in \"Address Line 1\" for precise simulations. Mandatory Fields: Origin Country or Zip Code. Destination Country or Zip Code.",
+    "source_url": "http://dev.tcube360.com/help/ratesimulation.html#location-information"
+  },
+  {
+    "cube": "Rate Cube",
+    "page_title": "Rate Simulation User Guide",
+    "page_id": "ratesimulation.html",
+    "section_title": "Adding Shipment Details",
+    "content": "The Shipment Details panel captures the specifics of the shipment: Required Inputs: Shipment Date: Select the date the shipment will be dispatched. Expected Delivery Date: Optional field to define the delivery deadline. Weight/Dimensions: Specify the weight (in lbs or kgs) and dimensions (length, width, height) of the shipment. Number of Pieces: Add the quantity of pieces to ship by clicking the \"+\" Add\" button. The table below updates dynamically to include all added pieces with weight and dimension fields.",
+    "source_url": "http://dev.tcube360.com/help/ratesimulation.html#adding-shipment-details"
+  },
+  {
+    "cube": "Rate Cube",
+    "page_title": "Rate Simulation User Guide",
+    "page_id": "ratesimulation.html",
+    "section_title": "Using Special Services",
+    "content": "The Special Services tab allows users to enable or disable additional shipment requirements: Hazardous Materials: Check this option if the shipment contains hazardous materials. Hold at Location: Use this if the shipment requires holding at the destination location. Enable Transport Lanes: Toggle this option for route-specific simulations.",
+    "source_url": "http://dev.tcube360.com/help/ratesimulation.html#using-special-services"
+  },
+  {
+    "cube": "Rate Cube",
+    "page_title": "Rate Simulation User Guide",
+    "page_id": "ratesimulation.html",
+    "section_title": "Generating Simulations",
+    "content": "Once all the required details are input: Click the \"Search\" button. The Rate Details panel at the bottom of the screen displays the simulated results. Displayed Rate Details: Carrier Code and Account. Stage Type (e.g., Inbound/Outbound). Carrier Name. Mode of Transport (MoT). Total Charges, Currency, Delivery Date, and Transit Days.",
+    "source_url": "http://dev.tcube360.com/help/ratesimulation.html#generating-simulations"
+  },
+  {
+    "cube": "Rate Cube",
+    "page_title": "Rate Simulation User Guide",
+    "page_id": "ratesimulation.html",
+    "section_title": "Customizing Results",
+    "content": "Hiding the Search Panel: To maximize space for simulated results, click the \"Show Search Panel\" toggle. Result View Options: The \"Result Type\" dropdown allows users to switch between Grid View (tabular format) or Detailed View (comprehensive breakdown). Exporting Results: On the top right corner of the table, you can export the simulation to an EXCEL workbook.",
+    "source_url": "http://dev.tcube360.com/help/ratesimulation.html#customizing-results"
+  },
+  {
+    "cube": "Rate Cube",
+    "page_title": "Rate Simulation User Guide",
+    "page_id": "ratesimulation.html",
+    "section_title": "Successful Rate Simulation",
+    "content": "When a rate simulation is successful, the Rate Details section populates with comprehensive information about available shipping options. These results help users evaluate and compare carrier rates, transit times, and other critical shipping details to make informed decisions. The Rate Details Table The Rate Details Table organizes key data points for simulated shipments, including: Carrier Code - Account: Identifies the carrier and account (e.g., FedEx - 740561073). Carrier Name: Shows the carrier providing the service (e.g., FedEx, UPS). Service Code & Description: Displays the service type and details (e.g., \"FedEx Priority Overnight\"). Mode of Transport (MoT): Specifies the shipment method (e.g., Ground, Air). Total Charges: Lists the shipment cost, including fees (e.g., $234.40). Currency: Denotes the currency used (e.g., USD). Delivery Date: Provides the estimated delivery time (e.g., \"2024-12-10 17:00:00\"). Transit Days: Indicates the shipment duration in days (e.g., 3 days).",
+    "source_url": "http://dev.tcube360.com/help/ratesimulation.html#successful-rate-simulation"
+  },
+  {
+    "cube": "Rate Cube",
+    "page_title": "Rate Simulation User Guide",
+    "page_id": "ratesimulation.html",
+    "section_title": "Key Features",
+    "content": "Collapsible Sections: Each carrier (e.g., FedEx, UPS Parcel) is displayed in a separate collapsible row for ease of navigation. Enable Route Guide: Activating this option limits the carrier selection to predefined routes set in the system configuration. Blue Folder Button: Located on the right of the table. Allows users to view raw request details, providing insights into the data used for simulation for each carrier. Results Overview: Shows essential details like carrier names, service descriptions, and charges, while omitting unnecessary details for simplicity.",
+    "source_url": "http://dev.tcube360.com/help/ratesimulation.html#key-features"
+  },
+  {
+    "cube": "General",
+    "page_title": "In Progress - Admin Cube",
+    "page_id": "lane.html",
+    "section_title": "This Page is Under Construction",
+    "content": "We're working hard to bring this content to you. Please check back soon!",
+    "source_url": "http://dev.tcube360.com/help/lane.html#this-page-is-under-construction"
+  },
+  {
+    "cube": "Audit Cube",
+    "page_title": "Audit Cube - Invoice Dashboard",
+    "page_id": "invoicedash.html",
+    "section_title": "Invoice Table Overview",
+    "content": "The Invoice Dashboard displays a table format similar to other dashboards but focuses on invoice-related data. Key columns include Audit Status, Tracking Number, Shipment ID, Carrier Account Number, Total Shipment Charges, Invoice Amount, Freight Difference Value, and Disputed Amount. Expandable Rows: Users can click the arrow next to an Invoice Number to expand the row and view additional details about that invoice, such as the items included, audit status, and dispute status. Filter Tools: The icon next to the download button on the upper right corner of the dashboard allows users to filter tracking numbers by audit status, invoice number, dispute status, and dispute category.",
+    "source_url": "http://dev.tcube360.com/help/invoicedash.html#invoice-table-overview"
+  },
+  {
+    "cube": "Audit Cube",
+    "page_title": "Audit Cube - Invoice Dashboard",
+    "page_id": "invoicedash.html",
+    "section_title": "Self-Help Options",
+    "content": "In the Invoice Dashboard, users have access to additional options for each shipment to facilitate detailed review and audit. Here’s an overview of the tools and resources available upon selecting a shipment: Audit Results Overview (Blue Paper Icon) Clicking the blue paper icon next to a shipment will open a detailed Audit Results pop-up. This view provides comprehensive information on the audit status, enabling users to review findings and discrepancies. This feature is designed to mirror the audit result layout available on other dashboards, ensuring consistency across platforms. Package Details (Tracking Number Link) Clicking on the Tracking Number to the right of the audit result paper icon opens a view displaying Package Details within the shipment. This window offers in-depth information about each package, including specifics such as: Package Number: A unique identifier for each package within the shipment. Actual Weight and Billed Weight: The weight metrics are critical for validating shipment charges. Dimensions: Length, width, and height for each package, providing transparency on volumetric calculations that may impact freight costs. Shipment Charges Breakdown (Click on Shipment Charge Amount) Users can click on the Total Shipment Charges amount for a breakdown of all applicable charges and taxes. This Shipment Charges and Taxes window categorizes each charge associated with the shipment, detailing: Charge Code and Description: Each charge is identified by a unique code and description (e.g., OC Handling, Customs, Fuel Surcharge). Charge Value: The specific cost associated with each service or tax applied to the shipment, giving users a granular view of how charges are calculated.",
+    "source_url": "http://dev.tcube360.com/help/invoicedash.html#self-help-options"
+  },
+  {
+    "cube": "Audit Cube",
+    "page_title": "Audit Cube - Invoice Dashboard",
+    "page_id": "invoicedash.html",
+    "section_title": "Toolbar Menu for Invoice Actions",
+    "content": "The Invoice Dashboard in Audit Cube provides a variety of tools accessible from the three-dot menu beside each tracking number, allowing users to generate, view, and download critical documents associated with specific shipments. Below is a breakdown of each feature in the toolbar menu and guidance on maximizing their use. Simulate Audit Results: Generates a simulated audit report in Excel format without saving it in the database. It includes audit status, invoice/dispute data, and itemized charges, allowing review without affecting live data. Transmit Audit Results: Transfers finalized audit results to SAP, committing validated audit conclusions to the ERP system. Download Original Invoice: Downloads the original invoice document containing carrier-submitted details like shipment ID, total charges, and line-item data, useful for verification. Simulate Dispute Results: Generates a simulated dispute report in Excel format without saving it in the database. This report includes dispute status, category, and projected financial impact, allowing users to preview dispute details without affecting live data. Transmit Dispute Results: Transfers finalized dispute results to SAP, updating the ERP system with confirmed dispute data for official record-keeping and financial tracking. View PDF: Opens a PDF version of the invoice, displaying all relevant information for the specific shipment in a non-editable format. This is useful for sharing a read-only version of the invoice with external stakeholders or for archival purposes.",
+    "source_url": "http://dev.tcube360.com/help/invoicedash.html#toolbar-menu-for-invoice-actions"
+  },
+  {
+    "cube": "Audit Cube",
+    "page_title": "Audit Cube - Invoice Dashboard",
+    "page_id": "invoicedash.html",
+    "section_title": "Uploading Invoice Files",
+    "content": "Audit Cube allows for seamless invoice processing through both automated and manual methods. The Invoice Upload feature enables users to manually upload invoice files in the required format for processing. Automated Invoice Processing Invoices are typically fetched automatically from carrier systems via SFTP integration. The system processes invoices in CSV format, retrieving them from the designated folder for each carrier. Once fetched, the invoices are automatically processed and made available in the Invoice Dashboard. Manual Invoice Upload For carriers that do not support automatic processing or when users need to manually upload invoices, Audit Cube provides an easy-to-use upload function. Important: Every carrier has a unique invoice file format. The system is designed to recognize only the pre-approved formats for each carrier. Ensure the correct format is used to prevent upload errors. Steps to Upload an Invoice File Click the Upload button on the Invoice Dashboard. A popup screen will appear, allowing users to select the invoice file from their desktop. Drag and drop the file into the designated area or manually browse for the file. Select the appropriate Carrier and Carrier Account from the dropdown menu. Once selected, the file name will be displayed in the upload dialog. Click Submit to process the invoice file. After processing, the system will display a success or failure message, indicating whether the upload was successful. Viewing Processed Invoices After a successful upload, invoices appear in the Invoice Dashboard. This dashboard provides detailed insights into each uploaded invoice, including: Invoice document details, such as carrier and account information. Navigation to related tracking numbers and shipment data. Options for managing disputes and reviewing audit details. Automated audit processing, ensuring immediate visibility and validation of invoice data.",
+    "source_url": "http://dev.tcube360.com/help/invoicedash.html#uploading-invoice-files"
+  },
+  {
+    "cube": "Audit Cube",
+    "page_title": "Audit Cube - Invoice Dashboard",
+    "page_id": "invoicedash.html",
+    "section_title": "Filtering and Sorting Invoices",
+    "content": "The filter icon, located next to the Upload button, allows users to sort and filter invoices based on specific variables such as Invoice Number, Audit Status, Dispute Status, and Dispute Category. How to Use Filters: For example, by selecting the Audit Status filter, users can view all invoices by their approval status, allowing them to prioritize and address outstanding issues.",
+    "source_url": "http://dev.tcube360.com/help/invoicedash.html#filtering-and-sorting-invoices"
+  },
+  {
+    "cube": "Audit Cube",
+    "page_title": "Audit Cube - Invoice Dashboard",
+    "page_id": "invoicedash.html",
+    "section_title": "Audit Details",
+    "content": "The Audit Details section within the Invoice Dashboard provides an in-depth analysis of invoice discrepancies by comparing expected charges with actual invoice amounts. To review an audited invoice: Navigate to the Invoice Dashboard . Locate the desired invoice entry and click on the Audit Detail button. A detailed breakdown of the audited invoice line will be displayed, including: Carrier Code: Identifies the service provider. Service Code: Specifies the type of service rendered. Shipment and Invoice Charge Details: Displays a comparison between expected and billed charges. Billing and Shipping Information: Lists the invoice recipient and shipper details. Discrepancy Analysis: Highlights variations in freight charges, surcharges, or invoice totals. To gain a comprehensive understanding of invoice audits, users can scroll further down to the Audit Results section. This section consolidates key financial insights, including total invoice amounts, discrepancies, and variance calculations, ensuring a clear breakdown of invoice accuracy.",
+    "source_url": "http://dev.tcube360.com/help/invoicedash.html#audit-details"
+  },
+  {
+    "cube": "Audit Cube",
+    "page_title": "Audit Cube - Invoice Dashboard",
+    "page_id": "invoicedash.html",
+    "section_title": "Audit Trail",
+    "content": "The Audit Trail feature in the Invoice Dashboard enables users to track the history of audit comments, updates, and assignments related to a dispute line. This functionality ensures transparency and accountability by maintaining a log of all modifications and discussions associated with an invoice item. To update the audit comments for a dispute line: Navigate to the Invoice Dashboard . Locate the relevant invoice and click on the Audit Detail button. Enter the necessary comments regarding the dispute in the designated field. Assign the dispute to the appropriate processor for review and resolution. Click Save to store the audit comments. Once saved, the comments are recorded in the audit trail of the invoice item. These notes serve as a detailed log of all interactions, providing a comprehensive historical record of discussions, reviews, and updates for the associated line item.",
+    "source_url": "http://dev.tcube360.com/help/invoicedash.html#audit-trail"
+  },
+  {
+    "cube": "Audit Cube",
+    "page_title": "Audit Cube - Invoice Dashboard",
+    "page_id": "invoicedash.html",
+    "section_title": "Troubleshooting Tips",
+    "content": "Invoice Upload Issues: Issue: If an invoice file fails to upload, it is likely due to an incorrect file format or improperly formatted data within the CSV. Solution: Verify File Format: Double-check that the file is saved in CSV format. Excel or other file formats will not be accepted by the system. Check Data Formatting: Ensure that all required fields in the CSV are populated correctly and that the data adheres to the expected format (e.g., date formats, numerical values). Re-upload: After correcting any issues, try uploading the file again. Filter Not Applying Correctly: Issue: Filters might not return the expected results, especially if there are conflicting filters applied or if the data does not match the selected criteria. Solution: Clear All Filters: Start by clearing all filters and reapplying them one by one to identify any conflicts. Expand Criteria: If the filter is too narrow, try expanding the criteria (e.g., selecting a broader date range or including multiple statuses) to capture the relevant data. Refresh the Dashboard: If the filter results still seem incorrect, try refreshing the dashboard to ensure that all data is up to date. Dispute Workflow Issues: Issue: Disputed invoices may not be moving through the workflow as expected, or users might not be able to track the dispute status accurately. Solution: Check Workflow Settings: Verify that the dispute workflow settings are correctly configured in the system. This includes ensuring that all necessary statuses are active and that communication logs are being updated. Contact Support: If workflow issues persist, contact technical support to review the system settings and ensure that the workflow is functioning as intended.",
+    "source_url": "http://dev.tcube360.com/help/invoicedash.html#troubleshooting-tips"
+  },
+  {
+    "cube": "Admin Cube",
+    "page_title": "In Progress - Admin Cube",
+    "page_id": "location.html",
+    "section_title": "This Page is Under Construction",
+    "content": "We're working hard to bring this content to you. Please check back soon!",
+    "source_url": "http://dev.tcube360.com/help/location.html#this-page-is-under-construction"
+  },
+  {
+    "cube": "Admin Cube",
+    "page_title": "Role - Admin Cube",
+    "page_id": "role.html",
+    "section_title": "Navigating to Role Management",
+    "content": "Go to Admin Cube from the main dashboard. Click on Roles in the navigation sidebar. Select the respective role from the list. Click the Pencil (Edit) button to modify role permissions.",
+    "source_url": "http://dev.tcube360.com/help/role.html#navigating-to-role-management"
+  },
+  {
+    "cube": "Admin Cube",
+    "page_title": "Role - Admin Cube",
+    "page_id": "role.html",
+    "section_title": "Role Types",
+    "content": "TCube applications support two types of roles to manage security and access levels: Master Role Type: Grants access and privileges at the module level, such as Rate Cube, Audit Cube, or Admin Cube. Best suited for administrators who need broad access across multiple modules. Custom Role Type: Provides access control at a finer level, allowing permissions within specific functionalities of each module. Best suited for users with specialized responsibilities within the system.",
+    "source_url": "http://dev.tcube360.com/help/role.html#role-types"
+  },
+  {
+    "cube": "Admin Cube",
+    "page_title": "Role - Admin Cube",
+    "page_id": "role.html",
+    "section_title": "Privileges",
+    "content": "The Privileges section defines the permissions granted to each role. Admins can enable or restrict access to specific functions by selecting the appropriate checkboxes. Permissions are categorized by levels, such as: Read: Allows users to view data and access information without making modifications. Write: Grants users the ability to create or modify entries within the module. Delete: Enables users to remove records from the system. How to Manage Privileges: Navigate to the Roles section in Admin Cube. Click on the desired role. Adjust privileges using the available checkboxes. Click Save to confirm the changes.",
+    "source_url": "http://dev.tcube360.com/help/role.html#privileges"
+  },
+  {
+    "cube": "Admin Cube",
+    "page_title": "Role - Admin Cube",
+    "page_id": "role.html",
+    "section_title": "Accounts Access",
+    "content": "The Accounts Access tab controls which carrier accounts a role can access. A role can be restricted to specific carrier accounts, ensuring data security and compliance. Assigning carrier accounts to a role allows users within that role to manage only authorized accounts. Steps to Configure Accounts Access: Select the Roles tab. Click on the desired role. Open the Accounts Access section. Assign or remove carrier accounts as needed.",
+    "source_url": "http://dev.tcube360.com/help/role.html#accounts-access"
+  },
+  {
+    "cube": "Admin Cube",
+    "page_title": "Role - Admin Cube",
+    "page_id": "role.html",
+    "section_title": "Approval Workflow",
+    "content": "The Approval Workflow is integrated into Rate Cube Processes to regulate rate uploads and revisions. Roles can be configured with approval responsibilities, ensuring a controlled review process. The approver indicator and approval level must be selected for a role to function as a rate approver. Steps to Assign Approval Workflow to a Role: Open the Roles tab in Admin Cube. Select a role that requires approval responsibilities. Navigate to the Approval Workflow section. Enable the Approver Indicator and define the Approval Level. Click Save to apply the changes. The critical user activities are logged in the application. In Rate Maintenance, the Rate Header screen shows user actions and date(s) of modification.",
+    "source_url": "http://dev.tcube360.com/help/role.html#approval-workflow"
+  },
+  {
+    "cube": "Admin Cube",
+    "page_title": "Admin Cube User Guides",
+    "page_id": "admincube.html",
+    "section_title": "Popular Resources",
+    "content": "Carrier Management Learn how to add, edit, and configure carrier details. Learn more → Account Configuration Set up accounts for carriers, including thresholds and origin details. Learn more → Location Details Manage location-based configurations for contracts and lanes. Learn more → Charge Mapping Map charges for carriers and lanes with precision. Learn more →",
+    "source_url": "http://dev.tcube360.com/help/admincube.html#popular-resources"
+  },
+  {
+    "cube": "Rate Cube",
+    "page_title": "In Progress - Admin Cube",
+    "page_id": "exchange-rates.html",
+    "section_title": "This Page is Under Construction",
+    "content": "We're working hard to bring this content to you. Please check back soon!",
+    "source_url": "http://dev.tcube360.com/help/exchange-rates.html#this-page-is-under-construction"
+  },
+  {
+    "cube": "Admin Cube",
+    "page_title": "Carrier | Admin Cube User Guides",
+    "page_id": "carrier.html",
+    "section_title": "Overview",
+    "content": "The Carrier tab in Admin Cube is a comprehensive feature designed to manage carrier details effectively. This module provides a centralized interface for creating, updating, uploading, and exporting carrier data. With an intuitive dashboard, users can perform essential tasks like carrier setup, template downloads, and table exports.",
+    "source_url": "http://dev.tcube360.com/help/carrier.html#overview"
+  },
+  {
+    "cube": "Admin Cube",
+    "page_title": "Carrier | Admin Cube User Guides",
+    "page_id": "carrier.html",
+    "section_title": "Key Features of the Carrier Tab",
+    "content": "Dashboard Navigation: Provides access to existing carriers in a table format. Displays carrier codes, descriptions, identifiers, weight units (UOM), dimension units (UOM), and surcharge types. Carrier Creation: Users can add new carriers by clicking the \"+\" icon. Details such as carrier code, description, weight UOM, dimension UOM, and surcharge type can be entered. Uploading Carrier Data: Users can upload carrier data in bulk using a CSV file by clicking the Cloud Upload button. Template CSV files can be downloaded to populate and upload carrier details seamlessly. Export Functionality: Export existing table data into an Excel file by clicking the Export to Excel button. Ensures easy offline access and data sharing.",
+    "source_url": "http://dev.tcube360.com/help/carrier.html#key-features-of-the-carrier-tab"
+  },
+  {
+    "cube": "Admin Cube",
+    "page_title": "Carrier | Admin Cube User Guides",
+    "page_id": "carrier.html",
+    "section_title": "Editing Existing Carriers",
+    "content": "To modify carrier details, use the pencil icon next to an existing carrier entry in the Carrier tab. This allows users to update essential fields to ensure accurate data representation and consistency across the system. Editable Fields: Carrier Code: A unique identifier for the carrier. Carrier Description: A brief text description providing details about the carrier. Identifier: Specifies an internal reference for the carrier. Weight UOM: Defines the unit in which the carrier measures weight (e.g., LB, KG). Dimension UOM: Specifies the unit used for dimensions (e.g., IN, CM). Surcharge Type: Determines the type of additional charges applied, which can be set as a percentage or a fixed amount. After making the necessary changes, click Save to update the carrier record.",
+    "source_url": "http://dev.tcube360.com/help/carrier.html#editing-existing-carriers"
+  },
+  {
+    "cube": "Admin Cube",
+    "page_title": "Carrier | Admin Cube User Guides",
+    "page_id": "carrier.html",
+    "section_title": "Surcharge Types and Their Meaning",
+    "content": "Surcharges define additional costs applied to shipping services based on different criteria. The available surcharge types include: RateAPI: Uses predefined API-based surcharge calculations set by the carrier. SurchargeAPI: Applies surcharges based on dynamic API values that fluctuate depending on carrier rules. ByMileage: Charges based on the distance traveled, typically used for road-based transport services. ByPercentage: Calculates the surcharge as a percentage of the total shipping cost.",
+    "source_url": "http://dev.tcube360.com/help/carrier.html#surcharge-types-and-their-meaning"
+  },
+  {
+    "cube": "Admin Cube",
+    "page_title": "Carrier | Admin Cube User Guides",
+    "page_id": "carrier.html",
+    "section_title": "Uploading New Carriers",
+    "content": "Creating a New Carrier Manually: Click on the \"+\" icon in the top-right menu. Fill in the required fields: Carrier Code: A unique identifier as per the rate template. Carrier Description: A brief description of the carrier. Identifier, Weight UOM, and Dimension UOM: Specific details related to the carrier. Surcharge Type: Optional selection, based on additional charges. Click Save to complete the carrier setup.",
+    "source_url": "http://dev.tcube360.com/help/carrier.html#uploading-new-carriers"
+  },
+  {
+    "cube": "Admin Cube",
+    "page_title": "Carrier | Admin Cube User Guides",
+    "page_id": "carrier.html",
+    "section_title": "Table Features",
+    "content": "Column Information: Displays the carrier code, description, identifier, and various units of measurement. Search and Navigation: Utilize the search bar at the top of the table to locate specific carriers quickly. Edit Existing Carriers: Click the pencil icon to edit carrier details. Exporting Data: Click the Export to Excel button to download the table view into an Excel file.",
+    "source_url": "http://dev.tcube360.com/help/carrier.html#table-features"
+  },
+  {
+    "cube": "Admin Cube",
+    "page_title": "Carrier | Admin Cube User Guides",
+    "page_id": "carrier.html",
+    "section_title": "Shipment",
+    "content": "Upon clicking the gear icon from the main table, the user has access to various configuration menus. This tab configures shipment-specific details, including: Tracking Number Range: Specifies the format and range of tracking numbers assigned to shipments. Shipment API Configurations: Establishes API endpoints for real-time shipment tracking. Label Template/Master Setup: Manages label formatting and template selection for different carriers. Shipment Criteria The Criteria field in the Shipment tab is defined by the carrier and determines how tracking number ranges are categorized. Each carrier may have different criteria based on the mode of transport, such as: Ocean Shipments: Tracking numbers assigned for maritime freight. Air Shipments: Categorized for tracking air cargo movements. Road Shipments: Assigned for truck and land-based freight tracking. These criteria ensure that tracking numbers are assigned according to the carrier's operational structure and shipment handling rules.",
+    "source_url": "http://dev.tcube360.com/help/carrier.html#shipment"
+  },
+  {
+    "cube": "Admin Cube",
+    "page_title": "Carrier | Admin Cube User Guides",
+    "page_id": "carrier.html",
+    "section_title": "Transmission",
+    "content": "Configures API integration details for data transmission between the system and carriers. To make modifications, click the Edit button at the bottom of the screen, adjust the required fields, and then click Save to apply changes. Interface Types Defines communication protocols. Options include: EDI (Electronic Data Interchange): Used for structured data exchanges between systems. API: Enables real-time communication with carrier systems. Manual: Allows manual entry of shipment data without automation. API Endpoints Specifies the endpoints for data exchange, ensuring smooth integration between systems. Login Credentials Stores authentication details such as username and authentication keys for secure API access.",
+    "source_url": "http://dev.tcube360.com/help/carrier.html#transmission"
+  },
+  {
+    "cube": "Admin Cube",
+    "page_title": "Carrier | Admin Cube User Guides",
+    "page_id": "carrier.html",
+    "section_title": "Rate Config",
+    "content": "This tab manages carrier rate structures and configurations, including: Rate Types: Supports API rate calculations or Rate Cube table-based structures. Rate Templates: Predefined templates for rate application. OFA/RAFA Process: Configuration options for rate adjustments and surcharge applications.",
+    "source_url": "http://dev.tcube360.com/help/carrier.html#rate-config"
+  },
+  {
+    "cube": "Admin Cube",
+    "page_title": "Carrier | Admin Cube User Guides",
+    "page_id": "carrier.html",
+    "section_title": "Track Config",
+    "content": "Defines tracking API configurations for carriers, supporting both individual and bulk tracking: Bulk Track User Config: Configures tracking sources and destinations. Endpoint & Login Details: API credentials for tracking data access. Upload & Download Frequencies: Specifies how often tracking data is updated and retrieved.",
+    "source_url": "http://dev.tcube360.com/help/carrier.html#track-config"
+  },
+  {
+    "cube": "Admin Cube",
+    "page_title": "Carrier | Admin Cube User Guides",
+    "page_id": "carrier.html",
+    "section_title": "Services",
+    "content": "Each carrier provides different service levels. The Services tab captures: Service Codes: Unique codes representing different service levels (e.g., overnight, ground, expedited). Service Descriptions: Explanation of each service offering. Mode of Transport (MoT): Defines whether the service is by air, road, or other transport methods.",
+    "source_url": "http://dev.tcube360.com/help/carrier.html#services"
+  },
+  {
+    "cube": "Admin Cube",
+    "page_title": "Carrier | Admin Cube User Guides",
+    "page_id": "carrier.html",
+    "section_title": "Charges",
+    "content": "This section defines carrier-specific charge types and invoice configurations. Charge Types: Base charge, fuel surcharge, residential shipment fees, etc. API Charge Classes: Maps system charge categories to carrier API categories. Invoice Thresholds: Specifies billing thresholds before disputes are triggered. By configuring these tabs appropriately, users can ensure seamless carrier integration and accurate data management within Admin Cube.",
+    "source_url": "http://dev.tcube360.com/help/carrier.html#charges"
+  },
+  {
+    "cube": "Audit Cube",
+    "page_title": "Audit Cube - Dispute Dashboard",
+    "page_id": "disputedash.html",
+    "section_title": "Overview",
+    "content": "The Dispute Dashboard in Audit Cube is a dedicated workspace for managing and resolving disputes on invoices associated with shipments. Unlike other dashboards, the Dispute Dashboard provides tools to review, track, and resolve disputes in real-time. This feature is designed for financial and logistics teams to efficiently handle discrepancies between invoiced amounts and approved charges. With options to manually approve disputes, access detailed audit results, track changes, and filter views, the Dispute Dashboard facilitates a streamlined dispute resolution process.",
+    "source_url": "http://dev.tcube360.com/help/disputedash.html#overview"
+  },
+  {
+    "cube": "Audit Cube",
+    "page_title": "Audit Cube - Dispute Dashboard",
+    "page_id": "disputedash.html",
+    "section_title": "Table Overview",
+    "content": "The dashboard displays dispute-related data in a table format with key columns such as: Dispute ID Carrier - Account Number Invoice Number Tracking Number Shipment ID Dispute Amount Dispute Status Rows are expandable by clicking the arrow next to an invoice number, revealing additional actions and data related to the invoice.",
+    "source_url": "http://dev.tcube360.com/help/disputedash.html#table-overview"
+  },
+  {
+    "cube": "Audit Cube",
+    "page_title": "Audit Cube - Dispute Dashboard",
+    "page_id": "disputedash.html",
+    "section_title": "Navigating the Dashboard",
+    "content": "Expand All Located in the top left, the black arrow button allows users to expand all invoices at once, providing a quick overview of each invoice’s details and status. Filtering and Sorting The dropdown filter in the top right corner enables sorting by criteria such as Invoice Number, Audit Status, Dispute Status, and Dispute Category . This allows users to prioritize disputes by specific attributes, streamlining the review process. Exporting Data Users can export the Dispute Dashboard data into an Excel file using the export icon at the top right. This feature is ideal for offline analysis and record-keeping. Column Configuration The Column Configurator next to the export icon provides the flexibility to hide or display specific columns, customizing the view to focus on essential data points. Dispute Management The Dispute Change button in the Dispute Dashboard allows users to manage disputes efficiently. Users can: Update audit comments for a dispute line. Modify the dispute category and its current status. Assign the dispute to a specific processor for further investigation or resolution. By leveraging these capabilities, users can ensure that disputes are tracked, managed, and resolved systematically within the platform.",
+    "source_url": "http://dev.tcube360.com/help/disputedash.html#navigating-the-dashboard"
+  },
+  {
+    "cube": "Audit Cube",
+    "page_title": "Audit Cube - Dispute Dashboard",
+    "page_id": "disputedash.html",
+    "section_title": "KPIs",
+    "content": "File Count: Displays the total number of disputes and the number currently being viewed based on applied filters. Total Dispute Rates by Month: A bar chart visualizing the number of disputes per month. Helps identify seasonal patterns or spikes in disputes. Top Dispute Categories: A bar chart showing the most common dispute categories (e.g., Cost Calculation, Duplicate, Rate Issue). Useful for identifying recurring issues that may need systemic resolution. Total Dispute Rates by Carrier Code: Highlights which carriers (e.g., FedEx, UPS) have the highest dispute rates. Helps identify potential carrier-specific issues or opportunities for improvement.",
+    "source_url": "http://dev.tcube360.com/help/disputedash.html#kpis"
+  },
+  {
+    "cube": "Audit Cube",
+    "page_title": "Audit Cube - Dispute Dashboard",
+    "page_id": "disputedash.html",
+    "section_title": "Discrepancy Report",
+    "content": "The Discrepancy Report displays a detailed list of shipment records where pricing mismatches have been identified between the invoiced amount and the expected charge amount. This report is part of the Dispute Dashboard in Audit Cube and helps users monitor and analyze discrepancies across a defined shipment date range. Purpose: The Discrepancy Report allows users to identify specific records where carrier charges deviate from the expected rates calculated by the system. It provides visibility into key shipment, pricing, and route information, supporting internal audits and dispute resolution workflows. Data Available in the Report: Tracking Number: Unique shipment ID used to trace the package. Job Number: Internal reference used to connect the shipment to business processes. Invoice Number: Carrier-provided reference tied to the billing document. Carrier Account Number: Account under which the shipment was billed. Carrier Code: Name or code of the carrier (e.g., QuickStat). Invoice Amount: Amount billed by the carrier. Expected Charge Amount: System-calculated amount based on internal rates and logic. Shipment Date: Date the shipment was created or picked up. Shipper City/Country: Origin location of the shipment. Recipient City/Country: Destination location of the shipment. Base Rate Difference: The portion of the discrepancy attributed to base rate mismatch. International Rule Amount: Indicates any adjustments due to international routing rules. Discrepancies are visually flagged in the table—particularly where the Expected Charge Amount is zero or when a Base Rate Difference is present—making it easier for users to identify problematic records at a glance. The donut chart above the table summarizes the types of mismatches (e.g., charge mismatch, fuel surcharge issue), providing a high-level view of discrepancy categories. This report is filterable by date and searchable by shipment attributes, enabling users to quickly locate and act on records requiring further audit or escalation.",
+    "source_url": "http://dev.tcube360.com/help/disputedash.html#discrepancy-report"
+  },
+  {
+    "cube": "Audit Cube",
+    "page_title": "Audit Cube - Dispute Dashboard",
+    "page_id": "disputedash.html",
+    "section_title": "Troubleshooting Tips",
+    "content": "1. Data Not Loading Properly Issue: Table data or KPIs fail to load. Solution: Ensure your internet connection is stable. Refresh the page using your browser’s refresh button or Ctrl + R. Clear your browser cache and cookies, then reload the dashboard. Verify if the export functionality or other tools (like column configuration) are functioning. If not, contact technical support. 2. Export Functionality Not Working Issue: Unable to export the dispute data to Excel. Solution: Confirm that you have the necessary permissions to export data. Ensure all data is loaded before attempting export. Try exporting smaller data sets by applying filters to reduce the volume. 3. Filters Not Applying Issue: Filters for sorting disputes by status, category, or other criteria don’t work as expected. Solution: Check if the dropdown menus are visible and operational. Ensure no conflicting filters are applied simultaneously. Clear all filters using the reset option and apply one filter at a time. 4. Icons Not Responding Issue: The green check, blue paper, or green comment icons don’t respond when clicked. Solution: Verify if your browser has pop-ups enabled; some actions may require pop-up windows. Refresh the page or try accessing the feature from another browser or device. 5. KPI Charts Not Displaying Issue: KPI visualizations for dispute rates or top categories are blank or incorrect. Solution: Confirm that the page has fully loaded. Check if filters are hiding data. Adjust or remove filters to broaden the data view. Verify the data source is correctly updated by ensuring recent disputes or approvals are logged. 6. Slow Dashboard Performance Issue: Dashboard is slow to respond or freezes. Solution: Limit the number of rows displayed by collapsing rows or viewing fewer columns. Close unnecessary browser tabs or restart the browser to free up memory.",
+    "source_url": "http://dev.tcube360.com/help/disputedash.html#troubleshooting-tips"
+  },
+  {
+    "cube": "General",
+    "page_title": "Audit Cube - Main Dashboard",
+    "page_id": "maindash.html",
+    "section_title": "Table Overview",
+    "content": "The Audit Cube’s Main Dashboard is the central hub where users can view, analyze, and manage shipment, invoice, and dispute data. This dashboard provides a comprehensive view of the audit process through various tools, such as tables, charts, and visualization tools that summarize data and assist in decision-making.",
+    "source_url": "http://dev.tcube360.com/help/maindash.html#table-overview"
+  },
+  {
+    "cube": "General",
+    "page_title": "Audit Cube - Main Dashboard",
+    "page_id": "maindash.html",
+    "section_title": "Audit Results",
+    "content": "Located on the far left of the table, the blue paper icon takes users to the detailed audit results page for each shipment. This page provides a comprehensive breakdown of the shipment details, including shipper and recipient addresses, service codes, and other relevant data.",
+    "source_url": "http://dev.tcube360.com/help/maindash.html#audit-results"
+  },
+  {
+    "cube": "General",
+    "page_title": "Audit Cube - Main Dashboard",
+    "page_id": "maindash.html",
+    "section_title": "Advanced Search",
+    "content": "The search icon allows users to perform advanced searches across various parameters such as Tracking Number, Shipment ID, Invoice Number, Dispute ID, Shipment Date, and more. This feature enables users to quickly find specific records or filter the table to display only relevant data.",
+    "source_url": "http://dev.tcube360.com/help/maindash.html#advanced-search"
+  },
+  {
+    "cube": "General",
+    "page_title": "Audit Cube - Main Dashboard",
+    "page_id": "maindash.html",
+    "section_title": "Visualization Tools & Insights",
+    "content": "Freight Spend Per Month: A chart that summarizes the freight spend for the selected period, providing insights into monthly trends. Users can view their total freight spend and compare it across different months. Audit Status Summary: Displays the status of invoices and shipments, showing the percentage of packages that have been audited and approved, are awaiting invoice, or have discrepancies. This visualization helps users quickly identify areas that need attention. Auto Match Status: A doughnut chart that indicates the percentage of records that have been automatically matched, providing a quick overview of the audit accuracy and reducing manual workload.",
+    "source_url": "http://dev.tcube360.com/help/maindash.html#visualization-tools-insights"
+  },
+  {
+    "cube": "General",
+    "page_title": "Audit Cube - Main Dashboard",
+    "page_id": "maindash.html",
+    "section_title": "Troubleshooting",
+    "content": "Data Not Loading Properly: Issue: If the data within the dashboard fails to load, this might be due to a slow network connection or a temporary issue with the platform. Solution: Refresh the Page: Start by refreshing the page to see if the data loads correctly. Check Network Connection: Ensure that your internet connection is stable. Clear Browser Cache: Sometimes, cached data may cause loading issues. Clearing your browser’s cache can help resolve this. Contact Support: If the issue persists after trying these steps, it’s advisable to contact the technical support team for further assistance. Advanced Search Not Returning Expected Results: Issue: When using the Advanced Search feature, you may not get the results you expected, which could be due to incorrect search parameters or filters. Solution: Double-Check Parameters: Make sure that all search parameters (like Tracking Number, Shipment ID, Invoice Number, etc.) are correctly entered. A single incorrect digit or letter can lead to no results or incorrect data. Clear Filters: If you have multiple filters applied, try clearing them to ensure they are not conflicting with each other. You can start fresh by reapplying filters one at a time to narrow down your search accurately. Broaden Search Criteria: If your search is too narrow (e.g., specifying a very short date range or exact match), try broadening the criteria to ensure you capture the relevant data. Export Issues (Excel Export Not Working): Issue: If you’re unable to export the table data to Excel, it might be due to browser settings or a temporary issue with the platform. Solution: Try a Different Browser: Sometimes, certain browsers may block pop-ups or downloads. Trying another browser might resolve this issue. Check Pop-up Blockers: Ensure that your browser’s pop-up blocker isn’t preventing the download. Allow pop-ups for the Audit Cube platform if necessary. Check File Size Limits: Large datasets might cause export issues. If possible, try exporting smaller subsets of data to see if that resolves the issue.",
+    "source_url": "http://dev.tcube360.com/help/maindash.html#troubleshooting"
+  }
+]

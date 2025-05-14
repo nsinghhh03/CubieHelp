@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Audit Cube - Invoice Dashboard</title>
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&display=swap">
+    <style>
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: white;
+            color: #333;
+            padding: 20px;
+            line-height: 1.6;
+        }
+
+        /* Breadcrumb navigation styling */
+        .breadcrumb {
+            font-size: 14px;
+            color: #888;
+            margin-bottom: 20px;
+            text-align: left;
+            position: relative;
+            z-index: 1000;
+        }
+
+        .breadcrumb a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .breadcrumb a:hover {
+            text-decoration: underline;
+            color: #3a86ff;
+        }
+
+        h1, h2, h3 {
+            color: #333;
+        }
+
+        img {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            margin-bottom: 20px;
+            border-radius: 10px;
+            max-width: 60%;
+        }
+
+        p, ul, li {
+            margin-bottom: 16px;
+        }
+
+        section {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+        }
+
+        /* Sidebar adjustments */
+        .sidebar {
+            position: fixed;
+            top: 0;
+            left: 20px;
+            width: 240px;
+            height: 100%;
+            padding-top: 60px;
+            overflow-y: auto; /* Enables vertical scrolling when content exceeds the height */
+            scrollbar-width: thin; /* Customizes the width of the scroll bar for Firefox */
+            scrollbar-color: #3a86ff #f1f1f1; /* Sets scroll bar colors (for modern browsers) */
+        }
+
+
+        .sidebar ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+
+        .sidebar ul li {
+            margin-bottom: 10px;
+        }
+
+        .sidebar ul li a {
+            color: #333;
+            text-decoration: none;
+            font-weight: normal;
+            transition: color 0.3s ease;
+            font-size: 16px;
+            padding-left: 20px;
+        }
+
+        .sidebar ul li a:hover {
+            color: #007bff;
+        }
+
+        .sidebar ul li .section-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: #3a86ff;
+            margin-bottom: 10px;
+            padding-left: 0;
+        }
+
+        .active-section {
+            background-color: rgba(58, 134, 255, 0.1);
+            border-radius: 8px;
+        }
+
+        /* Content padding */
+        .content {
+            margin-left: 270px;
+            padding: 20px;
+        }
+
+        .content h1 {
+            font-size: 28px;
+            font-weight: 600;
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        .content h2 {
+            font-size: 22px;
+            font-weight: 500;
+        }
+
+        .content h3 {
+            font-size: 18px;
+            font-weight: 500;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Breadcrumb Navigation -->
+    <div class="breadcrumb">
+        <a href="index.html">Home</a> > <a href="audit-cube-user-guide.html" style="color: inherit;">Audit Cube User Guides</a> > <span>Audit Cube Invoice Dashboard</span>
+    </div>
+    
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <ul>
+            <li><a href="audit-cube-user-guide.html" class="section-title">Overview</a></li>
+            <li><a href="maindash.html" class="section-title">Main Dashboard</a></li>
+            <li><a href="maindash.html">Table Overview</a></li>
+            <li><a href="maindash.html#audit-results">Audit Results</a></li>
+            <li><a href="maindash.html#advanced-search">Advanced Search</a></li>
+            <li><a href="maindash.html#visualization-tools">Visualization Tools</a></li>
+            <li><a href="maindash.html#troubleshooting">Troubleshooting</a></li>
+            <li><a href="shipmentdash.html" class="section-title">Shipment Dashboard</a></li>
+            <li><a href="shipmentdash.html">Shipment Table</a></li>
+            <li><a href="shipmentdash.html#uploading-files">Uploading Shipment Files</a></li>
+            <li><a href="shipmentdash.html#refreshing-data">Refreshing Data</a></li>
+            <li><a href="shipmentdash.html#viewing-data">Viewing & Filtering Data</a></li>
+            <li><span class="section-title">Invoice Dashboard</span></li>
+            <li><a href="invoicedash.html" class="active-section">Invoice Table Overview</a></li>
+            <li><a href="invoicedash.html#self-help-options">Self-Help Options</a></li>
+            <li><a href="invoicedash.html#toolbar-menu">Toolbar Menu</a></li>
+            <li><a href="invoicedash.html#invoice-upload">Invoice Upload</a></li>
+            <li><a href="invoicedash.html#filtering-sorting">Filtering and Sorting</a></li>
+            <li><a href="invoicedash.html#audit-details">Audit Results</a></li>
+            <li><a href="invoicedash.html#audit-trail">Audit Trail</a></li>
+            <li><a href="invoicedash.html#troubleshooting">Troubleshooting Tips</a></li>
+            <li><span class="section-title">Dispute Dashboard</span></li>
+            <li><a href="disputedash.html#overview">Overview</a></li>
+            <li><a href="disputedash.html#table-overview">Table Overview</a></li>
+            <li><a href="disputedash.html#navigating-dashboard">Navigating the Dashboard</a></li>
+            <li><a href="disputedash.html#kpis">KPIs</a></li>
+            <li><a href="disputedash.html#discrepancy-report">Discrepancy Report</a></li>
+            <li><a href="disputedash.html#troubleshooting">Troubleshooting</a></li>
+
+        </ul>
+    </div>
+
+    <!-- Content -->
+    <div class="content">
+        <h1>Audit Cube - Invoice Dashboard</h1>
+
+        <section id="invoice-table-overview">
+            <h2>Invoice Table Overview</h2>
+            <p>The Invoice Dashboard displays a table format similar to other dashboards but focuses on invoice-related data. Key columns include Audit Status, Tracking Number, Shipment ID, Carrier Account Number, Total Shipment Charges, Invoice Amount, Freight Difference Value, and Disputed Amount.</p>
+            <p>Expandable Rows: Users can click the arrow next to an Invoice Number to expand the row and view additional details about that invoice, such as the items included, audit status, and dispute status.</p>
+            <p>Filter Tools: The icon next to the download button on the upper right corner of the dashboard allows users to filter tracking numbers by audit status, invoice number, dispute status, and dispute category.</p>
+            <img src="img/invoicedash.png" alt="Invoice Dashboard Overview">
+        </section>
+
+        <section id="self-help-options">
+            <h2>Self-Help Options</h2>
+            <p>In the Invoice Dashboard, users have access to additional options for each shipment to facilitate detailed review and audit. Here’s an overview of the tools and resources available upon selecting a shipment:</p>
+            <h3>Audit Results Overview (Blue Paper Icon)</h3>
+            <p>Clicking the blue paper icon next to a shipment will open a detailed Audit Results pop-up. This view provides comprehensive information on the audit status, enabling users to review findings and discrepancies. This feature is designed to mirror the audit result layout available on other dashboards, ensuring consistency across platforms.</p>
+            <h3>Package Details (Tracking Number Link)</h3>
+            <p>Clicking on the Tracking Number to the right of the audit result paper icon opens a view displaying Package Details within the shipment. This window offers in-depth information about each package, including specifics such as:</p>
+            <ul>
+                <li>Package Number: A unique identifier for each package within the shipment.</li>
+                <li>Actual Weight and Billed Weight: The weight metrics are critical for validating shipment charges.</li>
+                <li>Dimensions: Length, width, and height for each package, providing transparency on volumetric calculations that may impact freight costs.</li>
+            </ul>
+            <h3>Shipment Charges Breakdown (Click on Shipment Charge Amount)</h3>
+            <p>Users can click on the Total Shipment Charges amount for a breakdown of all applicable charges and taxes. This Shipment Charges and Taxes window categorizes each charge associated with the shipment, detailing:</p>
+            <ul>
+                <li>Charge Code and Description: Each charge is identified by a unique code and description (e.g., OC Handling, Customs, Fuel Surcharge).</li>
+                <li>Charge Value: The specific cost associated with each service or tax applied to the shipment, giving users a granular view of how charges are calculated.</li>
+            </ul>
+            <img src="img/selfhelpinvoice.png" alt="Self-Help Options in Invoice Dashboard">
+        </section>
+
+<section id="toolbar-menu">
+    <h2>Toolbar Menu for Invoice Actions</h2>
+    <p>The Invoice Dashboard in Audit Cube provides a variety of tools accessible from the three-dot menu beside each tracking number, allowing users to generate, view, and download critical documents associated with specific shipments. Below is a breakdown of each feature in the toolbar menu and guidance on maximizing their use.</p>
+    <img src="img/invoicetoolbar.png" alt="Toolbar Menu for Invoice Actions">
+    <ul>
+        <li><strong>Simulate Audit Results:</strong> Generates a simulated audit report in Excel format without saving it in the database. It includes audit status, invoice/dispute data, and itemized charges, allowing review without affecting live data.</li>
+        <li><strong>Transmit Audit Results:</strong> Transfers finalized audit results to SAP, committing validated audit conclusions to the ERP system.</li>
+        <li><strong>Download Original Invoice:</strong> Downloads the original invoice document containing carrier-submitted details like shipment ID, total charges, and line-item data, useful for verification.</li>
+        <li><strong>Simulate Dispute Results:</strong> Generates a simulated dispute report in Excel format without saving it in the database. This report includes dispute status, category, and projected financial impact, allowing users to preview dispute details without affecting live data.</li>
+        <li><strong>Transmit Dispute Results:</strong> Transfers finalized dispute results to SAP, updating the ERP system with confirmed dispute data for official record-keeping and financial tracking.</li>
+        <li><strong>View PDF:</strong> Opens a PDF version of the invoice, displaying all relevant information for the specific shipment in a non-editable format. This is useful for sharing a read-only version of the invoice with external stakeholders or for archival purposes.</li>
+    </ul>
+</section>
+
+<section id="invoice-upload">
+    <h2>Uploading Invoice Files</h2>
+    
+    <p>Audit Cube allows for seamless invoice processing through both automated and manual methods. The Invoice Upload feature enables users to manually upload invoice files in the required format for processing.</p>
+
+    <h3>Automated Invoice Processing</h3>
+    <p>Invoices are typically fetched automatically from carrier systems via SFTP integration. The system processes invoices in CSV format, retrieving them from the designated folder for each carrier. Once fetched, the invoices are automatically processed and made available in the Invoice Dashboard.</p>
+
+    <h3>Manual Invoice Upload</h3>
+    <p>For carriers that do not support automatic processing or when users need to manually upload invoices, Audit Cube provides an easy-to-use upload function.</p>
+
+    <p><strong>Important:</strong> Every carrier has a unique invoice file format. The system is designed to recognize only the pre-approved formats for each carrier. Ensure the correct format is used to prevent upload errors.</p>
+
+    <h3>Steps to Upload an Invoice File</h3>
+    <ol>
+        <li>Click the <strong>Upload</strong> button on the Invoice Dashboard.</li>
+        <li>A popup screen will appear, allowing users to select the invoice file from their desktop.</li>
+        <li>Drag and drop the file into the designated area or manually browse for the file.</li>
+        <li>Select the appropriate <strong>Carrier</strong> and <strong>Carrier Account</strong> from the dropdown menu.</li>
+        <li>Once selected, the file name will be displayed in the upload dialog.</li>
+        <li>Click <strong>Submit</strong> to process the invoice file.</li>
+        <li>After processing, the system will display a success or failure message, indicating whether the upload was successful.</li>
+    </ol>
+
+    <img src="img/invoiceuploadneww.png" alt="Invoice Upload View">
+
+    <h3>Viewing Processed Invoices</h3>
+    <p>After a successful upload, invoices appear in the Invoice Dashboard. This dashboard provides detailed insights into each uploaded invoice, including:</p>
+    <ul>
+        <li>Invoice document details, such as carrier and account information.</li>
+        <li>Navigation to related tracking numbers and shipment data.</li>
+        <li>Options for managing disputes and reviewing audit details.</li>
+        <li>Automated audit processing, ensuring immediate visibility and validation of invoice data.</li>
+    </ul>
+
+    <img src="img/invoicetablebreak.png" alt="Invoice Table Breakdown">
+</section>
+
+<section id="filtering-sorting">
+    <h2>Filtering and Sorting Invoices</h2>
+    <p>The filter icon, located next to the Upload button, allows users to sort and filter invoices based on specific variables such as Invoice Number, Audit Status, Dispute Status, and Dispute Category.</p>
+    <p><strong>How to Use Filters:</strong> For example, by selecting the Audit Status filter, users can view all invoices by their approval status, allowing them to prioritize and address outstanding issues.</p>
+
+    <img src="img/filteringbutton.png" alt="Invoice Upload View">
+
+</section>
+
+<section id="audit-details">
+    <h2>Audit Details</h2>
+    <p>The <strong>Audit Details</strong> section within the Invoice Dashboard provides an in-depth analysis of invoice discrepancies by comparing expected charges with actual invoice amounts.</p>
+    
+    <p>To review an audited invoice:</p>
+    <ol>
+        <li>Navigate to the <strong>Invoice Dashboard</strong>.</li>
+        <li>Locate the desired invoice entry and click on the <strong>Audit Detail</strong> button.</li>
+        <li>A detailed breakdown of the audited invoice line will be displayed, including:</li>
+        <ul>
+            <li><strong>Carrier Code:</strong> Identifies the service provider.</li>
+            <li><strong>Service Code:</strong> Specifies the type of service rendered.</li>
+            <li><strong>Shipment and Invoice Charge Details:</strong> Displays a comparison between expected and billed charges.</li>
+            <li><strong>Billing and Shipping Information:</strong> Lists the invoice recipient and shipper details.</li>
+            <li><strong>Discrepancy Analysis:</strong> Highlights variations in freight charges, surcharges, or invoice totals.</li>
+        </ul>
+    </ol>
+
+    <img src="img/auditedinvoicepic.png" alt="Audit Results in Invoice">
+
+    <p>To gain a comprehensive understanding of invoice audits, users can scroll further down to the <strong>Audit Results</strong> section. This section consolidates key financial insights, including total invoice amounts, discrepancies, and variance calculations, ensuring a clear breakdown of invoice accuracy.</p>
+
+    <img src="img/auditresultsfullview.png" alt="Full View of Audit Results">
+</section>
+
+<section id="audit-trail">
+    <h2>Audit Trail</h2>
+    <p>The <strong>Audit Trail</strong> feature in the Invoice Dashboard enables users to track the history of audit comments, updates, and assignments related to a dispute line. This functionality ensures transparency and accountability by maintaining a log of all modifications and discussions associated with an invoice item.</p>
+
+    <p>To update the audit comments for a dispute line:</p>
+    <ol>
+        <li>Navigate to the <strong>Invoice Dashboard</strong>.</li>
+        <li>Locate the relevant invoice and click on the <strong>Audit Detail</strong> button.</li>
+        <li>Enter the necessary comments regarding the dispute in the designated field.</li>
+        <li>Assign the dispute to the appropriate processor for review and resolution.</li>
+        <li>Click <strong>Save</strong> to store the audit comments.</li>
+    </ol>
+
+    <p>Once saved, the comments are recorded in the audit trail of the invoice item. These notes serve as a detailed log of all interactions, providing a comprehensive historical record of discussions, reviews, and updates for the associated line item.</p>
+
+    <img src="img/audittrailnew.png" alt="Audit Trail in Invoice">
+</section>
+
+<section id="troubleshooting">
+    <h2>Troubleshooting Tips</h2>
+
+    <h3>Invoice Upload Issues:</h3>
+    <p><strong>Issue:</strong> If an invoice file fails to upload, it is likely due to an incorrect file format or improperly formatted data within the CSV.</p>
+    <p><strong>Solution:</strong></p>
+    <ul>
+        <li><strong>Verify File Format:</strong> Double-check that the file is saved in CSV format. Excel or other file formats will not be accepted by the system.</li>
+        <li><strong>Check Data Formatting:</strong> Ensure that all required fields in the CSV are populated correctly and that the data adheres to the expected format (e.g., date formats, numerical values).</li>
+        <li><strong>Re-upload:</strong> After correcting any issues, try uploading the file again.</li>
+    </ul>
+
+    <h3>Filter Not Applying Correctly:</h3>
+    <p><strong>Issue:</strong> Filters might not return the expected results, especially if there are conflicting filters applied or if the data does not match the selected criteria.</p>
+    <p><strong>Solution:</strong></p>
+    <ul>
+        <li><strong>Clear All Filters:</strong> Start by clearing all filters and reapplying them one by one to identify any conflicts.</li>
+        <li><strong>Expand Criteria:</strong> If the filter is too narrow, try expanding the criteria (e.g., selecting a broader date range or including multiple statuses) to capture the relevant data.</li>
+        <li><strong>Refresh the Dashboard:</strong> If the filter results still seem incorrect, try refreshing the dashboard to ensure that all data is up to date.</li>
+    </ul>
+
+    <h3>Dispute Workflow Issues:</h3>
+    <p><strong>Issue:</strong> Disputed invoices may not be moving through the workflow as expected, or users might not be able to track the dispute status accurately.</p>
+    <p><strong>Solution:</strong></p>
+    <ul>
+        <li><strong>Check Workflow Settings:</strong> Verify that the dispute workflow settings are correctly configured in the system. This includes ensuring that all necessary statuses are active and that communication logs are being updated.</li>
+        <li><strong>Contact Support:</strong> If workflow issues persist, contact technical support to review the system settings and ensure that the workflow is functioning as intended.</li>
+    </ul>
+</section>
+</div>
+
+<script>
+    // Highlight the active section dynamically while scrolling
+    const sections = document.querySelectorAll("section");
+    const navLinks = document.querySelectorAll(".sidebar ul li a");
+
+    window.addEventListener("scroll", () => {
+        let current = "";
+        const topPosition = 100; // Adjust this value if needed
+
+        if (window.scrollY < topPosition) {
+            // Remove all highlights when at the very top
+            navLinks.forEach(link => link.classList.remove("active-section"));
+            return;
+        }
+
+        sections.forEach(section => {
+            const sectionTop = section.offsetTop;
+            if (pageYOffset >= sectionTop - 50) {
+                current = section.getAttribute("id");
+            }
+        });
+
+        navLinks.forEach(link => {
+            link.classList.remove("active-section");
+            if (link.getAttribute("href").includes(current)) {
+                link.classList.add("active-section");
+            }
+        });
+    });
+</script>
+
+</body>
+</html>

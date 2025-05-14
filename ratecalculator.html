@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rate Calculator User Guide</title>
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&display=swap">
+    <style>
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: white;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .breadcrumb {
+            font-size: 14px;
+            color: #888;
+            margin-bottom: 20px;
+            margin-top: 10px;
+            text-align: left;
+            padding-left: 20px;
+            z-index: 1000;
+            position: relative;
+        }
+
+        .breadcrumb a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .breadcrumb a:hover {
+            text-decoration: underline;
+            color: #3a86ff;
+        }
+
+        img {
+            display: block;
+            margin: 20px auto;
+            border-radius: 10px;
+            max-width: 60%;
+        }
+
+        p, ul, li {
+            margin-bottom: 16px;
+        }
+
+        section {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+        }
+
+        .sidebar {
+            position: fixed;
+            top: 0;
+            left: 20px;
+            width: 240px;
+            height: 100%;
+            padding-top: 60px;
+            overflow-y: auto;
+            scrollbar-width: thin;
+            scrollbar-color: #3a86ff #f1f1f1;
+        }
+
+        .sidebar ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+
+        .sidebar ul li {
+            margin-bottom: 10px;
+        }
+
+        .sidebar ul li a {
+            color: #333;
+            text-decoration: none;
+            font-size: 16px;
+            padding-left: 20px;
+        }
+
+        .sidebar ul li a:hover {
+            color: #007bff;
+        }
+
+        .sidebar ul li .section-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: #3a86ff;
+            margin-bottom: 10px;
+            padding-left: 0;
+        }
+
+        .content {
+            margin-left: 270px;
+            padding: 20px;
+        }
+
+        .content h1 {
+            font-size: 28px;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+
+        .content h2 {
+            font-size: 22px;
+            font-weight: 500;
+        }
+
+        .content h3 {
+            font-size: 18px;
+            font-weight: 500;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="breadcrumb">
+        <a href="index.html">Home</a> > <a href="rate-cube-user-guide.html">Rate Cube User Guides</a> > <span>Rate Calculator</span>
+    </div>
+
+    <div class="sidebar">
+        <ul>
+            <li><a href="rate-cube-user-guide.html" class="section-title">Overview</a></li>
+            <li><span class="section-title">Rate Maintenance</span></li>
+            <li><a href="ratemaintenance.html">Overview</a></li>
+            <li><a href="ratemaintenance.html#key-features">Key Features</a></li>
+            <li><a href="ratemaintenance.html#active-rates">Active Rates</a></li>
+            <li><a href="ratemaintenance.html#draft-rates">Draft Rates</a></li>
+            <li><a href="ratemaintenance.html#rate-simulation">Simulation</a></li>
+            <li><a href="ratemaintenance.html#uploading-rates">Uploading Rates</a></li>
+            <li><a href="ratemaintenance.html#ofa-rfa-processes">OFA and RFA Processes</a></li>
+            <li><a href="ratemaintenance.html#task-visualization">Task Visualization</a></li>
+            <li><a href="ratemaintenance.html#unit-change-report">Unit Change Report</a></li>
+            <li><a href="ratemaintenance.html#troubleshooting">Troubleshooting</a></li>
+            <li><span class="section-title">Rate Simulation</span></li>
+            <li><a href="ratesimulation.html#overview" class="sidebar-link">Overview</a></li>
+            <li><a href="ratesimulation.html#location-information" class="sidebar-link">Location Information</a></li>
+            <li><a href="ratesimulation.html#adding-shipment-details" class="sidebar-link">Adding Shipment Details</a></li>
+            <li><a href="ratesimulation.html#using-special-services" class="sidebar-link">Using Special Services</a></li>
+            <li><a href="ratesimulation.html#generating-simulations" class="sidebar-link">Generating Simulations</a></li>
+            <li><a href="ratesimulation.html#customizing-results" class="sidebar-link">Customizing Results</a></li>
+            <li><a href="ratesimulation.html#successful-rate-simulation" class="sidebar-link">Successful Rate Simulation</a></li>
+            <li><span class="section-title">Rate Calculator</span></li>
+            <li><a href="#overview">Overview</a></li>
+            <li><a href="#input-fields">Input Fields</a></li>
+            <li><a href="#output-overview">Output Overview</a></li>
+            <li><a href="#region-specific-details">Region-Specific Details</a></li>
+            <li><a href="#charge-breakdown">Charge Breakdown</a></li>
+            <li><a href="#additional-notes">Additional Features</a></li>
+            <li><a href="#faq">Frequently Asked Questions</a></li>
+        </ul>
+    </div>
+
+    <div class="content">
+        <h1>Rate Calculator</h1>
+
+        <section id="overview">
+            <h2>Overview</h2>
+            <p>The Rate Calculator within Ratecube is a powerful tool designed to calculate shipment costs based on input demographics and shipment details. By using this tool, users can generate precise cost calculations, view detailed charge breakdowns, and identify all relevant shipment parameters for different service levels and modes of transport.</p>
+            <img src="img/ratecalculator.png" alt="Rate Calculator Overview">
+        </section>
+        
+
+        <section id="input-fields">
+            <h2>Rate Calculator Input Fields</h2>
+            <p>The input fields on the Rate Calculator screen are essential for calculating shipment costs accurately. Each section has specific fields that require completion to ensure valid and meaningful results.</p>
+            <p>The Lane ID or Rate ID is the primary input for the Rate Calculator. Once entered, the system automatically retrieves and prepopulates the following fields:</p>
+            <ul>
+                <li>Origin and destination details (city, state, country, postal code).</li>
+                <li>Carrier information (carrier, service level, mode of transport).</li>
+            </ul>
+            <p>Users only need to enter package-specific details manually, including:</p>
+            <ul>
+                <li>Weight and dimensions (length, width, height).</li>
+                <li>Number of packages.</li>
+            </ul>
+        
+            <h3>Carrier Information</h3>
+            <p>Carrier details are critical for determining the appropriate shipment rates. This section includes:</p>
+            <ul>
+                <li><strong>Carrier:</strong> Specifies the shipment carrier (e.g., DHL, UPS).</li>
+                <li><strong>Service Level:</strong> Defines the level of service provided (e.g., express, standard).</li>
+                <li><strong>Mode of Transport (MoT):</strong> Identifies the transportation method, such as air, road, or sea.</li>
+            </ul>
+        
+            <h3>Origin and Destination Information</h3>
+            <p>Define the shipment's starting point and endpoint by providing:</p>
+            <ul>
+                <li><strong>Origin Details:</strong> Includes the city, state, country, and postal code of the shipment’s starting location.</li>
+                <li><strong>Destination Details:</strong> Includes the same information for the shipment's delivery location.</li>
+            </ul>
+        
+            <h3>Cargo Information</h3>
+            <p>Details about the shipment's contents are entered here, including:</p>
+            <ul>
+                <li><strong>Dangerous Goods:</strong> Whether the shipment contains hazardous materials.</li>
+                <li><strong>Temperature Control:</strong> Specifies if the shipment requires temperature-sensitive handling.</li>
+            </ul>
+        
+            <h3>Weight and Dimensions</h3>
+            <p>Accurate weight and dimension measurements ensure correct cost calculations. Fields include:</p>
+            <ul>
+                <li><strong>Weight:</strong> Total shipment weight with its unit of measurement (UOM).</li>
+                <li><strong>Dimensions:</strong> Includes length, width, and height, along with the unit of measurement.</li>
+                <li><strong>Chargeable Weight:</strong> Automatically calculated based on weight and dimensions.</li>
+            </ul>
+        </section>
+
+        <section id="carrier-information">
+            <h2>Carrier Information</h2>
+            <p>Carrier details are critical for determining the appropriate shipment rates. This section includes:</p>
+            <ul>
+                <li><strong>Carrier:</strong> Specifies the shipment carrier (e.g., DHL, UPS).</li>
+                <li><strong>Service Level:</strong> Defines the level of service provided (e.g., express, standard).</li>
+                <li><strong>Mode of Transport (MoT):</strong> Identifies the transportation method, such as air, road, or sea.</li>
+            </ul>
+        </section>
+
+        <section id="output-overview">
+            <h2>Output Overview</h2>
+            <p>Once all required fields are entered, the Rate Calculator generates detailed output for the shipment. The output includes:</p>
+            <ul>
+                <li><strong>Rate Details:</strong> Displays calculated charges, delivery dates, and transit days.</li>
+                <li><strong>Total Cost:</strong> The sum of all applicable charges for the shipment.</li>
+                <li><strong>Breakdown by Template:</strong> Charge codes are grouped based on predefined templates to ensure clarity.</li>
+            </ul>
+            <img src="img/rateoutput.png" alt="Rate Calculator Output">
+        </section>
+
+        <section id="region-specific-details">
+            <h2>Region-Specific Details</h2>
+        
+            <h3>North America (Road NA)</h3>
+            <p>The output is simplified and focuses primarily on:</p>
+            <ul>
+                <li><strong>Base Rate:</strong> The core cost of transporting goods within the region.</li>
+                <li><strong>Fuel Surcharge:</strong> Adjusts costs based on fluctuating fuel prices.</li>
+            </ul>
+            <p>There are no subcategories (e.g., FTL or LTL) within Road NA, making it straightforward and ideal for standard road transport within North America.</p>
+            <img src="img/nacharge.png" alt="NA Charge Breakdown">
+        
+            <h3>Europe, Middle East, and Africa (Road EMEA)</h3>
+            <p>The output for Road EMEA is divided into three subcategories, depending on the type of shipment. Each has unique templates for calculating charges:</p>
+            <ul>
+                <li>
+                    <strong>Full Truckload (FTL):</strong> Includes the Base Rate, surcharges for specialized equipment (e.g., double-deck trucks), and costs for extra days or weekend handling.
+                    <ul>
+                        <li>Designed for large shipments requiring the full capacity of a truck.</li>
+                    </ul>
+                    <img src="img/ftlcharge.png" alt="FTL Charge Breakdown">
+                </li>
+                <li>
+                    <strong>Less Than Truckload (LTL):</strong> Focuses on the Base Rate and surcharges for dangerous goods or additional handling requirements.
+                    <ul>
+                        <li>Ideal for smaller shipments sharing truck space with other goods.</li>
+                    </ul>
+                    <img src="img/ltlcharge.png" alt="LTL Charge Breakdown">
+                </li>
+                <li>
+                    <strong>Premium Post Merge Express (PMPME):</strong> Tailored for expedited and high-priority shipments.
+                    <ul>
+                        <li>Includes Base Rate and additional surcharges for hazardous goods and specialized handling.</li>
+                    </ul>
+                    <img src="img/pmpme.png" alt="PMPME Charge Breakdown">
+                </li>
+            </ul>
+        
+            <h3>Air Shipments</h3>
+            <p>Air shipment outputs are focused on speed and premium services. The breakdown typically includes:</p>
+            <ul>
+                <li><strong>Base Rate:</strong> Calculated based on weight, volume, and distance.</li>
+                <li><strong>Fuel Surcharge:</strong> Reflecting the cost of jet fuel adjustments.</li>
+                <li><strong>Security Risk Surcharge:</strong> Applied to sensitive or high-risk cargo.</li>
+            </ul>
+            <p>Transit times are shorter, with detailed timelines for delivery.</p>
+        
+            <h3>Ocean Shipments</h3>
+            <p>Outputs for ocean shipments include:</p>
+            <ul>
+                <li><strong>Base Rate:</strong> Adjusted for long-distance transport and high-volume goods.</li>
+                <li><strong>Port Handling Charges:</strong> Costs associated with loading/unloading at origin and destination ports.</li>
+                <li><strong>Dangerous Goods Surcharge:</strong> Additional costs for hazardous materials.</li>
+            </ul>
+            <p>Delivery dates and transit days are typically longer, reflecting maritime schedules.</p>
+        </section>
+
+        <section id="charge-breakdown">
+            <h2>Charge Breakdown</h2>
+            <p>The Shipment Charges and Taxes section provides a comprehensive breakdown of individual charges applied to the shipment. Each charge is displayed with a code, description, and associated cost.</p>
+            <ul>
+                <li>Base Rate: The primary cost of the shipment.</li>
+                <li>Fuel Surcharge: Additional costs reflecting fluctuating fuel prices.</li>
+                <li>Hazardous Material Handling: Charges for shipments containing dangerous goods.</li>
+                <li>Extra Days Cost: Costs incurred for extended delivery timelines or weekend handling.</li>
+                <li>Security Risk Surcharge: Fees associated with high-security or sensitive shipments.</li>
+            </ul>
+            <img src="img/chargebreakup.png" alt="Charge Breakdown">
+        </section>
+
+        <section id="additional-notes">
+            <h2>Additional Notes and Features</h2>
+            <ul>
+                <li><strong>Special Services:</strong> Users can account for additional lead days, custom handling requests, or temperature-sensitive requirements.</li>
+                <li><strong>Data Export:</strong> Results can be exported for analysis or record-keeping.</li>
+                <li><strong>Error Handling:</strong> Ensure all mandatory fields are completed to avoid calculation errors.</li>
+            </ul>
+        </section>
+
+        <section id="faq">
+            <h2>Frequently Asked Questions</h2>
+            <h3>What is the difference between Lane ID and Rate ID?</h3>
+            <p>Lane ID corresponds to predefined shipment lanes, while Rate ID focuses on rate templates for cost calculation.</p>
+
+            <h3>Can I calculate costs for shipments containing hazardous materials?</h3>
+            <p>Yes, ensure the "Dangerous Goods" field is populated under Cargo Information.</p>
+
+            <h3>What does "Chargeable Weight" mean?</h3>
+            <p>It is the calculated weight used to determine shipping costs, derived from both the actual weight and volume.</p>
+        </section>
+    </div>
+</body>
+
+</html>
