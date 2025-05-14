@@ -70,7 +70,7 @@ form.addEventListener('submit', async (e) => {
   typingIndicator.style.display = 'flex';
 
   try {
-    const response = await fetch('/api/query', {
+    const response = await fetch('https://cubiehelp.onrender.com/api/query', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ question }),
