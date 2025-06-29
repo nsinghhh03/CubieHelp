@@ -5,18 +5,27 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Talk to Cubie</title>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="/static/styles.css" />
 </head>
 <body>
   <div class="chat-container">
     <div class="chat-header">
       Talk to Cubie
+      <button id="customize-btn" title="Customize Cubie" aria-label="Customize Cubie">
+        <svg width="22" height="22" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" fill="#fff">
+          <path fill-rule="evenodd" clip-rule="evenodd" d="M3.5 2h-1v5h1V2zm6.1 5H6.4L6 6.45v-1L6.4 5h3.2l.4.5v1l-.4.5zm-5 3H1.4L1 9.5v-1l.4-.5h3.2l.4.5v1l-.4.5zm3.9-8h-1v2h1V2zm-1 6h1v6h-1V8zm-4 3h-1v3h1v-3zm7.9 0h3.19l.4-.5v-.95l-.4-.5H11.4l-.4.5v.95l.4.5zm2.1-9h-1v6h1V2zm-1 10h1v2h-1v-2z"/>
+        </svg>
+      </button>
+      <button id="download-pdf" title="Download conversation as PDF">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M19 12l-7 7-7-7"/></svg>
+      </button>
       <div id="toggle-dark">🌙</div>
     </div>
 
     <div class="chat-messages" id="chat-box">
       <!-- Messages go here -->
     </div>
+    <!-- Suggestion bubbles will be injected by JS after the first message -->
 
     <div class="typing-indicator" id="typing-indicator" style="display: none;">
       <span></span><span></span><span></span>
@@ -25,11 +34,53 @@
     <form class="chat-input" id="chat-form">
       <input type="text" id="user-input" placeholder="Type your question here..." autocomplete="off" />
       <button type="submit">Send</button>
-      <button type="button" id="mic-button">🎤</button>
+      <button type="button" id="mic-button" aria-label="Voice input">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="9" y="2" width="6" height="12" rx="3"/>
+          <path d="M5 10v2a7 7 0 0 0 14 0v-2"/>
+          <line x1="12" y1="22" x2="12" y2="16"/>
+          <line x1="8" y1="22" x2="16" y2="22"/>
+        </svg>
+      </button>
     </form>
   </div>
 
+  <div id="customize-modal" class="customize-modal" style="display:none;">
+    <div class="customize-modal-content">
+      <div class="chat-header customize-header">
+        Customize Cubie
+        <button id="close-customize" class="close-customize-btn" title="Close" aria-label="Close">&larr;</button>
+        <button id="customize-modal-download" title="Download conversation as PDF" style="display:none;"></button>
+        <div id="customize-modal-dark" style="display:none;"></div>
+      </div>
+      <form id="customize-form">
+        <label for="cubie-name">What should Cubie call you?</label>
+        <input id="cubie-name" name="cubie-name" type="text" placeholder="Name...." autocomplete="off" />
+        <label style="margin-top:2rem;">Choose your preferred response length:</label>
+        <div class="response-length-group">
+          <button type="button" class="response-length-btn" data-length="short">Short</button>
+          <button type="button" class="response-length-btn" data-length="medium">Medium</button>
+          <button type="button" class="response-length-btn" data-length="long">Long</button>
+        </div>
+        <label style="margin-top:2rem;">What traits should Cubie have?</label>
+        <div class="traits-group">
+          <button type="button" class="trait-btn" data-trait="cheerful">Cheerful</button>
+          <button type="button" class="trait-btn" data-trait="playful">Playful</button>
+          <button type="button" class="trait-btn" data-trait="neutral">Neutral</button>
+          <div style="grid-column: 2 / 3;">
+            <button type="button" class="trait-btn" data-trait="professional">Professional</button>
+          </div>
+        </div>
+        <div class="customize-actions">
+          <button type="button" id="customize-cancel" class="customize-cancel-btn">Cancel</button>
+          <button type="submit" id="customize-save" class="customize-save-btn">Save</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
   <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
-  <script src="chat.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script src="/static/chat.js"></script>
 </body>
 </html>

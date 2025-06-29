@@ -88,7 +88,7 @@ with open("helpdocs.json", "w", encoding="utf-8") as f:
     json.dump(output, f, indent=2, ensure_ascii=False)
 
 # Display confirmation and preview
-print("✅ Extraction complete.")
+print("Extraction complete.")
 print(f"Parsed {len(output)} help sections from {html_dir}")
 print("\n🔍 Sample output:\n")
 for item in output[:2]:

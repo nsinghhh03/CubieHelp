@@ -4,3 +4,6 @@ openai
 numpy
 python-dotenv
 uvicorn
+sqlalchemy
+pyodbc
+pandas
