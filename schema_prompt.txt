@@ -1,0 +1,326 @@
+
+ShipmentPackage( --in detail information about each package being shipped (dimensions, tracking number, dates, carrier)
+    TrackingNo nvarchar, –tracking number 
+    TCCarrierCode nvarchar, – which carrier it is being shipped with 
+    PayerAccount nvarchar, – ID associated with client who pays for shipment
+    PackageNo nvarchar,
+    ActualWeight decimal, – weight of package
+    Length decimal, – length of package
+    Width decimal, – width of package
+    Height decimal, – height of package
+)
+
+TruckRate( -- stores ground transportation lane configurations for trucking services, mapping origin and destination routes (including shipper and consignee details) to specific rate headers used for pricing and logistics planning
+    OID bigint,
+    RateHeaderID bigint, -- user will have the rateheader ID number to look up rates
+    Status nvarchar, -- Indicates if the rate is currently valid or expired
+    OriginRegion nvarchar, – Either EU for europe, NA for north america, or AP for asia pacific
+    OriginCountry nvarchar, – abbreviated country, look up full name when needed for user query
+    OriginShipper nvarchar,  
+    OriginCity nvarchar, 
+    OriginPostalCode nvarchar,
+    DestRegion nvarchar,
+    DestCountry nvarchar,
+    DestConsignee nvarchar,
+    DestCity nvarchar,
+    DestPostalCode nvarchar,
+    DestBranch nvarchar,
+    GileadDivisionLane nvarchar,
+    SpecialRemarks nvarchar,
+    ServiceLevel nvarchar,
+    OriginCurrency nvarchar,
+)
+
+AirRate(  -- master rate sheet for international air freight lanes, full costs of shipping goods via air
+    OID bigint,
+    RateHeaderID bigint,
+    Status nvarchar, -- 'Current' or 'Expired' lifecycle status
+    DestinationCarrierZoneID bigint,
+    ForwarderBranchLanePair nvarchar, -- encoded route (e.g., SEL-DUB)
+    OriginRegion nvarchar, -- origin broad region (AP, EU)
+    OriginCountry nvarchar, -- origin ISO country code
+    OriginCity nvarchar, -- origin city name
+    OriginPostalCode nvarchar, -- origin postal code
+    OriginBranch nvarchar,
+    OriginAirport nvarchar, -- origin airport IATA code
+    DestRegion nvarchar, -- destination broad region
+    DestCountry nvarchar, -- destination ISO country code
+    DestCity nvarchar, -- destination city name
+    DestPostalCode nvarchar, -- destination postal code
+    DestBranch nvarchar,
+    DestAirport nvarchar, -- destination airport IATA code
+    SpecialRemarks nvarchar,
+    GileadDivisionLane nvarchar,
+    OriginCurrency nvarchar,
+)
+
+
+AuditTrail( -- All comments next to disputes in Audit Dashboard, useful for sentiment and for determining common comment types and who made them
+    DisputeID bigint, – what dispute comment is associated with 
+    CreationDate datetime, – when it was created
+    Processor nvarchar, –who on the account left comment
+    Comments nvarchar, –actual comment text
+    AssignedTo nvarchar, – who on account it should be tended by
+)
+
+DisputeManagement( -- table containing every dispute ID, what dispute category it is, and associated tracking information 
+    DisputeID bigint,
+    CarrierCode nvarchar,
+    CarrierAccount nvarchar,
+    PayerAccount nvarchar,
+    InvoiceNumber nvarchar,
+    ShipmentID nvarchar,
+    TrackingNumber nvarchar,
+    CreationDate datetime,
+    InvoiceDate datetime,
+    InvoiceDue datetime,
+    DisputeCategory nvarchar,
+    DisputeAmount decimal,
+    DisputeStatus nvarchar,
+    ChangedOn datetime,
+    ChangedBy nvarchar,
+    LastComments nvarchar,
+    CreatedBy bigint,
+)
+
+
+OceanRate( -- master rate sheet for international ocean freight lanes, full costs of shipping goods via ocean
+    OID bigint,
+    RateHeaderID bigint,
+    Status nvarchar,
+    DestinationCarrierZoneID bigint,
+    PayerAccount nvarchar,
+    MasterLaneID nvarchar,
+    LaneID nvarchar,
+    Company nvarchar,
+    OriginCountry nvarchar,
+    OriginCity nvarchar,
+    OriginPostalCode nvarchar,
+    OriginPortUN nvarchar,
+    DestCountry nvarchar,
+    DestCity nvarchar,
+    DestPostalCode nvarchar,
+    DestPortUN nvarchar,
+    BusinessType nvarchar,
+    ServiceType nvarchar,
+    ContainerType nvarchar,
+    Remarks nvarchar,
+    Version decimal,
+    CarrierCode nvarchar,
+    ChangedColumns nvarchar,
+    CreatedOn datetime,
+    CreatedBy bigint,
+    ChangedOn datetime,
+    ChangedBy bigint,
+)
+
+RoadRate( -- master rate sheet for international road freight lanes, full costs of shipping goods via road
+    OID bigint,
+    RateHeaderID bigint,
+    Status nvarchar,
+    CarrierCode nvarchar,
+    CarrierAccount nvarchar,
+    TemplateName nvarchar,
+    LaneID nvarchar,
+    LaneName nvarchar,
+    Sector nvarchar,
+    IOType nvarchar,
+    OriginCity nvarchar,
+    OriginState nvarchar,
+    OriginPostalCode nvarchar,
+    OriginCountry nvarchar,
+    OriginRegion nvarchar,
+    OriginLoadingType nvarchar,
+    DestCity nvarchar,
+    DestState nvarchar,
+    DestPostalCode nvarchar,
+    DestCountry nvarchar,
+    DestRegion nvarchar,
+    ChangedColumns nvarchar,
+    CreatedOn datetime,
+    CreatedBy bigint,
+    ChangedOn datetime,
+    ChangedBy bigint,
+)
+
+Shipment( -- most important table, contains every shipment, its route, carrier, shipment date, actual delivery, etc
+    OID bigint,
+    AuditRequestID bigint,
+    ShipmentInternalID nvarchar,
+    ShipmentID nvarchar,
+    TrackingNumber nvarchar,
+    PayerAccount nvarchar,
+    TCCarrierCode nvarchar,
+    TCServiceCode nvarchar,
+    MasterTrackingNumber nvarchar,
+    CommercialInvoice nvarchar,
+    BillOfLading nvarchar,
+    ShipperCompanyName nvarchar,
+    ShipperName nvarchar,
+    ShipperAddress nvarchar,
+    ShipperCity nvarchar,
+    ShipperPostalCode nvarchar,
+    ShipperState nvarchar,
+    ShipperCountry nvarchar,
+    ShipmentDate datetime,
+    TransMode nvarchar,
+    RecipientCompanyName nvarchar,
+    RecipientName nvarchar,
+    RecipientAddress1 nvarchar,
+    RecipientAddress2 nvarchar,
+    RecipientAddress3 nvarchar,
+    RecipientCity nvarchar,
+    RecipientState nvarchar,
+    RecipientPostalCode nvarchar,
+    RecipientCountry nvarchar,
+    RecipientIsResidential bit,
+    RecipientIsPOBox bit,
+    CarrierAccountNo nvarchar,
+    FreightPaymentType nvarchar,
+    DutyTaxPaymentType bit,
+    EstDeliveryDateTime datetime,
+    ActualDeliveryDateTime datetime,
+    TotalPackages int,
+    TotalWeight decimal,
+    FreightCurrencyCode nvarchar,
+    DimUOM nvarchar,
+    TotalShipmentCharges decimal,
+    WeightUOM nvarchar,
+    VolumeUOM nvarchar,
+    ShipmentUpdate int,
+)
+
+
+
+SeaRate( -- master rate sheet for international sea freight lanes, full costs of shipping goods via sea 
+    OID bigint,
+    RateHeaderID bigint,
+    Status nvarchar,
+    CarrierCode nvarchar,
+    CarrierAccount nvarchar,
+    TemplateName nvarchar,
+    ValidFrom datetime,
+    ValidTo datetime,
+    UniqueID nvarchar,
+    Commodity nvarchar,
+    OriginRegion nvarchar,
+    OriginCity nvarchar,
+    OriginCountry nvarchar,
+    OriginService nvarchar,
+    OriginPostalCode nvarchar,
+    OriginPortCity nvarchar,
+    OriginPortCountry nvarchar,
+    OriginRouting nvarchar,
+    OriginMode nvarchar,
+    OriginLoad nvarchar,
+    DestRegion nvarchar,
+    DestCity nvarchar,
+    DestCountry nvarchar,
+    DestService nvarchar,
+    DestPostalCode nvarchar,
+    DestPortCity nvarchar,
+    DestPortCountry nvarchar,
+    DestRouting nvarchar,
+    DestMode nvarchar,
+    DestUnload nvarchar,
+  
+)
+
+
+# === Column Hints ===
+# ShipmentDate – date shipment left origin
+# ActualDeliveryDateTime – timestamp when shipment was delivered to recipient
+# DeliveryDays – you can compute it via DATEDIFF(day, ShipmentDate, ActualDeliveryDateTime)
+# TTCarrierCode – carrier identifier (e.g., UPS, Purolator)
+# CountryFrom / ShipperCountry – origin country; CountryTo / RecipientCountry – destination country
+# All country values use ISO 2-letter codes e.g. CA for Canada, US for United States, GB for United Kingdom.
+#
+# Average delivery time guideline:
+# • Use: AVG(DATEDIFF(day, ShipmentDate, ActualDeliveryDateTime))
+# • Always include: WHERE ActualDeliveryDateTime IS NOT NULL to exclude in-transit records.
+
+# === Query Examples (use these patterns when answering) ===
+# 1. Shipments created in a given month
+#    SELECT COUNT(*) AS shipments
+#    FROM Shipment
+#    WHERE YEAR(ShipmentDate) = 2024 AND MONTH(ShipmentDate) = 5;
+#
+# 2. Average delivery time (days) for May 2024
+#    SELECT AVG(DATEDIFF(day, ShipmentDate, ActualDeliveryDateTime)) AS avg_delivery_days
+#    FROM Shipment
+#    WHERE YEAR(ShipmentDate)=2024 AND MONTH(ShipmentDate)=5;
+#
+# 3. Percentage of shipments handled by a carrier in a year
+#    /* numerator */
+#    SELECT COUNT(*) AS carrier_shipments
+#    FROM Shipment
+#    WHERE YEAR(ShipmentDate)=2024 AND TTCarrierCode='Purolator';
+#    /* denominator */
+#    SELECT COUNT(*) AS total_shipments
+#    FROM Shipment
+#    WHERE YEAR(ShipmentDate)=2024;
+#    -- percentage_tool can be used with those two queries.
+#
+# 4. Late-delivery rate (>3 days) per carrier for June 2024
+#    SELECT TTCarrierCode, 100.0*SUM(CASE WHEN DATEDIFF(day, ShipmentDate, ActualDeliveryDateTime)>3 THEN 1 END)/COUNT(*) AS late_pct
+#    FROM Shipment
+#    WHERE YEAR(ShipmentDate)=2024 AND MONTH(ShipmentDate)=6
+#    GROUP BY TTCarrierCode;
+
+# CarrierCodeAlias
+# • The column is **TCCarrierCode** (note the extra “C”).
+# • If you see TTCarrierCode or CarrierCode in a question, map it to TCCarrierCode.
+
+# Example: average delivery time for Purolator in May 2024
+SELECT AVG(DATEDIFF(day, ShipmentDate, ActualDeliveryDateTime)) AS avg_days
+FROM Shipment
+WHERE
+    YEAR(ShipmentDate)=2024
+    AND MONTH(ShipmentDate)=5
+    AND TCCarrierCode='Purolator';
+
+
+# === Hard-coded Query Examples ===
+# Q: How many shipments were created this month?
+# SQL:
+# SELECT COUNT(*) AS shipments_this_month
+# FROM Shipment
+# WHERE YEAR(ShipmentDate)=YEAR(GETDATE())
+#   AND MONTH(ShipmentDate)=MONTH(GETDATE());
+#
+# Q: What is the average delivery time for shipments in June?
+# SQL:
+# SELECT AVG(DATEDIFF(day, ShipmentDate, ActualDeliveryDateTime)) AS avg_delivery_days
+# FROM Shipment
+# WHERE YEAR(ShipmentDate)=YEAR(GETDATE())
+#   AND MONTH(ShipmentDate)=6
+#   AND ActualDeliveryDateTime IS NOT NULL;
+#
+# Q: Show me the top 5 carriers by shipment volume.
+# SQL:
+# SELECT TOP 5 TCCarrierCode, COUNT(*) AS shipment_count
+# FROM Shipment
+# WHERE YEAR(ShipmentDate)=YEAR(GETDATE())
+# GROUP BY TCCarrierCode
+# ORDER BY shipment_count DESC;
+#
+# Q: What percentage of this year’s shipments were international?
+# -- Use percentage_tool with:
+# numerator_sql:
+#   SELECT COUNT(*) FROM Shipment
+#   WHERE YEAR(ShipmentDate)=YEAR(GETDATE())
+#     AND ShipperCountry <> RecipientCountry;
+# denominator_sql:
+#   SELECT COUNT(*) FROM Shipment
+#   WHERE YEAR(ShipmentDate)=YEAR(GETDATE());
+#
+# Q: What is the late-delivery rate per carrier for the last 3 months?
+# SQL:
+# SELECT TCCarrierCode,
+#        100.0*SUM(CASE WHEN DATEDIFF(day, ShipmentDate, ActualDeliveryDateTime)>3 THEN 1 END)/COUNT(*) AS late_pct
+# FROM Shipment
+# WHERE ShipmentDate >= DATEADD(month,-3,GETDATE())
+#   AND ActualDeliveryDateTime IS NOT NULL
+# GROUP BY TCCarrierCode;
+
+

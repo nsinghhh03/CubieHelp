@@ -9,6 +9,9 @@ const root = document.body;
 let isRecording = false;
 let recognition;
 
+// Track current conversation mode: "help" (default) or "analytics"
+let currentMode = 'help';
+
 // SVG constants for copy button (user provided, no border, no fill)
 const COPY_SVG = `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><rect x="9" y="9" width="11" height="11" rx="2" ry="2"></rect><path d="M15 9V7a2 2 0 0 0-2-2H7a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h2"></path></svg>`;
 const COPIED_SVG = `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><polyline points="5 13 9 17 19 7" /></svg>`;
@@ -120,6 +123,27 @@ window.addEventListener('DOMContentLoaded', () => {
       suggestionBubbles.addEventListener('click', function(e) {
         if (e.target.classList.contains('suggestion-btn')) {
           const text = e.target.textContent.trim();
+          // Mode switch buttons shouldn't hit backend immediately
+          if (text.startsWith('Analyze Data')) {
+            currentMode = 'analytics';
+            addMessage("Great! Ask me anything about your Shipment, Dispute, or Invoice data and I'll analyze it for you.", 'bot', true);
+            // Clear existing input
+            userInput.value = '';
+            return;
+          }
+          if (text.startsWith('Application Help')) {
+            currentMode = 'help';
+            addMessage("Sure! I'm ready to answer any application questions. What would you like to know?", 'bot', true);
+            userInput.value = '';
+            return;
+          }
+          if (text.trim().toLowerCase() === 'visualize data') {
+            currentMode = 'analytics';
+            addMessage("Sure! Ask me to plot any shipment, dispute, or invoice metric—I'll generate a chart for you.", 'bot', true);
+            userInput.value = '';
+            return;
+          }
+          // For other suggestions, keep default behavior
           userInput.value = text;
           form.dispatchEvent(new Event('submit'));
           // Remove focus to prevent border from staying
@@ -248,6 +272,18 @@ form.addEventListener('submit', async (e) => {
   cubiePrefs = getCubiePrefs();
   const question = userInput.value.trim();
   if (!question) return;
+  // --- Auto-detect analytics intent ------------------------------------
+  if (currentMode === 'help') {
+    const analyticsKeywords = [
+      'shipment', 'dispute', 'invoice', 'chart', 'graph', 'plot',
+      'average', 'sum', 'count', 'trend', 'kpi', 'heat map', 'heatmap',
+      'bar chart', 'line chart', 'pie chart', 'stacked', 'percentage',
+    ];
+    const ql = question.toLowerCase();
+    if (analyticsKeywords.some(k => ql.includes(k))) {
+      currentMode = 'analytics';
+    }
+  }
   addMessage(question, 'user');
   userInput.value = '';
   typingIndicator.style.display = 'flex';
@@ -255,7 +291,7 @@ form.addEventListener('submit', async (e) => {
     const response = await fetch('/api/query', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ question, prefs: cubiePrefs }),
+      body: JSON.stringify({ question, mode: currentMode, prefs: cubiePrefs }),
     });
     const data = await response.json();
     if (data.reply) {
@@ -263,7 +299,7 @@ form.addEventListener('submit', async (e) => {
       if (/^hi\s*cubie/i.test(question) && cubiePrefs.name) {
         addMessage(`Hi ${cubiePrefs.name}!`, 'bot', false);
       } else {
-        addMessage(data.reply, 'bot', true);
+      addMessage(data.reply, 'bot', true);
       }
     } else {
       addMessage("I'm not sure how to help with that. Try rephrasing your question.", 'bot');

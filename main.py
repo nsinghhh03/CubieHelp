@@ -12,6 +12,15 @@ from typing import cast, List, Dict
 from openai.types.chat import ChatCompletionMessageParam
 from uuid import uuid4
 
+import json as json_lib  # for parsing function arguments safely
+from datetime import datetime
+
+# noqa: F401 – explicit re-export (chart tools)
+import analytics_tools as _at
+
+from analytics_tools import sql_tool, multi_sql_tool, percentage_tool, chart_tool, update_dispute_status, add_audit_comment, mail_tool
+
+
 # === Load environment variables ===
 load_dotenv()
 api_key = os.getenv("OPENAI_API_KEY")
@@ -20,13 +29,20 @@ if api_key is None:
 openai.api_key = api_key
 
 # === Embedding and chat model ===
-EMBED_MODEL = "text-embedding-3-small" 
+EMBED_MODEL = "text-embedding-3-small"
 CHAT_MODEL = "gpt-3.5-turbo"
 
 # === Load saved embeddings and documents ===
 data = np.load("help_embeddings.npz", allow_pickle=True)
 embeddings = data["embeddings"]
 documents = data["documents"]
+
+# === Load DB schema for analytics mode ===
+try:
+    with open("schema_prompt.txt", "r", encoding="utf-8") as _f:
+        DB_SCHEMA = _f.read()
+except FileNotFoundError:
+    DB_SCHEMA = ""
 
 # === Embedding helper ===
 def get_embedding(text, model=EMBED_MODEL):
@@ -120,14 +136,25 @@ conversation_history = [
     )}
 ]
 
+# Globals to retain last assistant reply and chart paths
+LAST_BODY: str = ""
+LAST_CHARTS: list[str] = []
+
 @app.post("/api/query")
 async def handle_query(request: Request):
     try:
+        global LAST_BODY, LAST_CHARTS
         body = await request.json()
         query = body.get("question")
+        mode = body.get("mode", "help")  # "help" or "analytics"
         prefs = body.get("prefs", {})
         if not query:
             return JSONResponse(status_code=400, content={"error": "Missing 'question' in request."})
+
+        # --- placeholder for future prompt engineering / no hard-coded demos ---
+        q_lower = query.lower()
+        now = datetime.now()
+        # (hard-coded demo removed)
 
         # --- Greeting shortcut ---
         greeting_keywords = ["hi", "hello", "hey", "good morning", "good afternoon", "good evening"]
@@ -137,25 +164,154 @@ async def handle_query(request: Request):
             return JSONResponse({"reply": reply})
         # --- End greeting shortcut ---
 
-        # Build help context for this turn
-        top_docs = search_documents(query)
-        context = build_context([doc for _, doc in top_docs])
+        # Build help context only in help mode
+        if mode == "help":
+            top_docs = search_documents(query)
+            context = build_context([doc for _, doc in top_docs])
+        else:
+            context = ""
 
-        # --- Build dynamic system prompt with user preferences ---
-        system_prompt = (
-            "You are Cubie, a helpful and upbeat customer service assistant for Tcube.\n"
-            "Your goal is to provide clear, concise, and friendly answers grounded in the help documentation.\n\n"
-            "Instructions:\n"
-            "- Always use a polite, friendly, and conversational tone.\n"
-            "- If the user asks for humor (e.g., jokes), respond playfully.\n"
-            "- When giving instructions, always use bullet points (-) or numbered lists (1., 2., ...) with spacing.\n"
-            "- When referencing links:\n"
-            "   • Use [descriptive link text](URL) instead of raw URLs.\n"
-            "- Do not repeat greetings in each response.\n"
-            "- If you don't know the answer, say so politely.\n"
-            "- Responses must always be formatted using valid Markdown syntax.\n\n"
-            "Help Context:"
-        )
+        # --- Build dynamic system prompt based on mode ---
+        if mode == "analytics":
+            system_prompt = (
+                "You are an analytics assistant for TCube.\n"
+                "Use the database schema below to write read-only SQL queries.\n"
+                "Never modify data. Always wrap SQL in a function call if needed.\n\n"
+                f"{DB_SCHEMA}"
+            )
+            system_prompt += (
+                "\n\nRules:\n"
+                "• If the JSON you receive is [{\"notice\":\"no_rows\"}], reply: 'No data available for that query.'\n"
+                "• Never display raw SQL in your answer.\n"
+                "• Never respond with 'stay tuned' or similar filler; provide the numeric result directly.\n"
+                "• Column naming reminders: use RecipientCountry/RecipientCity/RecipientState for destination fields,\n"
+                "  use ShipperCountry/City/State for origin. Avoid non-existent columns like DestRegion.\n"
+                "• In DisputeManagement the carrier column is CarrierCode (not TCCarrierCode).\n"
+                "• When the user asks for 'top' items (carriers, disputes, etc.) default to TOP 3 unless they specify another number.\n"
+                "• When the user inquires about a single Dispute ID, first retrieve its row from DisputeManagement, then all related AuditTrail comments, and also count total disputes for that CarrierCode to provide context. Summarize all three pieces of data.\n"
+                "• Do NOT respond with a plan or outline. Always execute the required SQL queries via sql_tool (or other tools) first, then respond with the final ranked answer or summary.\n"
+                "• If the user asks to email or send something, you MUST call mail_tool. Use to_usernames for TCube usernames or direct email addresses (addresses contain '@'). Provide a clear subject and body.\n"
+                "  After the mail_tool call, follow up with a normal assistant message that includes the same summary or chart so the user sees it in chat as well as email.\n"
+                "  Example mail_tool call JSON (you must include to_usernames):\n"
+                "    {\"to_usernames\":[\"VSINGH\"], \"subject\":\"Shipment KPI\", \"body_markdown\":\"Hi!\"}\n"
+                "  If a chart PNG was generated in a previous step, include its /static/demo/filename.png in the attachments array so the user receives the image.\n"
+                "  Send the email immediately; do NOT ask the user for further confirmation unless the request is ambiguous.\n"
+                "  If you do not include to_usernames the email will NOT be sent.\n"
+                "• When chart_tool returns a URL, embed the image using Markdown like: ![Chart](URL).\n"
+                "• You may chain multiple function calls until you have the final answer.\n"
+            )
+            functions_spec = [
+                {
+                    "name": "sql_tool",
+                    "description": "Run a read-only SQL query and return JSON rows",
+                    "parameters": {
+                        "type": "object",
+                        "properties": {"sql": {"type": "string"}},
+                        "required": ["sql"]
+                    },
+                },
+                {
+                    "name": "multi_sql_tool",
+                    "description": "Run multiple read-only SQL queries and return list of JSON result strings",
+                    "parameters": {
+                        "type": "object",
+                        "properties": {
+                            "queries": {
+                                "type": "array",
+                                "items": {"type": "string"}
+                            }
+                        },
+                        "required": ["queries"]
+                    },
+                },
+                {
+                    "name": "percentage_tool",
+                    "description": "Compute percentage using two SQL queries (numerator and denominator)",
+                    "parameters": {
+                        "type": "object",
+                        "properties": {
+                            "numerator_sql": {"type": "string"},
+                            "denominator_sql": {"type": "string"}
+                        },
+                        "required": ["numerator_sql", "denominator_sql"]
+                    },
+                },
+                {
+                    "name": "chart_tool",
+                    "description": "Generate a Plotly chart for the given SQL result and return a static PNG URL",
+                    "parameters": {
+                        "type": "object",
+                        "properties": {
+                            "sql": {"type": "string"},
+                            "chart_type": {"type": "string"},
+                            "x": {"type": "string"},
+                            "y": {"type": "string"},
+                            "title": {"type": "string"},
+                            "z": {"type": "string"}
+                        },
+                        "required": ["sql", "chart_type", "x", "y"]
+                    },
+                },
+                {
+                    "name": "update_dispute_status",
+                    "description": "Set a dispute's status to Open or Closed in DisputeManagement",
+                    "parameters": {
+                        "type": "object",
+                        "properties": {
+                            "dispute_id": {"type": "integer"},
+                            "new_status": {"type": "string"},
+                            "changed_by": {"type": "string"}
+                        },
+                        "required": ["dispute_id", "changed_by"]
+                    },
+                },
+                {
+                    "name": "add_audit_comment",
+                    "description": "Insert a comment row into AuditTrail for a dispute",
+                    "parameters": {
+                        "type": "object",
+                        "properties": {
+                            "dispute_id": {"type": "integer"},
+                            "comments": {"type": "string"},
+                            "processor": {"type": "string"},
+                            "assigned_to": {"type": "string"}
+                        },
+                        "required": ["dispute_id", "comments"]
+                    },
+                },
+                {
+                    "name": "mail_tool",
+                    "description": "Send an email with optional attachments to TCube users, adding context",
+                    "parameters": {
+                        "type": "object",
+                        "properties": {
+                            "to_usernames": {"type": "array", "items": {"type": "string"}},
+                            "subject": {"type": "string"},
+                            "body_markdown": {"type": "string"},
+                            "attachments": {"type": "array", "items": {"type": "string"}}
+                        },
+                        "required": ["to_usernames", "subject", "body_markdown"]
+                    },
+                },
+            ]
+        else:
+            # default help-mode prompt (original)
+            system_prompt = (
+                "You are Cubie, a helpful and upbeat customer service assistant for Tcube.\n"
+                "Your goal is to provide clear, concise, and friendly answers grounded in the help documentation.\n\n"
+                "Instructions:\n"
+                "- Always use a polite, friendly, and conversational tone.\n"
+                "- If the user asks for humor (e.g., jokes), respond playfully.\n"
+                "- When giving instructions, always use bullet points (-) or numbered lists (1., 2., ...) with spacing.\n"
+                "- When referencing links:\n"
+                "   • Use [descriptive link text](URL) instead of raw URLs.\n"
+                "- Do not repeat greetings in each response.\n"
+                "- If you don't know the answer, say so politely.\n"
+                "- Responses must always be formatted using valid Markdown syntax.\n\n"
+                "Help Context:"
+            )
+            functions_spec = None
+
         # Add user preferences to the system prompt
         if prefs.get("name"):
             system_prompt += f"\n\nThe user's preferred name is: {prefs['name']}. Greet them by this name in your first message only."
@@ -183,22 +339,132 @@ async def handle_query(request: Request):
         # Cast conversation to the correct type for OpenAI
         messages = cast(list[ChatCompletionMessageParam], conversation)
 
-        # Call OpenAI API with the full conversation history
-        completion = openai.chat.completions.create(
+        if mode == "analytics":
+            last_chart_snippet: str | None = None  # store latest chart HTML/Markdown from chart_tool
+            # --- Multi-step agent loop ---
+            while True:
+                req_kwargs: dict[str, object] = {
+                    "model": CHAT_MODEL,
+                    "messages": messages,
+                    "temperature": 0.3,
+                }
+                if functions_spec:
+                    # OpenAI 1.x uses the "tools" param. The older "functions" param is now deprecated and
+                    # cannot be sent alongside "tools". We therefore send only the "tools" list; the model
+                    # will reply with the newer `tool_calls` format.
+                    req_kwargs["tools"] = [{"type": "function", "function": spec} for spec in functions_spec]
+                    req_kwargs["tool_choice"] = "auto"
+
+                resp = openai.chat.completions.create(**req_kwargs)  # type: ignore[arg-type]
+                msg_choice = resp.choices[0]
+
+                # --------------------------------------------------------------
+                # Handle both legacy (function_call) and new (tool_calls) formats
+                # --------------------------------------------------------------
+                fn_calls: list[dict] = []
+                if msg_choice.finish_reason == "function_call" and msg_choice.message.function_call is not None:
+                    # Old style – single function call
+                    fn_calls.append({
+                        "id": None,
+                        "name": msg_choice.message.function_call.name,
+                        "arguments": msg_choice.message.function_call.arguments or "{}",
+                    })
+                elif msg_choice.finish_reason == "tool_calls" and getattr(msg_choice.message, "tool_calls", None):
+                    # New style – one or more tool calls
+                    for tc in msg_choice.message.tool_calls:  # type: ignore[attr-defined]
+                        fn_calls.append({
+                            "id": tc.id,
+                            "name": tc.function.name,
+                            "arguments": tc.function.arguments,
+                        })
+
+                if fn_calls:
+                    # Ensure the original assistant tool_call message is added once
+                    messages.append(msg_choice.message)
+
+                    # Execute each function call sequentially (they are independent)
+                    for call in fn_calls:
+                        args = json_lib.loads(call["arguments"] or "{}")
+                        if call["name"] == "sql_tool":
+                            result = sql_tool(args.get("sql", ""))
+                        elif call["name"] == "multi_sql_tool":
+                            result = json_lib.dumps(multi_sql_tool(args.get("queries", [])))
+                        elif call["name"] == "percentage_tool":
+                            result = percentage_tool(args.get("numerator_sql", ""), args.get("denominator_sql", ""))
+                        elif call["name"] == "chart_tool":
+                            result = chart_tool(
+                                args.get("sql", ""),
+                                args.get("chart_type", "line"),
+                                args.get("x", ""),
+                                args.get("y", ""),
+                                args.get("title", ""),
+                                args.get("z", "")
+                            )
+                            if ("<img" in result) or ("![Chart" in result):
+                                last_chart_snippet = result
+                        elif call["name"] == "update_dispute_status":
+                            result = update_dispute_status(
+                                args.get("dispute_id"),
+                                args.get("new_status"),
+                                args.get("changed_by", "agent"),
+                            )
+                        elif call["name"] == "add_audit_comment":
+                            result = add_audit_comment(
+                                args.get("dispute_id"),
+                                args.get("comments", ""),
+                                args.get("processor", "agent"),
+                                args.get("assigned_to", ""),
+                            )
+                        elif call["name"] == "mail_tool":
+                            # Fill missing fields with last response context
+                            to_users = args.get("to_usernames", [])
+                            subject  = args.get("subject", "Assistance Summary")
+                            body_md  = args.get("body_markdown", "") or LAST_BODY
+                            attach   = args.get("attachments") or LAST_CHARTS
+                            result = mail_tool(to_users, subject, body_md, attach)
+                        else:
+                            result = "Unsupported function"
+
+                        # Append tool result in correct format
+                        if msg_choice.finish_reason == "function_call":
+                            messages.append({
+                                "role": "function",
+                                "name": call["name"],
+                                "content": result,
+                            })
+                        else:
+                            messages.append({
+                                "role": "tool",
+                                "tool_call_id": call["id"],
+                                "content": result,
+                            })
+                    # Continue agent loop for additional calls or final answer
+                    continue
+
+                # Otherwise, we have the final answer
+                final_reply = msg_choice.message.content or "I couldn't generate a response."
+                # Update globals for future email requests
+                LAST_BODY = final_reply.strip()
+                if last_chart_snippet:
+                    import re
+                    LAST_CHARTS = re.findall(r"/static/demo/\S+?\.png", last_chart_snippet)
+                else:
+                    LAST_CHARTS = []
+                # If model forgot to include the chart markdown, prepend it
+                if last_chart_snippet and ("<img" not in final_reply and "![Chart" not in final_reply):
+                    # Prepend the chart snippet so it appears before text
+                    final_reply = f"{last_chart_snippet}\n\n{final_reply}"
+                return JSONResponse({"reply": final_reply.strip()})
+
+        # ---------------- help mode (single step) ------------------
+
+        single_resp = openai.chat.completions.create(
             model=CHAT_MODEL,
             messages=messages,
-            temperature=0.5
+            temperature=0.5,
         )
 
-        reply = completion.choices[0].message.content
-        if reply is None:
-            reply = "I apologize, but I couldn't generate a response. Please try again."
-        else:
-            reply = reply.strip()
-
-        # Optionally, add assistant reply to conversation history if you want to keep context
-        # conversation_history.append({"role": "assistant", "content": reply})
-
+        reply = (single_resp.choices[0].message.content or "I couldn't generate a response.").strip()
         return JSONResponse({"reply": reply})
 
     except Exception as e:
@@ -206,4 +472,3 @@ async def handle_query(request: Request):
         print("Error during /api/query request:")
         traceback.print_exc()  # This prints the full error in your terminal
         return JSONResponse(status_code=500, content={"error": str(e)})
-

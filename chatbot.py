@@ -4,6 +4,8 @@ import numpy as np
 import openai
 from dotenv import load_dotenv
 from numpy.linalg import norm
+from typing import cast
+from openai.types.chat import ChatCompletionMessageParam
 
 
 # Load API key
@@ -64,6 +66,7 @@ while True:
     top_docs = search_help_docs(query_embedding, top_k=3)
 
     messages = build_chat_prompt(top_docs, user_input)
+    messages = cast(list[ChatCompletionMessageParam], messages)
     response = openai.chat.completions.create(
         model=CHAT_MODEL,
         messages=messages,

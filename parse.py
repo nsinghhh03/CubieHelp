@@ -2,6 +2,7 @@ import os
 import json
 import re
 from bs4 import BeautifulSoup
+from bs4.element import Tag
 
 html_dir = "."
 output = []
@@ -38,7 +39,7 @@ for filename in os.listdir(html_dir):
         with open(filepath, "r", encoding="utf-8") as file:
             soup = BeautifulSoup(file, "html.parser")
 
-        page_title = soup.title.string.strip() if soup.title else filename.replace(".html", "")
+        page_title = soup.title.get_text(strip=True) if soup.title else filename.replace(".html", "")
         base_url = f"http://dev.tcube360.com/help/{filename}"
         page_id = filename
 
@@ -59,7 +60,7 @@ for filename in os.listdir(html_dir):
 
             content = []
             for sibling in h2.find_next_siblings():
-                if sibling.name == "h2":
+                if isinstance(sibling, Tag) and sibling.name == "h2":
                     break
                 text = sibling.get_text(" ", strip=True)
                 if text:
