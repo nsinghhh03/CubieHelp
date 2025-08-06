@@ -13,8 +13,10 @@ let recognition;
 let currentMode = 'help';
 
 // === Backend API URL ===
-// Set to your FastAPI endpoint. For local dev keep it '' (same origin).
-const API_URL = "https://your-fastapi-domain.com/api/query";
+// Dynamic: use relative path in local dev, full URL in production.
+const API_URL = (window.location.hostname.includes('localhost') || window.location.hostname.includes('127.0.0.1'))
+  ? '/api/query'
+  : 'https://YOUR_REAL_BACKEND_DOMAIN/api/query';
 
 // SVG constants for copy button (user provided, no border, no fill)
 const COPY_SVG = `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><rect x="9" y="9" width="11" height="11" rx="2" ry="2"></rect><path d="M15 9V7a2 2 0 0 0-2-2H7a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h2"></path></svg>`;
