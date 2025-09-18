@@ -11,17 +11,42 @@
 <body>
   <div class="chat-container">
     <div class="chat-header">
-      Talk to Cubie
-      <button id="customize-btn" title="Customize Cubie" aria-label="Customize Cubie">
-        <svg width="22" height="22" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" fill="#fff">
-          <path fill-rule="evenodd" clip-rule="evenodd" d="M3.5 2h-1v5h1V2zm6.1 5H6.4L6 6.45v-1L6.4 5h3.2l.4.5v1l-.4.5zm-5 3H1.4L1 9.5v-1l.4-.5h3.2l.4.5v1l-.4.5zm3.9-8h-1v2h1V2zm-1 6h1v6h-1V8zm-4 3h-1v3h1v-3zm7.9 0h3.19l.4-.5v-.95l-.4-.5H11.4l-.4.5v.95l.4.5zm2.1-9h-1v6h1V2zm-1 10h1v2h-1v-2z"/>
-        </svg>
-      </button>
-      <button id="download-pdf" title="Download conversation as PDF">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M19 12l-7 7-7-7"/></svg>
-      </button>
-      <div id="toggle-dark">🌙</div>
+      <div class="header-content">
+        <div class="avatar">
+          <img src="/static/cubie.png" alt="Cubie Avatar" class="avatar-image" />
+        </div>
+        <div class="header-text">
+          <div class="chat-with">Chat with</div>
+          <div class="participant-name">Cubie</div>
+        </div>
+        <div class="header-actions">
+          <button id="notes-btn" title="View Saved Notes">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+              <polyline points="14,2 14,8 20,8"/>
+              <line x1="16" y1="13" x2="8" y2="13"/>
+              <line x1="16" y1="17" x2="8" y2="17"/>
+              <polyline points="10,9 9,9 8,9"/>
+            </svg>
+          </button>
+          <button id="customize-btn" title="Customize Cubie" aria-label="Customize Cubie">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="3"/>
+              <path d="M12 1v6m0 6v6m11-7h-6m-6 0H1"/>
+            </svg>
+          </button>
+          <button id="download-pdf" title="Download conversation as PDF">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+              <polyline points="7,10 12,15 17,10"/>
+              <line x1="12" y1="15" x2="12" y2="3"/>
+            </svg>
+          </button>
+          <div id="toggle-dark">🌙</div>
+        </div>
+      </div>
     </div>
+    
 
     <div class="chat-messages" id="chat-box">
       <!-- Messages go here -->
@@ -32,52 +57,79 @@
       <span></span><span></span><span></span>
     </div>
 
-    <form class="chat-input" id="chat-form">
-      <input type="text" id="user-input" placeholder="Type your question here..." autocomplete="off" />
-      <button type="submit">Send</button>
-      <button type="button" id="mic-button" aria-label="Voice input">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <rect x="9" y="2" width="6" height="12" rx="3"/>
-          <path d="M5 10v2a7 7 0 0 0 14 0v-2"/>
-          <line x1="12" y1="22" x2="12" y2="16"/>
-          <line x1="8" y1="22" x2="16" y2="22"/>
-        </svg>
-      </button>
-    </form>
+        <div class="input-container">
+          <form class="chat-input" id="chat-form">
+            <input type="text" id="user-input" placeholder="Enter your message..." autocomplete="off" />
+            <button type="button" class="mic-btn-inline" id="mic-button" title="Voice Input">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="9" y="2" width="6" height="12" rx="3"/>
+                <path d="M5 10v2a7 7 0 0 0 14 0v-2"/>
+                <line x1="12" y1="22" x2="12" y2="16"/>
+                <line x1="8" y1="22" x2="16" y2="22"/>
+              </svg>
+            </button>
+            <button type="submit" class="send-btn">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="22" y1="2" x2="11" y2="13"/>
+                <polygon points="22,2 15,22 11,13 2,9 22,2"/>
+              </svg>
+            </button>
+          </form>
+        </div>
   </div>
 
   <div id="customize-modal" class="customize-modal" style="display:none;">
     <div class="customize-modal-content">
-      <div class="chat-header customize-header">
-        Customize Cubie
-        <button id="close-customize" class="close-customize-btn" title="Close" aria-label="Close">&larr;</button>
-        <button id="customize-modal-download" title="Download conversation as PDF" style="display:none;"></button>
-        <div id="customize-modal-dark" style="display:none;"></div>
+      <div class="customize-header">
+        <h3>⚙️ Customize Cubie</h3>
+        <button id="close-customize" class="close-customize-btn" title="Close" aria-label="Close">&times;</button>
       </div>
       <form id="customize-form">
-        <label for="cubie-name">What should Cubie call you?</label>
-        <input id="cubie-name" name="cubie-name" type="text" placeholder="Name...." autocomplete="off" />
-        <label style="margin-top:2rem;">Choose your preferred response length:</label>
-        <div class="response-length-group">
-          <button type="button" class="response-length-btn" data-length="short">Short</button>
-          <button type="button" class="response-length-btn" data-length="medium">Medium</button>
-          <button type="button" class="response-length-btn" data-length="long">Long</button>
+        <div class="customize-section">
+          <label for="cubie-name">What should Cubie call you?</label>
+          <input id="cubie-name" name="cubie-name" type="text" placeholder="Enter your name..." autocomplete="off" />
         </div>
-        <label style="margin-top:2rem;">What traits should Cubie have?</label>
-        <div class="traits-group">
-          <button type="button" class="trait-btn" data-trait="cheerful">Cheerful</button>
-          <button type="button" class="trait-btn" data-trait="playful">Playful</button>
-          <button type="button" class="trait-btn" data-trait="neutral">Neutral</button>
-          <div style="grid-column: 2 / 3;">
+        
+        <div class="customize-section">
+          <label>Choose your preferred response length:</label>
+          <div class="response-length-group">
+            <button type="button" class="response-length-btn" data-length="short">Short</button>
+            <button type="button" class="response-length-btn" data-length="medium">Medium</button>
+            <button type="button" class="response-length-btn" data-length="long">Long</button>
+          </div>
+        </div>
+        
+        <div class="customize-section">
+          <label>What traits should Cubie have?</label>
+          <div class="traits-group">
+            <button type="button" class="trait-btn" data-trait="cheerful">Cheerful</button>
+            <button type="button" class="trait-btn" data-trait="playful">Playful</button>
+            <button type="button" class="trait-btn" data-trait="neutral">Neutral</button>
             <button type="button" class="trait-btn" data-trait="professional">Professional</button>
           </div>
         </div>
-        <div class="customize-horizontal-divider"></div>
+        
         <div class="customize-actions">
           <button type="button" id="customize-cancel" class="customize-cancel-btn">Cancel</button>
-          <button type="submit" id="customize-save" class="customize-save-btn">Save</button>
+          <button type="submit" id="customize-save" class="customize-save-btn">Save Changes</button>
         </div>
       </form>
+    </div>
+  </div>
+
+  <!-- Notes Modal -->
+  <div id="notes-modal" class="notes-modal" style="display:none;">
+    <div class="notes-modal-content">
+      <div class="notes-header">
+        <h3>📝 Saved Notes</h3>
+        <button id="close-notes" class="close-notes-btn" title="Close" aria-label="Close">&times;</button>
+      </div>
+      <div class="notes-list" id="notes-list">
+        <!-- Saved notes will appear here -->
+      </div>
+            <div class="notes-empty" id="notes-empty">
+              <p>No notes saved yet. Click the copy button on bot messages to save them here!</p>
+            </div>
     </div>
   </div>
 

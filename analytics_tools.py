@@ -162,7 +162,7 @@ def percentage_tool(numerator_sql: str, denominator_sql: str) -> str:
 # ---------------------------------------------------------------------------
 # Dispute management mutation + email helper
 # ---------------------------------------------------------------------------
-import smtplib, ssl, mimetypes
+import smtplib, ssl, mimetypes, json
 from email.message import EmailMessage
 import pymssql
 from database import DB_SERVER, DB_PORT, DB_NAME, DB_USER, DB_PASSWORD
@@ -252,19 +252,86 @@ def _emails_for_usernames(usernames: list[str]) -> list[str]:
     return list({e.lower(): e for e in results}.values())
 
 
+def clean_email_content(content: str) -> str:
+    """Clean up email content by removing markdown formatting and unnecessary characters."""
+    import re
+    
+    # Remove markdown bold formatting (**text** -> text)
+    content = re.sub(r'\*\*(.*?)\*\*', r'\1', content)
+    
+    # Remove markdown italic formatting (*text* -> text)
+    content = re.sub(r'\*(.*?)\*', r'\1', content)
+    
+    # Remove markdown headers (# Header -> Header)
+    content = re.sub(r'^#+\s*', '', content, flags=re.MULTILINE)
+    
+    # Remove markdown list formatting (- item -> item)
+    content = re.sub(r'^-\s*', '', content, flags=re.MULTILINE)
+    
+    # Remove markdown code blocks (```code``` -> code)
+    content = re.sub(r'```.*?\n(.*?)\n```', r'\1', content, flags=re.DOTALL)
+    
+    # Remove markdown inline code (`code` -> code)
+    content = re.sub(r'`(.*?)`', r'\1', content)
+    
+    # Clean up extra whitespace
+    content = re.sub(r'\n\s*\n\s*\n', '\n\n', content)
+    content = content.strip()
+    
+    return content
+
+
+def draft_email_tool(to_usernames: list[str], subject: str, body_markdown: str, attachments: list[str] | None = None) -> str:
+    """Create an email draft for approval before sending."""
+    recipients = _emails_for_usernames(to_usernames)
+    if not recipients:
+        return "no_recipients"
+
+    # Clean up the email content
+    clean_body = clean_email_content(body_markdown)
+    
+    # Add Cubie signature if not present
+    if not clean_body.rstrip().endswith("Cubie"):
+        clean_body += "\n\n— Cubie"
+    
+    # Create draft info
+    draft_info = {
+        "recipients": recipients,
+        "subject": subject,
+        "body": clean_body,
+        "attachments": attachments or [],
+        "status": "draft",
+    }
+    
+    # Store draft globally (in a real app, you'd use a database)
+    global EMAIL_DRAFT
+    EMAIL_DRAFT = draft_info
+    print(f"DEBUG: Stored EMAIL_DRAFT: {EMAIL_DRAFT}")
+    
+    # Return formatted draft for display
+    return f"DRAFT_EMAIL:{json.dumps(draft_info)}"
+
+
 def mail_tool(to_usernames: list[str], subject: str, body_markdown: str, attachments: list[str] | None = None) -> str:
     """Send an email via SMTP to given usernames (resolved to EmailId)."""
     recipients = _emails_for_usernames(to_usernames)
     if not recipients:
         return "no_recipients"
 
+    print(f"DEBUG: mail_tool called with recipients: {recipients}")
+    print(f"DEBUG: SMTP_HOST: {SMTP_HOST}, SMTP_USER: {SMTP_USER}")
+    
     msg = EmailMessage()
     msg["Subject"] = subject
     msg["From"] = FROM_ADDR or SMTP_USER
     msg["To"] = ", ".join(recipients)
-    if not body_markdown.rstrip().endswith("Cubie"):
-        body_markdown += "\n\n— Cubie"
-    msg.set_content(body_markdown)
+    
+    # Clean up the email content before sending
+    clean_body = clean_email_content(body_markdown)
+    if not clean_body.rstrip().endswith("Cubie"):
+        clean_body += "\n\n— Cubie"
+    
+    msg.set_content(clean_body)
 
     # Infer attachment paths from body_markdown if none supplied
     if (not attachments or len(attachments) == 0) and "/static/demo/" in body_markdown:
@@ -287,10 +354,44 @@ def mail_tool(to_usernames: list[str], subject: str, body_markdown: str, attachm
 
     context = ssl.create_default_context()
     try:
+        print(f"DEBUG: Attempting to connect to SMTP server {SMTP_HOST}:{SMTP_PORT}")
         with smtplib.SMTP(SMTP_HOST, SMTP_PORT) as server:
+            print(f"DEBUG: Connected to SMTP server")
             server.starttls(context=context)
+            print(f"DEBUG: Started TLS")
             server.login(SMTP_USER, SMTP_PASS)
+            print(f"DEBUG: Logged in successfully")
             server.send_message(msg)
+            print(f"DEBUG: Email sent successfully")
     except Exception as exc:
+        print(f"DEBUG: SMTP error: {exc}")
         return f"error: {exc}"
     return "sent"
+
+
+def approve_email_tool() -> str:
+    """Send the approved email draft."""
+    global EMAIL_DRAFT
+    print(f"DEBUG: approve_email_tool called, EMAIL_DRAFT: {EMAIL_DRAFT}")
+    if not EMAIL_DRAFT:
+        print("DEBUG: No EMAIL_DRAFT found")
+        return "no_draft"
+    
+    print(f"DEBUG: Sending email with draft: {EMAIL_DRAFT}")
+    # Send the email using the draft
+    result = mail_tool(
+        EMAIL_DRAFT["recipients"],
+        EMAIL_DRAFT["subject"], 
+        EMAIL_DRAFT["body"],
+        EMAIL_DRAFT["attachments"]
+    )
+    
+    # Clear the draft
+    EMAIL_DRAFT = None
+    print(f"DEBUG: Email sent, result: {result}")
+    
+    return result
+
+
+# Global variable to store email draft
+EMAIL_DRAFT = None

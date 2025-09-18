@@ -8,7 +8,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi import FastAPI, Request
 from dotenv import load_dotenv
 from numpy.linalg import norm
-from typing import cast, List, Dict
+from typing import cast, List, Dict, Any
 from openai.types.chat import ChatCompletionMessageParam
 from uuid import uuid4
 
@@ -18,8 +18,11 @@ from datetime import datetime
 # noqa: F401 – explicit re-export (chart tools)
 import analytics_tools as _at
 
-from analytics_tools import sql_tool, multi_sql_tool, percentage_tool, chart_tool, update_dispute_status, add_audit_comment, mail_tool
+from analytics_tools import sql_tool, multi_sql_tool, percentage_tool, chart_tool, update_dispute_status, add_audit_comment, mail_tool, draft_email_tool, approve_email_tool
 
+# === Simple session storage for email drafts ===
+# In a real app, you'd use Redis, database, or proper session management
+EMAIL_DRAFTS: Dict[str, Dict[str, Any]] = {}
 
 # === Load environment variables ===
 load_dotenv()
@@ -140,6 +143,49 @@ conversation_history = [
 LAST_BODY: str = ""
 LAST_CHARTS: list[str] = []
 
+@app.post("/api/approve-email")
+async def approve_email(request: Request):
+    """Direct endpoint for approving email drafts without going through AI."""
+    try:
+        body = await request.json()
+        session_id = body.get("session_id", "default")
+        
+        print(f"DEBUG: Direct approval request for session_id: {session_id}")
+        print(f"DEBUG: EMAIL_DRAFTS keys: {list(EMAIL_DRAFTS.keys())}")
+        
+        if session_id in EMAIL_DRAFTS:
+            draft_data = EMAIL_DRAFTS[session_id]
+            print(f"DEBUG: Found draft in session storage: {draft_data}")
+            
+            # Send the email using the draft
+            from analytics_tools import mail_tool
+            result = mail_tool(
+                draft_data["recipients"],
+                draft_data["subject"], 
+                draft_data["body"],
+                draft_data["attachments"]
+            )
+            print(f"DEBUG: Email sent, result: {result}")
+            
+            # Clear the draft from session storage
+            del EMAIL_DRAFTS[session_id]
+            
+            if result == "sent":
+                reply = "✅ Email has been sent successfully!"
+            else:
+                reply = f"❌ Error sending email: {result}"
+        else:
+            print(f"DEBUG: No draft found in session storage")
+            reply = "❌ No email draft found to approve."
+        
+        return JSONResponse({"reply": reply})
+        
+    except Exception as e:
+        import traceback
+        print("Error during /api/approve-email request:")
+        traceback.print_exc()
+        return JSONResponse(status_code=500, content={"error": str(e)})
+
 @app.post("/api/query")
 async def handle_query(request: Request):
     try:
@@ -148,6 +194,7 @@ async def handle_query(request: Request):
         query = body.get("question")
         mode = body.get("mode", "help")  # "help" or "analytics"
         prefs = body.get("prefs", {})
+        conversation_history = body.get("history", [])  # Get conversation history from frontend
         if not query:
             return JSONResponse(status_code=400, content={"error": "Missing 'question' in request."})
 
@@ -190,12 +237,13 @@ async def handle_query(request: Request):
                 "• When the user asks for 'top' items (carriers, disputes, etc.) default to TOP 3 unless they specify another number.\n"
                 "• When the user inquires about a single Dispute ID, first retrieve its row from DisputeManagement, then all related AuditTrail comments, and also count total disputes for that CarrierCode to provide context. Summarize all three pieces of data.\n"
                 "• Do NOT respond with a plan or outline. Always execute the required SQL queries via sql_tool (or other tools) first, then respond with the final ranked answer or summary.\n"
-                "• If the user asks to email or send something, you MUST call mail_tool. Use to_usernames for TCube usernames or direct email addresses (addresses contain '@'). Provide a clear subject and body.\n"
-                "  After the mail_tool call, follow up with a normal assistant message that includes the same summary or chart so the user sees it in chat as well as email.\n"
-                "  Example mail_tool call JSON (you must include to_usernames):\n"
+                "• If the user asks to email or send something, you MUST call draft_email_tool first to create a draft for approval. Use to_usernames for TCube usernames or direct email addresses (addresses contain '@'). Provide a clear subject and body.\n"
+                "  After calling draft_email_tool, you MUST immediately show the email draft content in your response so the user can review it.\n"
+                "  IMPORTANT: Always include the actual email content (recipients, subject, and body) in your response after calling draft_email_tool.\n"
+                "  Example draft_email_tool call JSON (you must include to_usernames):\n"
                 "    {\"to_usernames\":[\"VSINGH\"], \"subject\":\"Shipment KPI\", \"body_markdown\":\"Hi!\"}\n"
                 "  If a chart PNG was generated in a previous step, include its /static/demo/filename.png in the attachments array so the user receives the image.\n"
-                "  Send the email immediately; do NOT ask the user for further confirmation unless the request is ambiguous.\n"
+                "  Do NOT send the email immediately - always show the draft first and wait for user approval.\n"
                 "  If you do not include to_usernames the email will NOT be sent.\n"
                 "• When chart_tool returns a URL, embed the image using Markdown like: ![Chart](URL).\n"
                 "• You may chain multiple function calls until you have the final answer.\n"
@@ -280,8 +328,8 @@ async def handle_query(request: Request):
                     },
                 },
                 {
-                    "name": "mail_tool",
-                    "description": "Send an email with optional attachments to TCube users, adding context",
+                    "name": "draft_email_tool",
+                    "description": "Create an email draft for approval before sending to TCube users",
                     "parameters": {
                         "type": "object",
                         "properties": {
@@ -291,6 +339,15 @@ async def handle_query(request: Request):
                             "attachments": {"type": "array", "items": {"type": "string"}}
                         },
                         "required": ["to_usernames", "subject", "body_markdown"]
+                    },
+                },
+                {
+                    "name": "approve_email_tool",
+                    "description": "Send the approved email draft",
+                    "parameters": {
+                        "type": "object",
+                        "properties": {},
+                        "required": []
                     },
                 },
             ]
@@ -328,11 +385,13 @@ async def handle_query(request: Request):
             if 'professional' in traits:
                 system_prompt += "\n\nBe professional and businesslike."
 
-        # Use a fresh conversation history for each request to ensure system prompt is updated
+        # Use conversation history from frontend, but ensure system prompt is updated
         conversation = [
             {"role": "system", "content": system_prompt}
         ]
-        # Add previous conversation if needed (or just current user message)
+        # Add previous conversation history from frontend
+        conversation.extend(conversation_history)
+        # Add current user message
         user_message = f"{query}\n\nHelp Context:\n{context}"
         conversation.append({"role": "user", "content": user_message})
 
@@ -340,6 +399,49 @@ async def handle_query(request: Request):
         messages = cast(list[ChatCompletionMessageParam], conversation)
 
         if mode == "analytics":
+            # Check for email approval/rejection in analytics mode
+            user_message_lower = user_message.lower().strip()
+            if user_message_lower in ["approve", "approved", "yes", "send", "send it"]:
+                # User approved the email draft
+                print(f"DEBUG: User approved email in analytics mode, checking for draft...")
+                session_id = "default"  # In a real app, you'd get this from the request
+                print(f"DEBUG: Checking session storage for session_id: {session_id}")
+                print(f"DEBUG: EMAIL_DRAFTS keys: {list(EMAIL_DRAFTS.keys())}")
+                
+                if session_id in EMAIL_DRAFTS:
+                    draft_data = EMAIL_DRAFTS[session_id]
+                    print(f"DEBUG: Found draft in session storage: {draft_data}")
+                    
+                    # Send the email using the draft
+                    from analytics_tools import mail_tool
+                    result = mail_tool(
+                        draft_data["recipients"],
+                        draft_data["subject"], 
+                        draft_data["body"],
+                        draft_data["attachments"]
+                    )
+                    print(f"DEBUG: Email sent, result: {result}")
+                    
+                    # Clear the draft from session storage
+                    del EMAIL_DRAFTS[session_id]
+                    
+                    if result == "sent":
+                        reply = "✅ Email has been sent successfully!"
+                    else:
+                        reply = f"❌ Error sending email: {result}"
+                else:
+                    print(f"DEBUG: No draft found in session storage")
+                    reply = "❌ No email draft found to approve."
+                return JSONResponse({"reply": reply})
+            elif user_message_lower in ["reject", "rejected", "no", "cancel", "don't send"]:
+                # User rejected the email draft
+                session_id = "default"
+                if session_id in EMAIL_DRAFTS:
+                    del EMAIL_DRAFTS[session_id]
+                    print(f"DEBUG: Cleared draft from session storage")
+                reply = "❌ Email draft has been cancelled."
+                return JSONResponse({"reply": reply})
+            
             last_chart_snippet: str | None = None  # store latest chart HTML/Markdown from chart_tool
             # --- Multi-step agent loop ---
             while True:
@@ -379,11 +481,13 @@ async def handle_query(request: Request):
                         })
 
                 if fn_calls:
+                    print(f"DEBUG: Processing {len(fn_calls)} function calls")
                     # Ensure the original assistant tool_call message is added once
                     messages.append(msg_choice.message)
 
                     # Execute each function call sequentially (they are independent)
                     for call in fn_calls:
+                        print(f"DEBUG: Processing function call: {call['name']}")
                         args = json_lib.loads(call["arguments"] or "{}")
                         if call["name"] == "sql_tool":
                             result = sql_tool(args.get("sql", ""))
@@ -415,8 +519,58 @@ async def handle_query(request: Request):
                                 args.get("processor", "agent"),
                                 args.get("assigned_to", ""),
                             )
-                        elif call["name"] == "mail_tool":
+                        elif call["name"] == "draft_email_tool":
                             # Fill missing fields with last response context
+                            to_users = args.get("to_usernames", [])
+                            subject  = args.get("subject", "Assistance Summary")
+                            body_md  = args.get("body_markdown", "") or LAST_BODY
+                            attach   = args.get("attachments") or LAST_CHARTS
+                            print(f"DEBUG: Calling draft_email_tool with to_users={to_users}, subject={subject}")
+                            result = draft_email_tool(to_users, subject, body_md, attach)
+                            print(f"DEBUG: draft_email_tool result: {result[:100]}...")
+                            
+                            # If this is a draft email result, we need to handle it specially
+                            if result.startswith("DRAFT_EMAIL:"):
+                                import json
+                                try:
+                                    draft_json = result[len("DRAFT_EMAIL:"):].strip()
+                                    draft_data = json.loads(draft_json)
+                                    
+                                    # Store the draft in session storage
+                                    session_id = "default"  # In a real app, you'd get this from the request
+                                    EMAIL_DRAFTS[session_id] = draft_data
+                                    print(f"DEBUG: Stored draft in session storage: {EMAIL_DRAFTS[session_id]}")
+                                    
+                                    # Create a formatted email preview
+                                    email_preview = f"""📧 **Email Draft Ready for Approval**
+
+**To:** {', '.join(draft_data['recipients'])}
+**Subject:** {draft_data['subject']}
+
+**Message:**
+{draft_data['body']}
+
+---
+*Please review the email above and click the Approve button below to send it.*"""
+                                    
+                                    # Override the result to show the formatted preview
+                                    result = email_preview
+                                    print(f"DEBUG: Formatted email preview: {result[:100]}...")
+                                    
+                                    # Add the formatted result to messages and return immediately
+                                    messages.append({
+                                        "role": "tool",
+                                        "tool_call_id": call["id"],
+                                        "content": result,
+                                    })
+                                    return JSONResponse({"reply": result})
+                                except (json.JSONDecodeError, KeyError) as e:
+                                    print(f"DEBUG: Error parsing draft email: {e}")
+                                    pass  # Keep original result if parsing fails
+                        elif call["name"] == "approve_email_tool":
+                            result = approve_email_tool()
+                        elif call["name"] == "mail_tool":
+                            # Keep original mail_tool for backward compatibility
                             to_users = args.get("to_usernames", [])
                             subject  = args.get("subject", "Assistance Summary")
                             body_md  = args.get("body_markdown", "") or LAST_BODY
@@ -443,6 +597,7 @@ async def handle_query(request: Request):
 
                 # Otherwise, we have the final answer
                 final_reply = msg_choice.message.content or "I couldn't generate a response."
+                
                 # Update globals for future email requests
                 LAST_BODY = final_reply.strip()
                 if last_chart_snippet:
@@ -457,6 +612,49 @@ async def handle_query(request: Request):
                 return JSONResponse({"reply": final_reply.strip()})
 
         # ---------------- help mode (single step) ------------------
+
+        # Check for email approval/rejection in help mode
+        user_message_lower = user_message.lower().strip()
+        if user_message_lower in ["approve", "approved", "yes", "send", "send it"]:
+            # User approved the email draft
+            print(f"DEBUG: User approved email, checking for draft...")
+            session_id = "default"  # In a real app, you'd get this from the request
+            print(f"DEBUG: Checking session storage for session_id: {session_id}")
+            print(f"DEBUG: EMAIL_DRAFTS keys: {list(EMAIL_DRAFTS.keys())}")
+            
+            if session_id in EMAIL_DRAFTS:
+                draft_data = EMAIL_DRAFTS[session_id]
+                print(f"DEBUG: Found draft in session storage: {draft_data}")
+                
+                # Send the email using the draft
+                from analytics_tools import mail_tool
+                result = mail_tool(
+                    draft_data["recipients"],
+                    draft_data["subject"], 
+                    draft_data["body"],
+                    draft_data["attachments"]
+                )
+                print(f"DEBUG: Email sent, result: {result}")
+                
+                # Clear the draft from session storage
+                del EMAIL_DRAFTS[session_id]
+                
+                if result == "sent":
+                    reply = "✅ Email has been sent successfully!"
+                else:
+                    reply = f"❌ Error sending email: {result}"
+            else:
+                print(f"DEBUG: No draft found in session storage")
+                reply = "❌ No email draft found to approve."
+            return JSONResponse({"reply": reply})
+        elif user_message_lower in ["reject", "rejected", "no", "cancel", "don't send"]:
+            # User rejected the email draft
+            session_id = "default"
+            if session_id in EMAIL_DRAFTS:
+                del EMAIL_DRAFTS[session_id]
+                print(f"DEBUG: Cleared draft from session storage")
+            reply = "❌ Email draft has been cancelled."
+            return JSONResponse({"reply": reply})
 
         single_resp = openai.chat.completions.create(
             model=CHAT_MODEL,
