@@ -231,9 +231,7 @@ window.addEventListener('DOMContentLoaded', () => {
           // Mode switch buttons shouldn't hit backend immediately
           if (text.startsWith('Analyze Data')) {
             currentMode = 'analytics';
-            addMessage("Great! Ask me anything about your Shipment, Dispute, or Invoice data and I'll analyze it for you.", 'bot', true);
-            // Clear existing input
-            userInput.value = '';
+            showDataAnalysisInterface();
             return;
           }
           if (text.startsWith('Application Help')) {
@@ -244,8 +242,7 @@ window.addEventListener('DOMContentLoaded', () => {
           }
           if (text.trim().toLowerCase() === 'visualize data') {
             currentMode = 'analytics';
-            addMessage("Sure! Ask me to plot any shipment, dispute, or invoice metric—I'll generate a chart for you.", 'bot', true);
-            userInput.value = '';
+            showDataVisualizationInterface();
             return;
           }
           // For other suggestions, keep default behavior
@@ -618,3 +615,190 @@ closeNotesBtn.addEventListener('click', () => {
 
 // Close modal when clicking outside
 // Remove backdrop click functionality since there's no backdrop
+
+// Interactive Data Analysis Interface
+function showDataAnalysisInterface() {
+  const analysisInterface = document.createElement('div');
+  analysisInterface.className = 'analysis-interface';
+  analysisInterface.innerHTML = `
+    <div class="analysis-header">
+      <h3>📊 Data Analysis</h3>
+      <p>Choose a data category to explore:</p>
+    </div>
+    <div class="analysis-categories">
+      <div class="category-card" data-category="shipments">
+        <div class="category-icon">🚚</div>
+        <h4>Shipments</h4>
+        <p>Track delivery performance, routes, and carrier data</p>
+        <div class="quick-queries">
+          <button class="query-btn" data-query="shipment-performance">Performance Metrics</button>
+          <button class="query-btn" data-query="carrier-analysis">Carrier Analysis</button>
+          <button class="query-btn" data-query="route-optimization">Route Data</button>
+        </div>
+      </div>
+      <div class="category-card" data-category="disputes">
+        <div class="category-icon">⚖️</div>
+        <h4>Disputes</h4>
+        <p>Analyze dispute patterns, resolution times, and costs</p>
+        <div class="quick-queries">
+          <button class="query-btn" data-query="dispute-trends">Dispute Trends</button>
+          <button class="query-btn" data-query="resolution-times">Resolution Times</button>
+          <button class="query-btn" data-query="dispute-costs">Cost Analysis</button>
+        </div>
+      </div>
+      <div class="category-card" data-category="invoices">
+        <div class="category-icon">💰</div>
+        <h4>Invoices</h4>
+        <p>Review billing data, payment status, and financial metrics</p>
+        <div class="quick-queries">
+          <button class="query-btn" data-query="payment-status">Payment Status</button>
+          <button class="query-btn" data-query="revenue-analysis">Revenue Analysis</button>
+          <button class="query-btn" data-query="billing-trends">Billing Trends</button>
+        </div>
+      </div>
+    </div>
+    <div class="custom-query-section">
+      <h4>Custom Query</h4>
+      <textarea placeholder="Ask me anything about your data... (e.g., 'Show me average delivery times by carrier for the last 3 months')" class="custom-query-input"></textarea>
+      <button class="analyze-btn">Analyze Data</button>
+    </div>
+  `;
+  
+  addMessage('', 'bot', false, analysisInterface);
+  
+  // Add event listeners for the interface
+  analysisInterface.addEventListener('click', function(e) {
+    if (e.target.classList.contains('query-btn')) {
+      const query = e.target.dataset.query;
+      const category = e.target.closest('.category-card').dataset.category;
+      executeQuickQuery(query, category);
+    }
+  });
+  
+  const analyzeBtn = analysisInterface.querySelector('.analyze-btn');
+  const customInput = analysisInterface.querySelector('.custom-query-input');
+  
+  analyzeBtn.addEventListener('click', function() {
+    const customQuery = customInput.value.trim();
+    if (customQuery) {
+      userInput.value = customQuery;
+      form.dispatchEvent(new Event('submit'));
+    }
+  });
+}
+
+// Interactive Data Visualization Interface
+function showDataVisualizationInterface() {
+  const visualizationInterface = document.createElement('div');
+  visualizationInterface.className = 'visualization-interface';
+  visualizationInterface.innerHTML = `
+    <div class="viz-header">
+      <h3>📈 Data Visualization</h3>
+      <p>Create custom charts and graphs from your data:</p>
+    </div>
+    <div class="chart-builder">
+      <div class="chart-type-selector">
+        <h4>Chart Type</h4>
+        <div class="chart-types">
+          <button class="chart-type-btn active" data-type="line">📈 Line Chart</button>
+          <button class="chart-type-btn" data-type="bar">📊 Bar Chart</button>
+          <button class="chart-type-btn" data-type="stacked">📊 Stacked Bar</button>
+          <button class="chart-type-btn" data-type="heatmap">🔥 Heatmap</button>
+        </div>
+      </div>
+      <div class="data-source-selector">
+        <h4>Data Source</h4>
+        <select class="data-source-select">
+          <option value="shipments">Shipments</option>
+          <option value="disputes">Disputes</option>
+          <option value="invoices">Invoices</option>
+        </select>
+      </div>
+      <div class="quick-visualizations">
+        <h4>Quick Visualizations</h4>
+        <div class="quick-viz-buttons">
+          <button class="quick-viz-btn" data-viz="delivery-trends">Delivery Performance Trends</button>
+          <button class="quick-viz-btn" data-viz="carrier-comparison">Carrier Comparison</button>
+          <button class="quick-viz-btn" data-viz="dispute-heatmap">Dispute Patterns</button>
+          <button class="quick-viz-btn" data-viz="revenue-chart">Revenue Analysis</button>
+        </div>
+      </div>
+      <div class="custom-viz-section">
+        <h4>Custom Visualization</h4>
+        <textarea placeholder="Describe what you want to visualize... (e.g., 'Show me a line chart of monthly shipment volumes by carrier')" class="custom-viz-input"></textarea>
+        <button class="visualize-btn">Create Chart</button>
+      </div>
+    </div>
+  `;
+  
+  addMessage('', 'bot', false, visualizationInterface);
+  
+  // Add event listeners for the interface
+  visualizationInterface.addEventListener('click', function(e) {
+    if (e.target.classList.contains('chart-type-btn')) {
+      // Remove active class from all buttons
+      visualizationInterface.querySelectorAll('.chart-type-btn').forEach(btn => btn.classList.remove('active'));
+      // Add active class to clicked button
+      e.target.classList.add('active');
+    }
+    
+    if (e.target.classList.contains('quick-viz-btn')) {
+      const vizType = e.target.dataset.viz;
+      executeQuickVisualization(vizType);
+    }
+  });
+  
+  const visualizeBtn = visualizationInterface.querySelector('.visualize-btn');
+  const customVizInput = visualizationInterface.querySelector('.custom-viz-input');
+  const chartTypeSelect = visualizationInterface.querySelector('.chart-type-btn.active');
+  const dataSourceSelect = visualizationInterface.querySelector('.data-source-select');
+  
+  visualizeBtn.addEventListener('click', function() {
+    const customViz = customVizInput.value.trim();
+    const chartType = chartTypeSelect.dataset.type;
+    const dataSource = dataSourceSelect.value;
+    
+    if (customViz) {
+      const fullQuery = `Create a ${chartType} chart showing: ${customViz}`;
+      userInput.value = fullQuery;
+      form.dispatchEvent(new Event('submit'));
+    }
+  });
+}
+
+// Execute quick queries
+function executeQuickQuery(queryType, category) {
+  const queries = {
+    'shipment-performance': 'Show me shipment performance metrics including on-time delivery rates, average transit times, and delivery success rates',
+    'carrier-analysis': 'Analyze carrier performance including cost per shipment, delivery times, and reliability metrics',
+    'route-optimization': 'Show me route data and optimization opportunities including distance analysis and delivery patterns',
+    'dispute-trends': 'Show me dispute trends over time including dispute types, frequency, and resolution patterns',
+    'resolution-times': 'Analyze dispute resolution times by category and identify bottlenecks in the resolution process',
+    'dispute-costs': 'Show me dispute cost analysis including average dispute amounts and financial impact',
+    'payment-status': 'Show me invoice payment status analysis including overdue payments and payment trends',
+    'revenue-analysis': 'Analyze revenue data including monthly trends, customer revenue, and revenue by service type',
+    'billing-trends': 'Show me billing trends and patterns including invoice volumes and billing cycle analysis'
+  };
+  
+  const query = queries[queryType];
+  if (query) {
+    userInput.value = query;
+    form.dispatchEvent(new Event('submit'));
+  }
+}
+
+// Execute quick visualizations
+function executeQuickVisualization(vizType) {
+  const visualizations = {
+    'delivery-trends': 'Create a line chart showing delivery performance trends over the last 6 months',
+    'carrier-comparison': 'Create a bar chart comparing carrier performance metrics',
+    'dispute-heatmap': 'Create a heatmap showing dispute patterns by region and time',
+    'revenue-chart': 'Create a stacked bar chart showing monthly revenue breakdown by service type'
+  };
+  
+  const vizQuery = visualizations[vizType];
+  if (vizQuery) {
+    userInput.value = vizQuery;
+    form.dispatchEvent(new Event('submit'));
+  }
+}
