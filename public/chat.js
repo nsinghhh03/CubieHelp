@@ -229,18 +229,18 @@ window.addEventListener('DOMContentLoaded', () => {
         if (e.target.classList.contains('suggestion-btn')) {
           const text = e.target.textContent.trim();
           // Mode switch buttons shouldn't hit backend immediately
-          if (text.startsWith('Analyze Data')) {
+          if (text.includes('Analyze Data')) {
             currentMode = 'analytics';
             showDataAnalysisInterface();
             return;
           }
-          if (text.startsWith('Application Help')) {
+          if (text.includes('Application Help')) {
             currentMode = 'help';
             addMessage("Sure! I'm ready to answer any application questions. What would you like to know?", 'bot', true);
             userInput.value = '';
             return;
           }
-          if (text.trim().toLowerCase() === 'visualize data') {
+          if (text.includes('Visualize Data')) {
             currentMode = 'analytics';
             showDataVisualizationInterface();
             return;
