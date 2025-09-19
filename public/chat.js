@@ -231,7 +231,7 @@ window.addEventListener('DOMContentLoaded', () => {
           // Mode switch buttons shouldn't hit backend immediately
           if (text.includes('Analyze Data')) {
             currentMode = 'analytics';
-            showDataAnalysisInterface();
+            addMessage("I'm ready to analyze your data! Ask me about shipments, disputes, invoices, or any specific metrics you want to explore.", 'bot', true);
             return;
           }
           if (text.includes('Application Help')) {
@@ -242,7 +242,7 @@ window.addEventListener('DOMContentLoaded', () => {
           }
           if (text.includes('Visualize Data')) {
             currentMode = 'analytics';
-            showDataVisualizationInterface();
+            addMessage("I can create charts and graphs for you! Tell me what data you want to visualize - shipments, disputes, invoices, or any specific metrics.", 'bot', true);
             return;
           }
           // For other suggestions, keep default behavior
